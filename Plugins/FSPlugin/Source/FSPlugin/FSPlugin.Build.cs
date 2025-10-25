@@ -20,9 +20,7 @@ public class FSPlugin : ModuleRules
 				// ... add other private include paths required here ...
 			}
 			);
-			
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput" });
-
+		
 		
 		PublicDependencyModuleNames.AddRange(new string[] {
 			"Core",
@@ -38,10 +36,13 @@ public class FSPlugin : ModuleRules
 			{
 				"Engine",
 				"Slate",
-				"SlateCore"
-				
+				"SlateCore",
+				"FSCore",
+				"FSGameFramework",
+				"FSGameplay"
 				// ... add private dependencies that you statically link with here ...	
 			}
+			
 			);
 		
 		

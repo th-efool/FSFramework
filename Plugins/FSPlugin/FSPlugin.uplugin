@@ -19,12 +19,27 @@
 			"Name": "FSPlugin",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "FSCore",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "FSGameFramework",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "FSGameplay",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
 		}
-	  ],
-     "Plugins": [
-      {
-      "Name": "EnhancedInput",
-      "Enabled": true
-      }
-      ]
+	],
+	"Plugins": [
+		{
+			"Name": "EnhancedInput",
+			"Enabled": true
+		}
+	]
 }

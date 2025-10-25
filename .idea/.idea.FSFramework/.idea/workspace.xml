@@ -13,21 +13,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d58273c-48f3-4d48-978b-aea2eb26d48d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FSFramework.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/FSFramework.uproject" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/FSCore.Build.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Private/FSCore.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Private/Utility/FSErrorHandler.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/FSCore.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/Utility/FSErrorHandler.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/FSGameFramework.Build.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/FSGameFramework.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/FSGameFramework.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/FSGameplay.Build.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/FSGameplay.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/FSGameplay.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Meshes/SM_SM_ChamferCube.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/ThirdPerson/Lvl_ThirdPerson.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/ThirdPerson/Lvl_ThirdPerson.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/FSPlugin.uplugin" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/FSPlugin.uplugin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/FSPlugin.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/FSPlugin.Build.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/Public/FSCharacterBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/Public/FSCharacterBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/Public/FSPlayerControllerBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/Public/FSPlayerControllerBase.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Private/Utility/FSErrorHandler.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/FSCore.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/Utility/FSErrorHandler.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/FSGameFramework.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/FSGameplay.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "customColor": "",
@@ -40,6 +59,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "C/C++ Project.FSFramework.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -166,7 +186,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1761424724839</updated>
-      <workItem from="1761424727607" duration="650000" />
+      <workItem from="1761424727607" duration="3685000" />
     </task>
     <servers />
   </component>
