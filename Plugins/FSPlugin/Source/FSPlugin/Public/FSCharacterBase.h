@@ -4,6 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Camera/CameraComponent.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "InputAction.h"
+#include "InputActionValue.h"
 #include "FSCharacterBase.generated.h"
 
 UCLASS(Abstract)

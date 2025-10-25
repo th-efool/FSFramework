@@ -21,25 +21,24 @@ public class FSPlugin : ModuleRules
 			}
 			);
 			
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput" });
+
 		
-		PublicDependencyModuleNames.AddRange(
-			new string[]
-			{
-				"Core",
-				// ... add other public dependencies that you statically link with here ...
-			}
-			);
-			
+		PublicDependencyModuleNames.AddRange(new string[] {
+			"Core",
+			"CoreUObject",
+			"Engine",
+			"InputCore",
+			"EnhancedInput",
+			"UMG"              // ← required for UUserWidget
+		});
 		
 		PrivateDependencyModuleNames.AddRange(
 			new string[]
 			{
-				"CoreUObject",
 				"Engine",
 				"Slate",
-				"SlateCore", 
-				"InputCore", 
-				"EnhancedInput",
+				"SlateCore"
 				
 				// ... add private dependencies that you statically link with here ...	
 			}

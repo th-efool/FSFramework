@@ -4,12 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "InputMappingContext.h"
+#include "InputAction.h"
 #include "FSPlayerControllerBase.generated.h"
+
+
 
 /**
  * 
  */
-UCLASS()
+UCLASS(Abstract)
 class FSPLUGIN_API AFSPlayerControllerBase : public APlayerController
 {
 	GENERATED_BODY()
