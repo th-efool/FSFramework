@@ -14,7 +14,7 @@
  * 
  */
 UCLASS(Abstract)
-class FSPLUGIN_API AFSPlayerControllerBase : public APlayerController
+class FSGAMEFRAMEWORK_API AFSPlayerControllerBase : public APlayerController
 {
 	GENERATED_BODY()
 	

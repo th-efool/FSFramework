@@ -1,8 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#pragma once
 
-#include "FSCharacterBase.h"
+#include "Player/FSPlayerCharacterBase.h"
+
+
 #include "Engine/LocalPlayer.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -14,7 +15,8 @@
 #include "InputActionValue.h"
 
 
-AFSCharacterBase::AFSCharacterBase()
+
+AFSPlayerCharacterBase::AFSPlayerCharacterBase()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -52,7 +54,7 @@ AFSCharacterBase::AFSCharacterBase()
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 }
 
-void AFSCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void AFSPlayerCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	// Set up action bindings
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent)) {
@@ -62,11 +64,11 @@ void AFSCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
 		// Moving
-		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AFSCharacterBase::Move);
-		EnhancedInputComponent->BindAction(MouseLookAction, ETriggerEvent::Triggered, this, &AFSCharacterBase::Look);
+		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AFSPlayerCharacterBase::Move);
+		EnhancedInputComponent->BindAction(MouseLookAction, ETriggerEvent::Triggered, this, &AFSPlayerCharacterBase::Look);
 
 		// Looking
-		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AFSCharacterBase::Look);
+		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AFSPlayerCharacterBase::Look);
 	}
 	else
 	{
@@ -74,7 +76,7 @@ void AFSCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	}
 }
 
-void AFSCharacterBase::Move(const FInputActionValue& Value)
+void AFSPlayerCharacterBase::Move(const FInputActionValue& Value)
 {
 	// input is a Vector2D
 	FVector2D MovementVector = Value.Get<FVector2D>();
@@ -83,7 +85,7 @@ void AFSCharacterBase::Move(const FInputActionValue& Value)
 	DoMove(MovementVector.X, MovementVector.Y);
 }
 
-void AFSCharacterBase::Look(const FInputActionValue& Value)
+void AFSPlayerCharacterBase::Look(const FInputActionValue& Value)
 {
 	// input is a Vector2D
 	FVector2D LookAxisVector = Value.Get<FVector2D>();
@@ -92,7 +94,7 @@ void AFSCharacterBase::Look(const FInputActionValue& Value)
 	DoLook(LookAxisVector.X, LookAxisVector.Y);
 }
 
-void AFSCharacterBase::DoMove(float Right, float Forward)
+void AFSPlayerCharacterBase::DoMove(float Right, float Forward)
 {
 	if (GetController() != nullptr)
 	{
@@ -112,7 +114,7 @@ void AFSCharacterBase::DoMove(float Right, float Forward)
 	}
 }
 
-void AFSCharacterBase::DoLook(float Yaw, float Pitch)
+void AFSPlayerCharacterBase::DoLook(float Yaw, float Pitch)
 {
 	if (GetController() != nullptr)
 	{
@@ -122,13 +124,13 @@ void AFSCharacterBase::DoLook(float Yaw, float Pitch)
 	}
 }
 
-void AFSCharacterBase::DoJumpStart()
+void AFSPlayerCharacterBase::DoJumpStart()
 {
 	// signal the character to jump
 	Jump();
 }
 
-void AFSCharacterBase::DoJumpEnd()
+void AFSPlayerCharacterBase::DoJumpEnd()
 {
 	// signal the character to stop jumping
 	StopJumping();

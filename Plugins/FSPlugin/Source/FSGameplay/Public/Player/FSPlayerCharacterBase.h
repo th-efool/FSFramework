@@ -8,13 +8,20 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "InputAction.h"
 #include "InputActionValue.h"
-#include "FSCharacterBase.generated.h"
+
+
+
+#include "FSPlayerCharacterBase.generated.h"
 
 UCLASS(Abstract)
-class FSPLUGIN_API AFSCharacterBase : public ACharacter
+class FSGAMEPLAY_API AFSPlayerCharacterBase : public ACharacter
 {
 	GENERATED_BODY()
 
+public:
+	// Sets default values for this character's properties
+	AFSPlayerCharacterBase();
+	
 	/** Camera boom positioning the camera behind the character */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent* CameraBoom;
@@ -41,10 +48,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category="Input")
 	UInputAction* MouseLookAction;
 
-public:
 
-	/** Constructor */
-	AFSCharacterBase();	
 
 protected:
 

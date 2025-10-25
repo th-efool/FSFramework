@@ -6,23 +6,25 @@ public class FSGameplay : ModuleRules
     {
         PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 
-        PublicDependencyModuleNames.AddRange(
-            new string[]
-            {
-                "Core",
-            }
-        );
-
+        PublicDependencyModuleNames.AddRange(new string[] {
+            "Core",
+            "CoreUObject",
+            "Engine",
+            "InputCore",
+            "EnhancedInput",
+            "UMG" // ← required for UUserWidget
+        });
+		
         PrivateDependencyModuleNames.AddRange(
             new string[]
             {
-                "CoreUObject",
                 "Engine",
                 "Slate",
                 "SlateCore",
                 "FSCore",
-
+                // ... add private dependencies that you statically link with here ...	
             }
+			
         );
     }
 }
