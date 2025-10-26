@@ -52,6 +52,8 @@ AFSPlayerCharacterBase::AFSPlayerCharacterBase()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
+	GetMesh()->SetRelativeLocation	(FVector(0.0f, 0.0f, -96.0f));
+	GetMesh()->SetRelativeRotation(FRotator(0.0f, -90.0f, 0.0f));
 }
 
 void AFSPlayerCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

@@ -2,6 +2,9 @@
 
 
 #include "Player/FSFPSPlayerCharacter.h"
+#include "EnhancedInputComponent.h"
+#include "EnhancedInputSubsystems.h"
+#include "InputActionValue.h"
 
 
 // Sets default values
@@ -14,6 +17,7 @@ AFSFPSPlayerCharacter::AFSFPSPlayerCharacter()
 	bUseControllerRotationYaw = true;
 	CameraBoom->bInheritPitch = true;
 	CameraBoom->bInheritYaw = true;
+	CameraBoom->bInheritRoll = false;
 
 	CameraBoom->TargetArmLength=0.0f;
 	CameraBoom->SetRelativeLocation(FVector(39,7.f,48.0f));
@@ -41,6 +45,11 @@ void AFSFPSPlayerCharacter::Tick(float DeltaTime)
 void AFSFPSPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent)) {
+		
+		// EnhancedInputComponent->BindAction();
+		
+	}
 }
 
 

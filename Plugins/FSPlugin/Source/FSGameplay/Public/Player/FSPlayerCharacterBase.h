@@ -30,7 +30,7 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FollowCamera;
 	
-protected:
+public:
 
 	/** Jump Input Action */
 	UPROPERTY(EditAnywhere, Category="Input")

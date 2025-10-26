@@ -13,61 +13,83 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d58273c-48f3-4d48-978b-aea2eb26d48d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Private/Data/FSGameDataAsset.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/Data/FSGameDataAsset.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/FSGameModeBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/FSGameStateBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/FSPlayerStateBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Lobby/FSLobbyGameMode.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Lobby/FSLobbyPlayerController.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Lobby/FSLobbyPlayerState.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Match/Coop/FSCoopMatchGameMode.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Match/Coop/FSCoopMatchGameState.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Match/Coop/FSCoopMatchPlayerController.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Match/Coop/FSCoopMatchPlayerState.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Match/FSMatchGameModeBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Match/FSMatchGameStateBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Match/FSMatchPlayerControllerBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Match/FSMatchPlayerStateBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Menu/FSMenuGameMode.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Menu/FSMenuGameState.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Menu/FSMenuPlayerController.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Menu/FSMenuPlayerState.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/FSGameModeBase.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/FSGameStateBase.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/FSPlayerStateBase.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Lobby/FSLobbyGameMode.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Lobby/FSLobbyPlayerController.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Lobby/FSLobbyPlayerState.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Match/Coop/FSCoopMatchGameMode.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Match/Coop/FSCoopMatchGameState.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Match/Coop/FSCoopMatchPlayerController.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Match/Coop/FSCoopMatchPlayerState.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Match/FSMatchGameModeBase.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Match/FSMatchGameStateBase.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Match/FSMatchPlayerControllerBase.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Match/FSMatchPlayerStateBase.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Menu/FSMenuGameMode.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Menu/FSMenuGameState.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Menu/FSMenuPlayerController.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Menu/FSMenuPlayerState.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/FSCharacterBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSFPSPlayerCharacter.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSPlayerCharacterBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/FSCharacterBase.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Player/FSFPSPlayerCharacter.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Player/FSPlayerCharacterBase.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/.obsidian/app.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/.obsidian/appearance.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/.obsidian/core-plugins.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/.obsidian/workspace.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/FSGameFramework.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/FSGameFramework.Build.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/FSGameplay.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/FSGameplay.Build.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/Private/FSCharacterBase.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/Private/FSPlayerControllerBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/FSPlayerControllerBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/Public/FSCharacterBase.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/Public/FSPlayerControllerBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/FSPlayerControllerBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/ThirdPerson/Lvl_ThirdPerson.umap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/ThirdPerson/MI_ThirdPersonColWay.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/ThirdPerson/Test.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/ThirdPerson/TestCharacter.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/ThirdPerson/TestController.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/0/GO/AH7ANJQPGQV2R52YMNDTRH.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/0/JC/9OV3FGPU35JIBYPFGT8CXT.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/0/NT/QM04LPXVM40FWF3327W9IT.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/1/37/J7S3EVWT0JQRP69IPEM2WO.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/1/3H/WFEJ5UQGD5X225WH93E6YB.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/1/EC/URUE7K6I9434I17122K8NX.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/1/FU/OZEIE4AKBVWIE0IV6DRUE8.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/2/14/LOUYSM70PXKMVDWB48T28M.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/2/NJ/RNYL9ISQVFUR81SO9OCL5H.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/3/47/WUWB13EW8UIITH9L3WHU7B.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/3/92/IIWSEQGJYZBU1WFUNXP9LI.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/3/FY/9JNPRLS2QVXXUT6121I373.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/3/KB/EH7A3H170NE9L98MFJU1B5.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/3/W8/40E3XHRQ4CIHBUF8XWDTS7.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/4/03/OOME4X2FY3XOML5MS3WHXM.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/4/J0/KWCVSWU6JKV53Y851H1OM6.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/4/TQ/HE4JNNZC3DYNFLITX1JV4K.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/4/UU/I0GCXSSA363LILLTKKSPA3.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/4/V3/BIFLDT03WOD2AN9GV7QO7R.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/5/K0/3SR1W2RSBR3SO1UOBN1OYD.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/5/KF/8RAQ0M6OUDZQZPQSK8TU3V.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/5/O4/8D0K0QGFJ7TL9E95QWR76T.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/6/59/T76L61N7TB0MVS557CNRE1.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/6/7A/7DUG6KKBJB7UKC0LKWX8LP.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/6/A7/E5DEQQU74K07UJVA258Q2T.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/6/P4/5ZSE4CXQEISI6P0XA59H90.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/7/44/36C2K97SO0S1EDCD04WT4Y.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/7/KM/GDSRQKCM5FKATCVWW8OSXY.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/7/RQ/LZARMTSO1TSA1VBZ7AG9P4.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/7/S1/QMLGN47ZHYH86DBH9L065U.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/7/US/VAZNKSAMS7IVTZ48TOPZ9G.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/7/YP/CY7IQPIVJTE5XHHNU7JQHG.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/8/0R/6O1OPP6JQBW1D036WWJZET.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/8/8C/NUOXATNE631YJ7LV0NVUSI.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/8/A0/GGKE0E3HI4FP0RBDTYZY0J.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/8/NY/6RHYI3K3FNU4SQO8FBE7KC.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/9/BT/JK72E0E2EZVTERNL83XS7S.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/9/CE/S3466WIZD1L1F9F9BJC4M3.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/9/FS/QR28XKPOU6ZRDBUCXOGR0B.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/9/MJ/PRGIT5E750YLW9U6F8WI3O.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/9/QZ/UCFX0AKCL7W34B8BGOEFW7.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/9/RS/I6ELGQWOK7VNP3JYHUMD44.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/9/ZL/E5TT8Q213L4FWMYEY76RQQ.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/A/0X/Y95LRHCS8ZOKSNL8C7V6YT.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/A/EU/QP01IS47H6713PDPRSAKNX.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/A/SL/CKR2T08SDRGX8IAR7762NR.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/A/WE/3Y4T4B1UYQCT2KCFWGMHO5.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/B/AU/XSITGT5KERBYEP45JZ1P6I.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/B/IZ/TSSRHFBN335SUQO19Z3LTA.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/B/LF/2I23U8TM724MBNLQNXYPDY.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/C/01/429KMFZ8IPND51LBV3Q1TR.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/C/LT/U3WE2VMS8S0KNLCLP80NEX.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/C/PL/YRXDHX93F69S32R8OALNVL.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/D/5G/QR98P0Q8I39M3H7L605ABL.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/D/KI/X4XNDBEKBKLT6XVSKQYGD2.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/D/P7/5905L17RGFZQK2HLYVGRIS.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/D/WJ/G85D16W232BTUEFTR8X1JP.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/E/20/QZP9BFNCNWVZBNOP5H78B1.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/E/6L/H3YH27Z6VAP9J9M8KHP6LC.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/E/AV/LBFY085O74OAE02D1Y8UOW.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/E/G4/MDS1VS6C0QGNFSVXLNNRW6.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/E/Z0/CA50UJ96AOF3FG2V8TI94Q.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/F/1O/QXAZTTRNLU7U7HW9VYEAQM.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/F/27/MRU582C82JGXIYKG20P3WR.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/ThirdPerson/Lvl_ThirdPerson/F/5A/L2C6S8MCDKBKDFMC11G97C.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalObjects__/ThirdPerson/Lvl_ThirdPerson/6/S0/9FXJFIYDHNTHCER04P8YUA.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalObjects__/ThirdPerson/Lvl_ThirdPerson/E/AS/8KO82A8FUIZ1ZX0YDU8SE1.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSFPSPlayerCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSFPSPlayerCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSPlayerCharacterBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSPlayerCharacterBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Player/FSPlayerCharacterBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Player/FSPlayerCharacterBase.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +103,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.6/Engine/Source/Runtime/Engine/Classes/GameFramework/Character.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Private/Data/FSGameDataAsset.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Private/Utility/FSErrorHandler.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/Data/FSGameDataAsset.h" root0="FORCE_HIGHLIGHTING" />
@@ -278,6 +301,7 @@
       <workItem from="1761424727607" duration="3685000" />
       <workItem from="1761428908360" duration="2861000" />
       <workItem from="1761433075797" duration="3307000" />
+      <workItem from="1761436860131" duration="3273000" />
     </task>
     <servers />
   </component>
