@@ -25,8 +25,7 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-
+	
 	// Camera Sway
 public:
 	virtual void DoLook(float Yaw, float Pitch) override;
@@ -36,4 +35,17 @@ public:
 	float MaxTilt=3.0f;
 	UPROPERTY(EditDefaultsOnly)
 	float TiltRecoverySpeed=9.0f;
+
+
+public:
+	void FSPerformBoxTraceAndInteract();
+	void FSInteractWithActor(AActor* HitActor, bool bIsLocalEvent);
+
+protected:
+	UFUNCTION(Server, Reliable)
+	void Server_Interact(AActor* HitActor);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_Interact(AActor* HitActor);
 };
+

@@ -5,6 +5,7 @@
     <projectFile profileName="EpicGames.AspNet">../../../../../Program Files/Epic Games/UE_5.6/Engine/Source/Programs/Shared/EpicGames.AspNet/EpicGames.AspNet.csproj</projectFile>
     <projectFile kind="Docker">../../../../../Program Files/Epic Games/UE_5.6/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/EpicGames.Perforce.Fixture.csproj</projectFile>
     <projectFile>../../../../../Program Files/Epic Games/UE_5.6/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj</projectFile>
+    <projectFile kind="Docker">C:/Program Files/Epic Games/UE_5.6/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/EpicGames.Perforce.Fixture.csproj</projectFile>
     <projectFile>Intermediate/ProjectFiles/FSFramework.vcxproj</projectFile>
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
@@ -13,11 +14,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d58273c-48f3-4d48-978b-aea2eb26d48d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSInteractInterface.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSPlayerInterface.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSInteractInterface.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSPlayerInterface.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/FSEventManagerSubsystem.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSFlicker.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/World/FlickerLightActorBase.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/World/Interactables/InteractableActorBase.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Enums/EventEnum.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Enums/EventEnum.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/FSEventManagerSubsystem.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSFlicker.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/World/FlickerLightActorBase.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/World/Interactables/InteractableActorBase.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSFPSPlayerCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSFPSPlayerCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSInteractInterface.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSInteract.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSPlayerInterface.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSPlayer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/World/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Player/FSFPSPlayerCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Player/FSFPSPlayerCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSInteractInterface.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSInteract.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSPlayerInterface.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSPlayer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/World/.gitkeep" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +48,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.6/Engine/Source/Runtime/Engine/Classes/GameFramework/Character.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Private/Data/FSGameDataAsset.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Private/Utility/FSErrorHandler.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/Data/FSGameDataAsset.h" root0="FORCE_HIGHLIGHTING" />
@@ -78,14 +94,25 @@
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Menu/FSMenuPlayerState.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSFPSPlayerCharacter.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSPlayerCharacterBase.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSInteractInterface.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSPlayerInterface.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/FSEventManagerSubsystem.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSFlicker.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSInteract.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSPlayer.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/World/FlickerLightActorBase.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/World/Interactables/InteractableActorBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/FSGameplay.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Player/FSFPSPlayerCharacter.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Player/FSPlayerCharacterBase.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSInteractInterface.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSPlayerInterface.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Enums/EventEnum.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Enums/EventEnum.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/FSEventManagerSubsystem.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSFlicker.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSInteract.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSPlayer.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/World/FlickerLightActorBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/World/Interactables/InteractableActorBase.h" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
@@ -204,6 +231,17 @@
         <option name="Build" />
       </method>
     </configuration>
+    <configuration name="EpicGames.Perforce.Fixture/Dockerfile (1)" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="containerName" value="epicgames.perforce.fixture" />
+          <option name="contextFolderPath" value="D:\ThisPC\Documents\Github\FSFramework" />
+          <option name="sourceFilePath" value="C:/Program Files/Epic Games/UE_5.6/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/Dockerfile" />
+        </settings>
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+      <method v="2" />
+    </configuration>
     <configuration name="EpicGames.Perforce.Fixture/Dockerfile" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
       <deployment type="dockerfile">
         <settings>
@@ -234,12 +272,15 @@
       <workItem from="1761428908360" duration="2861000" />
       <workItem from="1761433075797" duration="3307000" />
       <workItem from="1761436860131" duration="5413000" />
+      <workItem from="1761564035883" duration="6171000" />
+      <workItem from="1761570259653" duration="2041000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

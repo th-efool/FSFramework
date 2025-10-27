@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
-#include "FSInteractInterface.generated.h"
+#include "FSInteract.generated.h"
 
 // This class does not need to be modified.
 UINTERFACE()
@@ -24,6 +24,7 @@ class FSGAMEPLAY_API IFSInteract
 public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void Interact(AActor* InteractionInstigator);
+	virtual void Interact_Implementation(AActor* InteractionInstigator){}
+	
 
-	virtual void Interact_Implementation(AActor* InteractionInstigator) {}
 };

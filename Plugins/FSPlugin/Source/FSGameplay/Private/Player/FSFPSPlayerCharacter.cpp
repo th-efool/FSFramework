@@ -5,6 +5,8 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "Systems/Interface/FSInteract.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 
 // Sets default values
@@ -61,4 +63,95 @@ void AFSFPSPlayerCharacter::DoLook(float Yaw, float Pitch)
 	Tilt += Yaw;
 	Tilt=FMath::Clamp(Tilt, -MaxTilt, MaxTilt);
 }
+
+void AFSFPSPlayerCharacter::FSPerformBoxTraceAndInteract()
+{
+	UWorld* World = GetWorld();
+	if (!World) return;
+
+	FVector Start = GetActorLocation();
+	FVector End   = Start + GetActorForwardVector() * 300.f;
+
+	FVector HalfSize(50.f);
+	FRotator Orientation = GetActorRotation();
+
+	TArray<FHitResult> HitResults;
+
+	bool bHit = UKismetSystemLibrary::BoxTraceMulti(
+		World,
+		Start,
+		End,
+		HalfSize,
+		Orientation,
+		UEngineTypes::ConvertToTraceType(ECC_Visibility),
+		false,
+		{},
+		EDrawDebugTrace::None,
+		HitResults,
+		true
+	);
+
+	if (!bHit) return;
+
+	for (const FHitResult& Hit : HitResults)
+	{
+		AActor* HitActor = Hit.GetActor();
+		if (!HitActor) continue;
+
+		FSInteractWithActor(HitActor, /*bIsLocal=*/false);
+	}
+
+}
+
+void AFSFPSPlayerCharacter::FSInteractWithActor(AActor* HitActor, bool bIsLocalEvent)
+{
+	if (!HitActor) return;
+
+	if (bIsLocalEvent)
+	{
+		// Local (singleplayer or client prediction)
+		if (HitActor->GetClass()->ImplementsInterface(UFSInteract::StaticClass()))
+		{
+			IFSInteract::Execute_Interact(HitActor, this);
+		}
+	}
+	else
+	{
+		// Server-driven interaction
+		if (HasAuthority())
+		{
+			// Server already owns it, so replicate
+			Multicast_Interact(HitActor);
+		}
+		else
+		{
+			// Request server to handle
+			Server_Interact(HitActor);
+		}
+	}
+}
+
+void AFSFPSPlayerCharacter::Server_Interact_Implementation(AActor* HitActor)
+{
+	if (!HitActor) return;
+	if (HitActor->GetClass()->ImplementsInterface(UFSInteract::StaticClass()))
+	{
+		// Optionally do validation or checks here
+		IFSInteract::Execute_Interact(HitActor, this);
+	}
+
+	// replicate to others
+	Multicast_Interact(HitActor);
+
+}
+void AFSFPSPlayerCharacter::Multicast_Interact_Implementation(AActor* HitActor)
+{
+	if (!HitActor) return;
+	if (HitActor->GetClass()->ImplementsInterface(UFSInteract::StaticClass()))
+	{
+		IFSInteract::Execute_Interact(HitActor, this);
+	}
+}
+
+
 
