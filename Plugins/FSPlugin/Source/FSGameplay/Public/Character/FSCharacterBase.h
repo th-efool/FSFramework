@@ -3,17 +3,17 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "FSPlayerCharacterBase.h"
-#include "FSFPSPlayerCharacter.generated.h"
+#include "GameFramework/Character.h"
+#include "FSCharacterBase.generated.h"
 
 UCLASS()
-class FSGAMEPLAY_API AFSFPSPlayerCharacter : public AFSPlayerCharacterBase
+class FSGAMEPLAY_API AFSCharacterBase : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this character's properties
-	AFSFPSPlayerCharacter();
+	AFSCharacterBase();
 
 protected:
 	// Called when the game starts or when spawned
@@ -25,17 +25,4 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	
-	// Camera Sway
-public:
-	virtual void DoLook(float Yaw, float Pitch) override;
-	UPROPERTY()
-	float Tilt=0.f;
-	UPROPERTY(EditDefaultsOnly)
-	float MaxTilt=3.0f;
-	UPROPERTY(EditDefaultsOnly)
-	float TiltRecoverySpeed=9.0f;
-
-
 };
-

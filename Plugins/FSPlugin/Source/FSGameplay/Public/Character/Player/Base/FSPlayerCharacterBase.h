@@ -8,13 +8,13 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "InputAction.h"
 #include "InputActionValue.h"
-
+#include "Character/FSCharacterBase.h"
 
 
 #include "FSPlayerCharacterBase.generated.h"
 
 UCLASS(Abstract)
-class FSGAMEPLAY_API AFSPlayerCharacterBase : public ACharacter
+class FSGAMEPLAY_API AFSPlayerCharacterBase : public AFSCharacterBase
 {
 	GENERATED_BODY()
 

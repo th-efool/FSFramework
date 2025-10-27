@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Player/FSPlayerCharacterBase.h"
+#include "Character/Player/Base/FSPlayerCharacterBase.h"
 
 #include "Systems/Interface/FSInteract.h"
 #include "Kismet/KismetSystemLibrary.h"
