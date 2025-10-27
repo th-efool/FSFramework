@@ -5,7 +5,7 @@
     <projectFile profileName="EpicGames.AspNet">../../../../../Program Files/Epic Games/UE_5.6/Engine/Source/Programs/Shared/EpicGames.AspNet/EpicGames.AspNet.csproj</projectFile>
     <projectFile kind="Docker">../../../../../Program Files/Epic Games/UE_5.6/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/EpicGames.Perforce.Fixture.csproj</projectFile>
     <projectFile>../../../../../Program Files/Epic Games/UE_5.6/Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj</projectFile>
-    <projectFile kind="Docker">C:/Program Files/Epic Games/UE_5.6/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/EpicGames.Perforce.Fixture.csproj</projectFile>
+    <projectFile kind="Docker">$PROJECT_DIR$/../../../../../../Program Files/Epic Games/UE_5.6/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/EpicGames.Perforce.Fixture.csproj</projectFile>
     <projectFile>Intermediate/ProjectFiles/FSFramework.vcxproj</projectFile>
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
@@ -14,40 +14,61 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d58273c-48f3-4d48-978b-aea2eb26d48d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Character/FSCharacterBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Base/FSHUDWidgetBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Base/FSMenuWidgetBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Base/FSPlayerUIComponent.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/FSUserWidgetBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Lobby/FSLobbyHUDWidget.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Lobby/FSLobbyPlayerListWidget.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Match/FSMatchHUDWidget.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Match/FSRespawnWidget.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Match/FSScoreboardWidget.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Menu/FSHostJoinWidget.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Menu/FSMainMenuWidget.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Menu/FSSettingsWidget.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Character/FSCharacterBase.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Base/FSHUDWidgetBase.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Base/FSMenuWidgetBase.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Base/FSPlayerUIComponent.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/FSUserWidgetBase.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Lobby/FSLobbyHUDWidget.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Lobby/FSLobbyPlayerListWidget.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Match/FSMatchHUDWidget.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Match/FSRespawnWidget.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Match/FSScoreboardWidget.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Menu/FSHostJoinWidget.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Menu/FSMainMenuWidget.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Menu/FSSettingsWidget.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Config/DefaultFSPlugin.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/FSGameDataSubsystem.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/FSUI.Build.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Base/FSHUDEventSubsystemBase.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/FSHUDBase.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/FSUI.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Lobby/FSLobbyHUDEventSubsystem.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/Components/UTeamStatusPanel.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/DeathScreen/FSRespawnWidget.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/EndScreen/FSScoreboardWidget.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/FSMatchHUD.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/FSMatchHUDEventSubsystem.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/PlayScreen/FSPlayScreenHUDWidget.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/FSMenuHUD.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/UFSMenuHUDEventSubsystem.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Base/FSHUDEventSubsystemBase.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/FSHUDBase.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/FSUI.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Lobby/FSLobbyHUD.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Lobby/FSLobbyHUDEventSubsystem.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/Components/UTeamStatusPanel.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/FSMatchHUD.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/FSMatchHUDEventSubsystem.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/PlayScreen/FSPlayScreenHUDWidget.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/FSMenuHUD.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/UFSMenuHUDEventSubsystem.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/Gameplay/Player/FPSPlayerCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/Gameplay/Player/FPSPlayerCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/AI/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Character/AI/.gitkeep" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSFPSPlayerCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Character/Player/Base/FSFPSPlayerCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSPlayerCharacterBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Character/Player/FSPlayerCharacterBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/AI/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Character/AI/.gitkeep" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Player/FSFPSPlayerCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Character/Player/FSFPSPlayerCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Player/FSPlayerCharacterBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Character/Player/Base/FSPlayerCharacterBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/FSPlugin.uplugin" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/FSPlugin.uplugin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Base/FSHUDWidgetBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Base/FSHUDWidgetBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Base/FSMenuWidgetBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Base/FSMenuWidgetBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Base/FSPlayerUIComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Base/FSPlayerUIComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/FSUserWidgetBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/FSUserWidgetBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Lobby/FSLobbyHUDWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Lobby/FSLobbyHUDWidget.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Lobby/FSLobbyPlayerListWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Lobby/FSLobbyPlayerListWidget.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Match/FSMatchHUDWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/FSMatchHUDWidget.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Match/FSRespawnWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Lobby/FSLobbyHUD.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Match/FSScoreboardWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/FSGameDataSubsystem.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Menu/FSHostJoinWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/FSHostJoinWidget.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Menu/FSMainMenuWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/FSMainMenuWidget.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Menu/FSSettingsWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/FSSettingsWidget.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/FSEventManagerSubsystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/FSEventManagerSubsystem.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Base/FSHUDWidgetBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Base/FSHUDWidgetBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Base/FSMenuWidgetBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Base/FSMenuWidgetBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Base/FSPlayerUIComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Base/FSPlayerUIComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/FSUserWidgetBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/FSUserWidgetBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Lobby/FSLobbyHUDWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Lobby/FSLobbyHUDWidget.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Lobby/FSLobbyPlayerListWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Lobby/FSLobbyPlayerListWidget.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Match/FSMatchHUDWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/FSMatchHUDWidget.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Match/FSRespawnWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/DeathScreen/FSRespawnWidget.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Match/FSScoreboardWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/EndScreen/FSScoreboardWidget.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Menu/FSHostJoinWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/FSHostJoinWidget.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Menu/FSMainMenuWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/FSMainMenuWidget.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Menu/FSSettingsWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/FSSettingsWidget.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +82,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../../../../../Program Files/Epic Games/UE_5.6/Engine/Source/Runtime/Engine/Classes/GameFramework/HUD.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../../Program Files/Epic Games/UE_5.6/Engine/Source/Runtime/Engine/Private/HUD.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../../Program Files/Epic Games/UE_5.6/Engine/Source/Runtime/UMG/Public/Blueprint/UserWidget.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Private/Data/FSGameDataAsset.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Private/Utility/FSErrorHandler.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/Data/FSGameDataAsset.h" root0="FORCE_HIGHLIGHTING" />
@@ -109,21 +133,10 @@
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Character/Player/Base/FSFPSPlayerCharacter.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Character/Player/FSPlayerCharacterBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/FSEventManagerSubsystem.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/FSGameDataSubsystem.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSFlicker.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSInteract.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSPlayer.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Base/FSHUDWidgetBase.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Base/FSMenuWidgetBase.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Base/FSPlayerUIComponent.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/FSUserWidgetBase.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Lobby/FSLobbyHUDWidget.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Lobby/FSLobbyPlayerListWidget.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Match/FSMatchHUDWidget.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Match/FSRespawnWidget.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Match/FSScoreboardWidget.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Menu/FSHostJoinWidget.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Menu/FSMainMenuWidget.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/UI/Menu/FSSettingsWidget.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/World/FlickerLightActorBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/World/Interactables/InteractableActorBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Character/FSCharacterBase.h" root0="FORCE_HIGHLIGHTING" />
@@ -133,23 +146,57 @@
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Enums/EventEnum.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Enums/EventEnum.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/FSEventManagerSubsystem.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/FSGameDataSubsystem.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSFlicker.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSInteract.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSPlayer.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Base/FSHUDWidgetBase.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Base/FSMenuWidgetBase.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Base/FSPlayerUIComponent.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/FSUserWidgetBase.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Lobby/FSLobbyHUDWidget.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Lobby/FSLobbyPlayerListWidget.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Match/FSMatchHUDWidget.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Match/FSRespawnWidget.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Match/FSScoreboardWidget.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Menu/FSHostJoinWidget.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Menu/FSMainMenuWidget.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/UI/Menu/FSSettingsWidget.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/World/FlickerLightActorBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/World/Interactables/InteractableActorBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Base/FSHUDEventSubsystemBase.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Base/FSHUDWidgetBase.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Base/FSMenuWidgetBase.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Base/FSPlayerUIComponent.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/FSHUDBase.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/FSUserWidgetBase.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Lobby/FSLobbyHUD.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Lobby/FSLobbyHUDEventSubsystem.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Lobby/FSLobbyHUDWidget.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Lobby/FSLobbyPlayerListWidget.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/Components/UTeamStatusPanel.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/DeathScreen/FSRespawnWidget.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/EndScreen/FSScoreboardWidget.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/FSMatchHUD.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/FSMatchHUDEventSubsystem.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/FSMatchHUDWidget.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/PlayScreen/FSPlayScreenHUDWidget.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/FSHostJoinWidget.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/FSMainMenuWidget.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/FSMenuHUD.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/FSSettingsWidget.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/UFSMenuHUDEventSubsystem.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Base/FSHUDEventSubsystemBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Base/FSHUDWidgetBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Base/FSMenuWidgetBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Base/FSPlayerUIComponent.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/FSHUDBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/FSUI.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/FSUserWidgetBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Lobby/FSLobbyHUD.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Lobby/FSLobbyHUDEventSubsystem.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Lobby/FSLobbyHUDWidget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Lobby/FSLobbyPlayerListWidget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/Components/UTeamStatusPanel.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/DeathScreen/FSRespawnWidget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/EndScreen/FSScoreboardWidget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/FSMatchHUD.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/FSMatchHUDEventSubsystem.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/FSMatchHUDWidget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/PlayScreen/FSPlayScreenHUDWidget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/FSHostJoinWidget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/FSMainMenuWidget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/FSMenuHUD.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/FSSettingsWidget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/UFSMenuHUDEventSubsystem.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -164,21 +211,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;C/C++ Project.FSFramework.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "C/C++ Project.FSFramework.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "master",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="C/C++ Project.FSFramework">
     <configuration name="FSFramework" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -275,7 +326,7 @@
         <settings>
           <option name="containerName" value="epicgames.perforce.fixture" />
           <option name="contextFolderPath" value="D:\ThisPC\Documents\Github\FSFramework" />
-          <option name="sourceFilePath" value="C:/Program Files/Epic Games/UE_5.6/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/Dockerfile" />
+          <option name="sourceFilePath" value="$PROJECT_DIR$/../../../../../../Program Files/Epic Games/UE_5.6/Engine/Source/Programs/Shared/EpicGames.Perforce.Fixture/Dockerfile" />
         </settings>
       </deployment>
       <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
@@ -313,6 +364,7 @@
       <workItem from="1761436860131" duration="5413000" />
       <workItem from="1761564035883" duration="6171000" />
       <workItem from="1761570259653" duration="10207000" />
+      <workItem from="1761584848695" duration="6951000" />
     </task>
     <servers />
   </component>

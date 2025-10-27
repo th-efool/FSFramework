@@ -8,7 +8,7 @@
 #include "FSEventManagerSubsystem.generated.h"
 
 UCLASS()
-class FSGAMEPLAY_API UFSEventManagerSubsystem : public UGameInstanceSubsystem
+class FSGAMEPLAY_API UFSEventManagerSubsystem : public UWorldSubsystem
 {
 	GENERATED_BODY()
 public:
