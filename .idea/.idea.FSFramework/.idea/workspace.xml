@@ -14,27 +14,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d58273c-48f3-4d48-978b-aea2eb26d48d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/FSEventManagerSubsystem.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSFlicker.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/World/FlickerLightActorBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/World/Interactables/InteractableActorBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Enums/EventEnum.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Enums/EventEnum.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/FSEventManagerSubsystem.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSFlicker.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/World/FlickerLightActorBase.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/World/Interactables/InteractableActorBase.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSFPSPlayerCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSFPSPlayerCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSInteractInterface.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSInteract.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSPlayerInterface.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/Interface/FSPlayer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/World/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Player/FSFPSPlayerCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Player/FSFPSPlayerCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSInteractInterface.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSInteract.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSPlayerInterface.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSPlayer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/World/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/Gameplay/Player/FPSPlayerCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/Gameplay/Player/FPSPlayerCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/FSEventManagerSubsystem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/FSEventManagerSubsystem.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSFlicker.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSFlicker.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +256,7 @@
       <workItem from="1761433075797" duration="3307000" />
       <workItem from="1761436860131" duration="5413000" />
       <workItem from="1761564035883" duration="6171000" />
-      <workItem from="1761570259653" duration="2041000" />
+      <workItem from="1761570259653" duration="3937000" />
     </task>
     <servers />
   </component>

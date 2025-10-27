@@ -7,7 +7,7 @@
 #include "FSFlicker.generated.h"
 
 // This class does not need to be modified.
-UINTERFACE()
+UINTERFACE(Blueprintable, MinimalAPI)
 class UFSFlicker : public UInterface
 {
 	GENERATED_BODY()

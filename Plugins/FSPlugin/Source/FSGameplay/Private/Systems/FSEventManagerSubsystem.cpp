@@ -16,11 +16,20 @@ void UFSEventManagerSubsystem::TriggerEvent(EFSEventEnum EventType, AActor* Inst
 	case EFSEventEnum::LightFlicker:
 	{
 		const FLightFlickerParams& Params = static_cast<const FLightFlickerParams&>(CustomEventParams);
-		for (auto& Target : Params.FlickerActors)
+		
+
+		for (const TScriptInterface<IFSFlicker>& Target : Params.FlickerActors)
 		{
-			if (Target){
-                IFSFlicker::Execute_Flicker(Target.GetObject(), Params.FlickerDuration);
-			}
+				UObject* Obj = Target.GetObject();
+				if (IsValid(Obj) && Obj->GetClass()->ImplementsInterface(UFSFlicker::StaticClass()))
+				{
+					IFSFlicker::Execute_SetIntensityFlicker(Obj, Params.IntensityScale);
+					IFSFlicker::Execute_Flicker(Obj, Params.FlickerDuration);
+				}
+				else
+				{
+					UE_LOG(LogTemp, Warning, TEXT("Invalid or non-interface actor in FlickerActors array"));
+				}
 		}
 		break;
 	}
