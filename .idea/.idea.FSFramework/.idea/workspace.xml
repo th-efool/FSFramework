@@ -15,9 +15,17 @@
   <component name="ChangeListManager">
     <list default="true" id="7d58273c-48f3-4d48-978b-aea2eb26d48d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/Gameplay/Interactables/BPInteractableActorBase.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/Gameplay/Interactables/BPInteractableActorBase.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/Gameplay/Player/FPSPlayerCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/Gameplay/Player/FPSPlayerCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/FSEventManagerSubsystem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Systems/FSEventManagerSubsystem.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSFlicker.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Interface/FSFlicker.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/FSGameModeBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/FSGameModeBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/FSGameModeBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/FSGameModeBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/FSCharacterBase.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSFPSPlayerCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSFPSPlayerCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSPlayerCharacterBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Player/FSPlayerCharacterBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/FSCharacterBase.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Player/FSFPSPlayerCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Player/FSFPSPlayerCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Player/FSPlayerCharacterBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Player/FSPlayerCharacterBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Enums/EventEnum.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/Enums/EventEnum.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,7 +264,7 @@
       <workItem from="1761433075797" duration="3307000" />
       <workItem from="1761436860131" duration="5413000" />
       <workItem from="1761564035883" duration="6171000" />
-      <workItem from="1761570259653" duration="3937000" />
+      <workItem from="1761570259653" duration="6387000" />
     </task>
     <servers />
   </component>

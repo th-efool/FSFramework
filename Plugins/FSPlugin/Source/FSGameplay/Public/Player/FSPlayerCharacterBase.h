@@ -88,4 +88,20 @@ public:
 
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+
+
+	
+public:
+	UFUNCTION(BlueprintCallable)
+	void FSPerformBoxTraceAndInteract(bool bIsLocalEvent);
+	UFUNCTION(BlueprintCallable)
+	void FSInteractWithActor(AActor* HitActor, bool bIsLocalEvent);
+
+protected:
+	UFUNCTION(BlueprintCallable,Server, Reliable)
+	void Server_Interact(AActor* HitActor);
+
+	UFUNCTION(BlueprintCallable,NetMulticast, Reliable)
+	void Multicast_Interact(AActor* HitActor);
 };

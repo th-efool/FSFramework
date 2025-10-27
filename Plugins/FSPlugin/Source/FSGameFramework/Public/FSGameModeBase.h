@@ -15,4 +15,8 @@ class FSGAMEFRAMEWORK_API AFSGameModeBase : public AGameModeBase
 	GENERATED_BODY()
 	public:
 	AFSGameModeBase();
+
+public:
+	virtual AActor* ChoosePlayerStart_Implementation(AController* Player) override;
+
 };

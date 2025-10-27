@@ -37,15 +37,5 @@ public:
 	float TiltRecoverySpeed=9.0f;
 
 
-public:
-	void FSPerformBoxTraceAndInteract();
-	void FSInteractWithActor(AActor* HitActor, bool bIsLocalEvent);
-
-protected:
-	UFUNCTION(Server, Reliable)
-	void Server_Interact(AActor* HitActor);
-
-	UFUNCTION(NetMulticast, Reliable)
-	void Multicast_Interact(AActor* HitActor);
 };
 

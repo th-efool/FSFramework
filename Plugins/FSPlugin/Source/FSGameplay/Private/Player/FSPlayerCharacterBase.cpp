@@ -3,6 +3,8 @@
 
 #include "Player/FSPlayerCharacterBase.h"
 
+#include "Systems/Interface/FSInteract.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 #include "Engine/LocalPlayer.h"
 #include "Camera/CameraComponent.h"
@@ -20,6 +22,7 @@ AFSPlayerCharacterBase::AFSPlayerCharacterBase()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
+	
 		
 	// Don't rotate when the controller rotates. Let that just affect the camera.
 	bUseControllerRotationPitch = false;
@@ -136,4 +139,98 @@ void AFSPlayerCharacterBase::DoJumpEnd()
 {
 	// signal the character to stop jumping
 	StopJumping();
+}
+
+
+
+void AFSPlayerCharacterBase::FSPerformBoxTraceAndInteract(bool bIsLocalEvent )
+{
+	UWorld* World = GetWorld();
+	if (!World) return;
+	
+	FVector Start = GetActorLocation();
+	FVector End   = Start + (FollowCamera->GetForwardVector()) * 300.f;
+
+	FVector HalfSize(50.f);
+	FRotator Orientation = GetActorRotation();
+
+	TArray<FHitResult> HitResults;
+
+	bool bHit = UKismetSystemLibrary::BoxTraceMulti(
+		World,
+		Start,
+		End,
+		HalfSize,
+		Orientation,
+		UEngineTypes::ConvertToTraceType(ECC_Visibility),
+		false,
+		{},
+		EDrawDebugTrace::ForDuration, // 🔥 Draw visible trace box
+		HitResults,
+		true,
+		FLinearColor::Green,
+		FLinearColor::Red,
+		1.5f // visible for 1.5 seconds
+);
+
+
+
+	if (!bHit) return;
+
+	for (const FHitResult& Hit : HitResults)
+	{
+		AActor* HitActor = Hit.GetActor();
+		if (!HitActor) continue;
+
+		FSInteractWithActor(HitActor, /*bIsLocal=*/bIsLocalEvent);
+	}
+
+}
+
+void AFSPlayerCharacterBase::FSInteractWithActor(AActor* HitActor, bool bIsLocalEvent)
+{
+	if (!HitActor) return;
+
+	if (bIsLocalEvent)
+	{
+		// Local (singleplayer or client prediction)
+		if (HitActor->GetClass()->ImplementsInterface(UFSInteract::StaticClass()))
+		{
+			IFSInteract::Execute_Interact(HitActor, this);
+		}
+	}
+	else
+	{
+		// Server-driven interaction
+		if (HasAuthority())
+		{
+			// Server already owns it, so replicate
+			Multicast_Interact(HitActor);
+		}
+		else
+		{
+			// Request server to handle
+			Server_Interact(HitActor);
+		}
+	}
+}
+
+void AFSPlayerCharacterBase::Server_Interact_Implementation(AActor* HitActor)
+{
+	if (!HitActor) return;
+	if (HitActor->GetClass()->ImplementsInterface(UFSInteract::StaticClass()))
+	{
+		// replicate to others
+		Multicast_Interact(HitActor);
+
+	}
+
+}
+void AFSPlayerCharacterBase::Multicast_Interact_Implementation(AActor* HitActor)
+{
+	if (!HitActor) return;
+	if (HitActor->GetClass()->ImplementsInterface(UFSInteract::StaticClass()))
+	{
+		IFSInteract::Execute_Interact(HitActor, this);
+	}
 }
