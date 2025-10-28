@@ -24,7 +24,8 @@ class FSGAMEPLAY_API IFSInteract
 public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void Interact(AActor* InteractionInstigator);
-	virtual void Interact_Implementation(AActor* InteractionInstigator){}
-	
 
+	virtual void Interact_Implementation(AActor* InteractionInstigator)
+	{
+	}
 };

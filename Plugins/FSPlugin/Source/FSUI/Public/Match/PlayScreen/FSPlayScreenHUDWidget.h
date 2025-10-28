@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Base/FSHUDWidgetBase.h"
+#include "Components/CanvasPanel.h"
+#include "Match/Components/FSTeamStatusPanel.h"
 #include "FSPlayScreenHUDWidget.generated.h"
 
 /**
@@ -13,4 +15,8 @@ UCLASS()
 class FSUI_API UFSPlayScreenHUDWidget : public UFSHUDWidgetBase
 {
 	GENERATED_BODY()
+
+	public:
+	UPROPERTY(meta=(BindWidget))
+	UFSTeamStatusPanel* TeamStatusPanel;
 };

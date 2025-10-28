@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Base/FSHUDWidgetBase.h"
+#include "Base/FSComponentWidgetBase.h"
 #include "FSRespawnWidget.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class FSUI_API UFSRespawnWidget : public UFSHUDWidgetBase
+class FSUI_API UFSRespawnWidget : public UFSComponentWidgetBase
 {
 	GENERATED_BODY()
 };

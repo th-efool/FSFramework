@@ -10,6 +10,6 @@
 AFSLobbyGameMode::AFSLobbyGameMode()
 {
 	PlayerControllerClass = AFSLobbyPlayerController::StaticClass();
-	GameStateClass        = AFSLobbyGameState::StaticClass();
-	PlayerStateClass      = AFSLobbyPlayerState::StaticClass();
+	GameStateClass = AFSLobbyGameState::StaticClass();
+	PlayerStateClass = AFSLobbyPlayerState::StaticClass();
 }

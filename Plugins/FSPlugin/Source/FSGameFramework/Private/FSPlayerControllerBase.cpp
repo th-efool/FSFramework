@@ -24,13 +24,11 @@ void AFSPlayerControllerBase::BeginPlay()
 		{
 			// add the controls to the player screen
 			MobileControlsWidget->AddToPlayerScreen(0);
-
-		} else {
-
-			// UE_LOG(LogTP_ThirdPerson, Error, TEXT("Could not spawn mobile controls widget."));
-
 		}
-
+		else
+		{
+			// UE_LOG(LogTP_ThirdPerson, Error, TEXT("Could not spawn mobile controls widget."));
+		}
 	}
 }
 
@@ -42,7 +40,8 @@ void AFSPlayerControllerBase::SetupInputComponent()
 	if (IsLocalPlayerController())
 	{
 		// Add Input Mapping Contexts
-		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
+		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<
+			UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
 		{
 			for (UInputMappingContext* CurrentContext : DefaultMappingContexts)
 			{

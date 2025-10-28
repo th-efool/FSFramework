@@ -9,8 +9,7 @@
 
 AFSMatchGameModeBase::AFSMatchGameModeBase()
 {
-
 	PlayerControllerClass = AFSMatchPlayerControllerBase::StaticClass();
-	GameStateClass        = AFSMatchGameStateBase::StaticClass();
-	PlayerStateClass      = AFSMatchPlayerStateBase::StaticClass();
+	GameStateClass = AFSMatchGameStateBase::StaticClass();
+	PlayerStateClass = AFSMatchPlayerStateBase::StaticClass();
 }

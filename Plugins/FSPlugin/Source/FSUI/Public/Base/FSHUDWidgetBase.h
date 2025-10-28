@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "FSUserWidgetBase.h"
+#include "Components/CanvasPanel.h"
 #include "FSHUDWidgetBase.generated.h"
 
 /**
@@ -13,4 +14,8 @@ UCLASS()
 class FSUI_API UFSHUDWidgetBase : public UFSUserWidgetBase
 {
 	GENERATED_BODY()
+
+public:
+	UPROPERTY(meta=(BindWidget))
+	UCanvasPanel* CanvasPanel;
 };

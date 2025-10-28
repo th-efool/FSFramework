@@ -14,4 +14,3 @@ class FSUI_API UFSLobbyHUDWidget : public UFSHUDWidgetBase
 {
 	GENERATED_BODY()
 };
-

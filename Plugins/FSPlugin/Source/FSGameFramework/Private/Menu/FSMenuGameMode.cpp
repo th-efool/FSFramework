@@ -10,7 +10,6 @@
 AFSMenuGameMode::AFSMenuGameMode()
 {
 	PlayerControllerClass = AFSMenuPlayerController::StaticClass();
-	GameStateClass        = AFSMenuGameState::StaticClass();
-	PlayerStateClass      = AFSMenuPlayerState::StaticClass();
-
+	GameStateClass = AFSMenuGameState::StaticClass();
+	PlayerStateClass = AFSMenuPlayerState::StaticClass();
 }

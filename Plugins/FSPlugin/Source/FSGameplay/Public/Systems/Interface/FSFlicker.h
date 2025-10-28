@@ -22,14 +22,18 @@ class FSGAMEPLAY_API IFSFlicker
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
-
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void Flicker(float Duration);
-	virtual void Flicker_Implementation(float Duration){}
-	
-	
+
+	virtual void Flicker_Implementation(float Duration)
+	{
+	}
+
+
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void SetIntensityFlicker(float Intensity);
-	virtual void SetIntensityFlicker_Implementation(float Intensity){}
-	
+
+	virtual void SetIntensityFlicker_Implementation(float Intensity)
+	{
+	}
 };

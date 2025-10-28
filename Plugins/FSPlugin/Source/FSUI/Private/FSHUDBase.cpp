@@ -14,9 +14,9 @@ void AFSHUDBase::BeginPlay()
 {
 	Super::BeginPlay();
 	GetWorld()->GetTimerManager().SetTimerForNextTick([this]()
-		{
-	InitializedWidgets();
-		});
+	{
+		InitializedWidgets();
+	});
 }
 
 void AFSHUDBase::DrawHUD()
@@ -30,7 +30,8 @@ void AFSHUDBase::InitializedWidgets()
 	{
 		if (widgetclass)
 		{
-			if (UFSUserWidgetBase* widget = CreateWidget<UFSUserWidgetBase>(GetWorld()->GetFirstPlayerController(), widgetclass))
+			if (UFSUserWidgetBase* widget = CreateWidget<UFSUserWidgetBase>(
+				GetWorld()->GetFirstPlayerController(), widgetclass))
 			{
 				WidgetObjectArray.Add(widget);
 				widget->AddToViewport();

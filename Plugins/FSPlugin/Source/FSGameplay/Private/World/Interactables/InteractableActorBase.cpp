@@ -14,13 +14,10 @@ AInteractableActorBase::AInteractableActorBase()
 void AInteractableActorBase::Interact_Implementation(AActor* InteractionInstigator)
 {
 	IFSInteract::Interact_Implementation(InteractionInstigator);
-	
 }
 
 // Called when the game starts or when spawned
 void AInteractableActorBase::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
-

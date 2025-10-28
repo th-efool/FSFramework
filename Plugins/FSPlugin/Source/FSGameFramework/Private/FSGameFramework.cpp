@@ -4,14 +4,12 @@
 
 void FFSGameFrameworkModule::StartupModule()
 {
-    
 }
 
 void FFSGameFrameworkModule::ShutdownModule()
 {
-    
 }
 
 #undef LOCTEXT_NAMESPACE
-    
+
 IMPLEMENT_MODULE(FFSGameFrameworkModule, FSGameFramework)

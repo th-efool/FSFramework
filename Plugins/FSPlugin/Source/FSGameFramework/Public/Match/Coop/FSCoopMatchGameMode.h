@@ -13,6 +13,7 @@ UCLASS()
 class FSGAMEFRAMEWORK_API AFSCoopMatchGameMode : public AFSMatchGameModeBase
 {
 	GENERATED_BODY()
+
 public:
 	AFSCoopMatchGameMode();
 };

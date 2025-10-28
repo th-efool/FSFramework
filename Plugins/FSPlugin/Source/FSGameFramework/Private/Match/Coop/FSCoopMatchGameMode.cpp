@@ -10,6 +10,6 @@
 AFSCoopMatchGameMode::AFSCoopMatchGameMode()
 {
 	PlayerControllerClass = AFSCoopMatchPlayerController::StaticClass();
-	GameStateClass        = AFSCoopMatchGameState::StaticClass();
-	PlayerStateClass      = AFSCoopMatchPlayerState::StaticClass();
+	GameStateClass = AFSCoopMatchGameState::StaticClass();
+	PlayerStateClass = AFSCoopMatchPlayerState::StaticClass();
 }

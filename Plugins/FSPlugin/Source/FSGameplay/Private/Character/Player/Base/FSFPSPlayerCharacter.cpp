@@ -20,16 +20,14 @@ AFSFPSPlayerCharacter::AFSFPSPlayerCharacter()
 	CameraBoom->bInheritYaw = true;
 	CameraBoom->bInheritRoll = false;
 
-	CameraBoom->TargetArmLength=0.0f;
-	CameraBoom->SetRelativeLocation(FVector(39,7.f,48.0f));
-	
+	CameraBoom->TargetArmLength = 0.0f;
+	CameraBoom->SetRelativeLocation(FVector(39, 7.f, 48.0f));
 }
 
 // Called when the game starts or when spawned
 void AFSFPSPlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
@@ -40,31 +38,24 @@ void AFSFPSPlayerCharacter::Tick(float DeltaTime)
 	{
 		Tilt = FMath::Lerp(Tilt, 0, TiltRecoverySpeed * DeltaTime);
 		CameraBoom->SetWorldRotation(GetController()->GetControlRotation());
-		CameraBoom->AddRelativeRotation((FRotator(0,0,Tilt)));
+		CameraBoom->AddRelativeRotation((FRotator(0, 0, Tilt)));
 	}
-	
 }
 
 // Called to bind functionality to input
 void AFSFPSPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent)) {
-		
+	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent))
+	{
 		// EnhancedInputComponent->BindAction();
-		
 	}
 }
-
-
 
 
 void AFSFPSPlayerCharacter::DoLook(float Yaw, float Pitch)
 {
 	Super::DoLook(Yaw, Pitch);
 	Tilt += Yaw;
-	Tilt=FMath::Clamp(Tilt, -MaxTilt, MaxTilt);
+	Tilt = FMath::Clamp(Tilt, -MaxTilt, MaxTilt);
 }
-
-
-

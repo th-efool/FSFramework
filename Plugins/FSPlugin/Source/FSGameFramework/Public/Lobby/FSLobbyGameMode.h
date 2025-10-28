@@ -13,8 +13,7 @@ UCLASS()
 class FSGAMEFRAMEWORK_API AFSLobbyGameMode : public AFSGameModeBase
 {
 	GENERATED_BODY()
-	public:
-	
+
+public:
 	AFSLobbyGameMode();
-	
 };

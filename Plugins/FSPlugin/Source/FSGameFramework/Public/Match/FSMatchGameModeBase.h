@@ -13,7 +13,7 @@ UCLASS(Abstract)
 class FSGAMEFRAMEWORK_API AFSMatchGameModeBase : public AFSGameModeBase
 {
 	GENERATED_BODY()
+
 public:
 	AFSMatchGameModeBase();
-
 };

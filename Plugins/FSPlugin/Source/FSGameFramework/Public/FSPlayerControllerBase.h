@@ -9,7 +9,6 @@
 #include "FSPlayerControllerBase.generated.h"
 
 
-
 /**
  * 
  */
@@ -17,9 +16,8 @@ UCLASS(Abstract)
 class FSGAMEFRAMEWORK_API AFSPlayerControllerBase : public APlayerController
 {
 	GENERATED_BODY()
-	
-protected:
 
+protected:
 	/** Input Mapping Contexts */
 	UPROPERTY(EditAnywhere, Category ="Input|Input Mappings")
 	TArray<UInputMappingContext*> DefaultMappingContexts;

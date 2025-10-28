@@ -17,13 +17,12 @@
 #include "InputActionValue.h"
 
 
-
 AFSPlayerCharacterBase::AFSPlayerCharacterBase()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
-	
-		
+
+
 	// Don't rotate when the controller rotates. Let that just affect the camera.
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
@@ -55,22 +54,23 @@ AFSPlayerCharacterBase::AFSPlayerCharacterBase()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
-	GetMesh()->SetRelativeLocation	(FVector(0.0f, 0.0f, -96.0f));
+	GetMesh()->SetRelativeLocation(FVector(0.0f, 0.0f, -96.0f));
 	GetMesh()->SetRelativeRotation(FRotator(0.0f, -90.0f, 0.0f));
 }
 
 void AFSPlayerCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	// Set up action bindings
-	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent)) {
-		
+	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent))
+	{
 		// Jumping
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
 		// Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AFSPlayerCharacterBase::Move);
-		EnhancedInputComponent->BindAction(MouseLookAction, ETriggerEvent::Triggered, this, &AFSPlayerCharacterBase::Look);
+		EnhancedInputComponent->BindAction(MouseLookAction, ETriggerEvent::Triggered, this,
+		                                   &AFSPlayerCharacterBase::Look);
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AFSPlayerCharacterBase::Look);
@@ -142,14 +142,16 @@ void AFSPlayerCharacterBase::DoJumpEnd()
 }
 
 
-
-void AFSPlayerCharacterBase::FSPerformBoxTraceAndInteract(bool bIsLocalEvent )
+void AFSPlayerCharacterBase::FSPerformBoxTraceAndInteract(bool bIsLocalEvent)
 {
 	UWorld* World = GetWorld();
-	if (!World) return;
-	
+	if (!World)
+	{
+		return;
+	}
+
 	FVector Start = GetActorLocation();
-	FVector End   = Start + (FollowCamera->GetForwardVector()) * 300.f;
+	FVector End = Start + (FollowCamera->GetForwardVector()) * 300.f;
 
 	FVector HalfSize(50.f);
 	FRotator Orientation = GetActorRotation();
@@ -171,25 +173,32 @@ void AFSPlayerCharacterBase::FSPerformBoxTraceAndInteract(bool bIsLocalEvent )
 		FLinearColor::Green,
 		FLinearColor::Red,
 		1.5f // visible for 1.5 seconds
-);
+	);
 
 
-
-	if (!bHit) return;
+	if (!bHit)
+	{
+		return;
+	}
 
 	for (const FHitResult& Hit : HitResults)
 	{
 		AActor* HitActor = Hit.GetActor();
-		if (!HitActor) continue;
+		if (!HitActor)
+		{
+			continue;
+		}
 
 		FSInteractWithActor(HitActor, /*bIsLocal=*/bIsLocalEvent);
 	}
-
 }
 
 void AFSPlayerCharacterBase::FSInteractWithActor(AActor* HitActor, bool bIsLocalEvent)
 {
-	if (!HitActor) return;
+	if (!HitActor)
+	{
+		return;
+	}
 
 	if (bIsLocalEvent)
 	{
@@ -217,18 +226,23 @@ void AFSPlayerCharacterBase::FSInteractWithActor(AActor* HitActor, bool bIsLocal
 
 void AFSPlayerCharacterBase::Server_Interact_Implementation(AActor* HitActor)
 {
-	if (!HitActor) return;
+	if (!HitActor)
+	{
+		return;
+	}
 	if (HitActor->GetClass()->ImplementsInterface(UFSInteract::StaticClass()))
 	{
 		// replicate to others
 		Multicast_Interact(HitActor);
-
 	}
-
 }
+
 void AFSPlayerCharacterBase::Multicast_Interact_Implementation(AActor* HitActor)
 {
-	if (!HitActor) return;
+	if (!HitActor)
+	{
+		return;
+	}
 	if (HitActor->GetClass()->ImplementsInterface(UFSInteract::StaticClass()))
 	{
 		IFSInteract::Execute_Interact(HitActor, this);

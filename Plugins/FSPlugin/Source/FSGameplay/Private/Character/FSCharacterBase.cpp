@@ -15,7 +15,6 @@ AFSCharacterBase::AFSCharacterBase()
 void AFSCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
@@ -29,4 +28,3 @@ void AFSCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
-

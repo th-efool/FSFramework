@@ -18,8 +18,6 @@ AFlickerLightActorBase::AFlickerLightActorBase()
 void AFlickerLightActorBase::BeginPlay()
 {
 	Super::BeginPlay();
-
-	
 }
 
 // Called every frame
@@ -31,12 +29,17 @@ void AFlickerLightActorBase::Tick(float DeltaTime)
 
 void AFlickerLightActorBase::Flicker_Implementation(float Duration)
 {
-	const float FlickerInterval = 0.1f;
-	GetWorldTimerManager().SetTimer(FlickerTimerHandle, this, &AFlickerLightActorBase::ToggleLight, FlickerInterval, true);
+	constexpr float FlickerInterval = 0.1f;
+	GetWorldTimerManager().SetTimer(FlickerTimerHandle, this, &AFlickerLightActorBase::ToggleLight, FlickerInterval,
+	                                true);
 	GetWorldTimerManager().SetTimerForNextTick([this, Duration]()
 	{
 		FTimerHandle StopHandle;
-		GetWorldTimerManager().SetTimer(StopHandle, [this]() { GetWorldTimerManager().ClearTimer(FlickerTimerHandle); PointLight->SetVisibility(true); }, Duration, false);
+		GetWorldTimerManager().SetTimer(StopHandle, [this]()
+		{
+			GetWorldTimerManager().ClearTimer(FlickerTimerHandle);
+			PointLight->SetVisibility(true);
+		}, Duration, false);
 	});
 }
 

@@ -21,7 +21,6 @@ void UFSPlayerUIComponent::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
-	
 }
 
 
@@ -33,4 +32,3 @@ void UFSPlayerUIComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 
 	// ...
 }
-

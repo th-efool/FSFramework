@@ -13,6 +13,7 @@ UCLASS()
 class FSGAMEFRAMEWORK_API AFSMenuGameMode : public AFSGameModeBase
 {
 	GENERATED_BODY()
-	public:
+
+public:
 	AFSMenuGameMode();
 };

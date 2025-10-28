@@ -6,7 +6,8 @@
 #include "Kismet/GameplayStatics.h"
 #include "Systems/Interface/FSFlicker.h"
 
-void UFSEventManagerSubsystem::TriggerEvent(EFSEventEnum EventType, AActor* Instigator, const FSCustomEventParams& CustomEventParams)
+void UFSEventManagerSubsystem::TriggerEvent(EFSEventEnum EventType, AActor* Instigator,
+                                            const FSCustomEventParams& CustomEventParams)
 {
 	OnEventTriggered.Broadcast(EventType, Instigator);
 
@@ -14,12 +15,12 @@ void UFSEventManagerSubsystem::TriggerEvent(EFSEventEnum EventType, AActor* Inst
 	switch (EventType)
 	{
 	case EFSEventEnum::LightFlicker:
-	{
-		const FLightFlickerParams& Params = static_cast<const FLightFlickerParams&>(CustomEventParams);
-		
-
-		for (const TScriptInterface<IFSFlicker>& Target : Params.FlickerActors)
 		{
+			const FLightFlickerParams& Params = static_cast<const FLightFlickerParams&>(CustomEventParams);
+
+
+			for (const TScriptInterface<IFSFlicker>& Target : Params.FlickerActors)
+			{
 				UObject* Obj = Target.GetObject();
 				if (IsValid(Obj) && Obj->GetClass()->ImplementsInterface(UFSFlicker::StaticClass()))
 				{
@@ -30,23 +31,28 @@ void UFSEventManagerSubsystem::TriggerEvent(EFSEventEnum EventType, AActor* Inst
 				{
 					UE_LOG(LogTemp, Warning, TEXT("Invalid or non-interface actor in FlickerActors array"));
 				}
+			}
+			break;
 		}
-		break;
-	}
 	case EFSEventEnum::SoundPlay:
-	{
-		const FSoundPlayParams& Params = static_cast<const FSoundPlayParams&>(CustomEventParams);
-		if (Params.Sound)
-			UGameplayStatics::PlaySoundAtLocation(Instigator, Params.Sound, Params.Location, Params.VolumeMultiplier);
-		break;
-	}
+		{
+			const FSoundPlayParams& Params = static_cast<const FSoundPlayParams&>(CustomEventParams);
+			if (Params.Sound)
+			{
+				UGameplayStatics::PlaySoundAtLocation(Instigator, Params.Sound, Params.Location,
+				                                      Params.VolumeMultiplier);
+			}
+			break;
+		}
 	case EFSEventEnum::Teleport:
-	{
-		const FTeleportParams& Params = static_cast<const FTeleportParams&>(CustomEventParams);
-		if (Instigator)
-			Instigator->SetActorLocation(Params.TargetLocation);
-		break;
-	}
+		{
+			const FTeleportParams& Params = static_cast<const FTeleportParams&>(CustomEventParams);
+			if (Instigator)
+			{
+				Instigator->SetActorLocation(Params.TargetLocation);
+			}
+			break;
+		}
 	default:
 		break;
 	}
@@ -66,7 +72,8 @@ void UFSEventManagerSubsystem::ShowSubtitle(AActor* Instigator, const FText& Sub
 	TriggerEvent(EFSEventEnum::ShowSubtitle, Instigator, Params);
 }
 
-void UFSEventManagerSubsystem::ShowAnnouncement(AActor* Instigator, const FText& Title, const FText& Body, float DisplayTime, USoundBase* AnnouncementSound)
+void UFSEventManagerSubsystem::ShowAnnouncement(AActor* Instigator, const FText& Title, const FText& Body,
+                                                float DisplayTime, USoundBase* AnnouncementSound)
 {
 	FShowAnnouncementParams Params(Title, Body);
 	Params.DisplayTime = DisplayTime;
@@ -74,14 +81,17 @@ void UFSEventManagerSubsystem::ShowAnnouncement(AActor* Instigator, const FText&
 	TriggerEvent(EFSEventEnum::ShowAnnouncement, Instigator, Params);
 }
 
-void UFSEventManagerSubsystem::PlaySound(AActor* Instigator, USoundBase* Sound, FVector Location, float VolumeMultiplier)
+void UFSEventManagerSubsystem::PlaySound(AActor* Instigator, USoundBase* Sound, FVector Location,
+                                         float VolumeMultiplier)
 {
 	FSoundPlayParams Params(Sound, Location);
 	Params.VolumeMultiplier = VolumeMultiplier;
 	TriggerEvent(EFSEventEnum::SoundPlay, Instigator, Params);
 }
 
-void UFSEventManagerSubsystem::TriggerLightFlicker(AActor* Instigator, const TArray<TScriptInterface<IFSFlicker>>& FlickerActors, float Duration, float IntensityScale)
+void UFSEventManagerSubsystem::TriggerLightFlicker(AActor* Instigator,
+                                                   const TArray<TScriptInterface<IFSFlicker>>& FlickerActors,
+                                                   float Duration, float IntensityScale)
 {
 	FLightFlickerParams Params(FlickerActors);
 	Params.FlickerDuration = Duration;
@@ -94,5 +104,3 @@ void UFSEventManagerSubsystem::TeleportActor(AActor* Instigator, const FVector& 
 	FTeleportParams Params(TargetLocation);
 	TriggerEvent(EFSEventEnum::Teleport, Instigator, Params);
 }
-
-

@@ -15,18 +15,17 @@ class FSUI_API AFSHUDBase : public AHUD
 {
 	GENERATED_BODY()
 
-	public:
+public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void BeginPlay() override;
 	virtual void DrawHUD() override;
-	
-public:
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Widgets")
 	TArray<TSubclassOf<UFSUserWidgetBase>> WidgetsClassArray;
 
 	UPROPERTY()
 	TArray<UFSUserWidgetBase*> WidgetObjectArray;
-	
-	protected:
+
+protected:
 	void InitializedWidgets();
 };

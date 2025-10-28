@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Base/FSMenuWidgetBase.h"
+#include "Base/FSHUDWidgetBase.h"
 #include "FSHostJoinWidget.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class FSUI_API UFSHostJoinWidget : public UFSMenuWidgetBase
+class FSUI_API UFSHostJoinWidget : public UFSHUDWidgetBase
 {
 	GENERATED_BODY()
 };

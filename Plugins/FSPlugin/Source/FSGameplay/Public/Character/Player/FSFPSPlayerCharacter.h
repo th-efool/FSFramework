@@ -25,17 +25,13 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	
+
 	// Camera Sway
-public:
 	virtual void DoLook(float Yaw, float Pitch) override;
 	UPROPERTY()
-	float Tilt=0.f;
+	float Tilt = 0.f;
 	UPROPERTY(EditDefaultsOnly)
-	float MaxTilt=3.0f;
+	float MaxTilt = 3.0f;
 	UPROPERTY(EditDefaultsOnly)
-	float TiltRecoverySpeed=9.0f;
-
-
+	float TiltRecoverySpeed = 9.0f;
 };
-

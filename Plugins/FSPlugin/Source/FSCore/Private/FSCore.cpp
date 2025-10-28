@@ -4,14 +4,12 @@
 
 void FFSCoreModule::StartupModule()
 {
-    
 }
 
 void FFSCoreModule::ShutdownModule()
 {
-    
 }
 
 #undef LOCTEXT_NAMESPACE
-    
+
 IMPLEMENT_MODULE(FFSCoreModule, FSCore)

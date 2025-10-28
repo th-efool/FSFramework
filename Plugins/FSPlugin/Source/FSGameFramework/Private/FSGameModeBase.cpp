@@ -12,8 +12,8 @@
 AFSGameModeBase::AFSGameModeBase()
 {
 	PlayerControllerClass = AFSPlayerControllerBase::StaticClass();
-	GameStateClass        = AFSGameStateBase::StaticClass();
-	PlayerStateClass      = AFSPlayerStateBase::StaticClass();
+	GameStateClass = AFSGameStateBase::StaticClass();
+	PlayerStateClass = AFSPlayerStateBase::StaticClass();
 }
 
 AActor* AFSGameModeBase::ChoosePlayerStart_Implementation(AController* Player)
@@ -39,7 +39,7 @@ AActor* AFSGameModeBase::ChoosePlayerStart_Implementation(AController* Player)
 	}
 
 	// Look for a PlayerStart not too close to used locations
-	const float MinDistance = 200.0f;
+	constexpr float MinDistance = 200.0f;
 	for (AActor* Start : PlayerStarts)
 	{
 		bool bTooClose = false;
@@ -67,5 +67,4 @@ AActor* AFSGameModeBase::ChoosePlayerStart_Implementation(AController* Player)
 	// Spawn a temporary offset spawn point
 	APlayerStart* TempStart = GetWorld()->SpawnActor<APlayerStart>(APlayerStart::StaticClass(), OffsetLoc, Rot);
 	return TempStart;
-
 }
