@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Base/FSComponentWidgetBase.h"
+#include "Components/Border.h"
 #include "Components/Image.h"
 #include "Components/TextBlock.h"
 #include "FSTextWithBackground.generated.h"
@@ -21,7 +22,7 @@ public:
 	UTextBlock* TextBlock;
 	public:
 	UPROPERTY(meta=(BindWidget))
-	UImage* BackgroundImage;
+	UBorder* Background;
 
 
 
@@ -34,12 +35,7 @@ public:
 	void ShowForDuration(FText InText, float InDuration, float InFadeTime);
 private:
 public:
-	float showElapsed = 0.f;
-	float showDuration = 0.f;
-	float fadeDuration = 0.f;
 
-	FTimerHandle showTimerHandle;
-
-	void TickShowAnimation(float deltaSeconds);
-	void ApplyOpacity(const float normalizedAlpha) const;
+	UPROPERTY(meta = (BindWidgetAnim), Transient)
+	UWidgetAnimation* FadeInAnimation;
 };

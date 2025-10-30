@@ -36,98 +36,52 @@ void UFSArticle::ShowForDuration(const FText& TitleText, const FText& BodyText, 
 	SetTitle(TitleText);
 	SetBody(BodyText);
 
-	Elapsed = 0.f;
-	HoldDuration = VisibleTime;
-	FadeDuration = FadeTime;
-
-	ApplyOpacity(0.f);
-
+	showElapsed = 0.f;
+	showDuration = VisibleTime;
+	fadeDuration = FadeTime;
+	
 	if (!GetWorld()) return;
+	if (!FadeInAnimation){return;}
+	float playbackSpeed = (fadeDuration>0)? 1.f/fadeDuration : 99999.9f;
+	PlayAnimation(FadeInAnimation, 0.f, 1, EUMGSequencePlayMode::Forward, playbackSpeed);
 
-	GetWorld()->GetTimerManager().ClearTimer(ShowTimerHandle);
+	GetWorld()->GetTimerManager().ClearTimer(showTimerHandle);
 
 	// Fire every frame
 	GetWorld()->GetTimerManager().SetTimer(
-		ShowTimerHandle,
-		[this]() { TickShow(GetWorld()->GetDeltaSeconds()); },
-		0.f,
+		showTimerHandle,
+		[this,playbackSpeed]()
+				{
+					if (!FadeInAnimation){return;}
+					PlayAnimation(FadeInAnimation, 0.f, 1, EUMGSequencePlayMode::Reverse, playbackSpeed);
+				},
+		showDuration-fadeDuration,
 		true
 	);
 }
-
 void UFSArticle::ClearShow()
 {
-	// if no timer, nothing to clear
-	if (!GetWorld() || !GetWorld()->GetTimerManager().IsTimerActive(ShowTimerHandle))
-		return;
+	if (!GetWorld()) return;
 
-	// stop ticking the show animation
-	GetWorld()->GetTimerManager().ClearTimer(ShowTimerHandle);
+	FTimerManager& TimerManager = GetWorld()->GetTimerManager();
 
-	// reset state
-	Elapsed = 0.f;
-	HoldDuration = 0.f;
-	FadeDuration = 0.f;
+	if (TimerManager.IsTimerActive(showTimerHandle))
+	{
+		// 🔹 Manually trigger what the timer was going to call
+		if (FadeInAnimation)
+		{
+			const float playbackSpeed = 100.f; // or whatever value you had
+			PlayAnimation(FadeInAnimation, 0.f, 1, EUMGSequencePlayMode::Reverse, playbackSpeed);
+		}
 
-	// fully hide immediately
-	ApplyOpacity(0.f);
+		// 🔹 Then clear timer
+		TimerManager.ClearTimer(showTimerHandle);
+	}
 
+	showElapsed = 0.f;
+	showDuration = 0.f;
+	fadeDuration = 0.f;
 }
 
 
-void UFSArticle::TickShow(float dt)
-{
-	Elapsed += dt;
 
-	const float TotalLifetime = FadeDuration * 2.f + HoldDuration;
-
-	// finished
-	if (Elapsed >= TotalLifetime)
-	{
-		ApplyOpacity(0.f);
-		GetWorld()->GetTimerManager().ClearTimer(ShowTimerHandle);
-		return;
-	}
-
-	// fade in
-	if (Elapsed < FadeDuration)
-	{
-		const float alpha = Elapsed / FadeDuration;
-		ApplyOpacity(alpha);
-		return;
-	}
-
-	// hold fully visible
-	if (Elapsed < FadeDuration + HoldDuration)
-	{
-		ApplyOpacity(1.f);
-		return;
-	}
-
-	// fade out
-	const float timeOut = Elapsed - (FadeDuration + HoldDuration);
-	const float alpha = 1.f - (timeOut / FadeDuration);
-	ApplyOpacity(alpha);
-}
-
-void UFSArticle::ApplyOpacity(float alpha)
-{
-	alpha = FMath::Clamp(alpha, 0.f, 1.f);
-
-	if (ArticleTitle)
-	{
-		ArticleTitle->SetColorAndOpacity(FLinearColor(1.f,1.f,1.f, alpha));
-	}
-
-	if (ArticleBody)
-	{
-		ArticleBody->SetColorAndOpacity(FLinearColor(1.f,1.f,1.f, alpha));
-	}
-
-	if (ArticleBackground)
-	{
-		FLinearColor bg = ArticleBackground->GetColorAndOpacity();
-		bg.A = alpha;
-		ArticleBackground->SetColorAndOpacity(bg);
-	}
-}

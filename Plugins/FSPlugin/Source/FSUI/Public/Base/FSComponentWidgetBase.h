@@ -13,4 +13,10 @@ UCLASS()
 class FSUI_API UFSComponentWidgetBase : public UFSUserWidgetBase
 {
 	GENERATED_BODY()
+public:
+	float showElapsed = 0.f;
+	float showDuration = 0.f;
+	float fadeDuration = 0.f;
+
+	FTimerHandle showTimerHandle;
 };

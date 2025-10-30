@@ -10,6 +10,7 @@
 #include "Engine/World.h"
 #include "Match/FSMatchUIBroker.h"
 #include "Match/Components/FSArticle.h"
+#include "Utility/FSErrorHandler.h"
 
 // -----------------------------
 // SANITY / HEALTH
@@ -37,20 +38,21 @@ void UFSPlayScreenHUDWidget::ShowAnnouncement(const FText& NewText, float time)
 	UFSTextWithBackground* message = CreateWidget<UFSTextWithBackground>(GetWorld(), AnnouncementClass);
 	if (!message) return;
 
-	Announcement->AddChildToVerticalBox(message);
-
 	const float fade = 0.35f;
 	message->ShowForDuration(NewText, time, fade);
+	Announcement->AddChildToVerticalBox(message);
 
 	FTimerHandle cleanupHandle;
 	const float cleanupTime = time + fade * 2.f;
 
 	GetWorld()->GetTimerManager().SetTimer(
 		cleanupHandle,
-		[this, message]()
+		[this, message,NewText]()
 		{
 			if (Announcement && message)
 			{
+				FS_PRINT_SCREEN((("Announcement Added")+(NewText.ToString())));
+
 				Announcement->RemoveChild(message);
 			}
 		},
@@ -70,20 +72,22 @@ void UFSPlayScreenHUDWidget::ShowSubtitle(const FText& NewText, float time)
 	UFSTextWithBackground* subtitle = CreateWidget<UFSTextWithBackground>(GetWorld(), SubtitleClass);
 	if (!subtitle) return;
 
-	Subtitles->AddChildToVerticalBox(subtitle);
 
 	const float fade = 0.25f;
 	subtitle->ShowForDuration(NewText, time, fade);
+	Subtitles->AddChildToVerticalBox(subtitle);
 
 	FTimerHandle cleanupHandle;
 	const float cleanupTime = time + fade * 2.f;
 
 	GetWorld()->GetTimerManager().SetTimer(
 		cleanupHandle,
-		[this, subtitle]()
+		[this, subtitle,NewText]()
 		{
 			if (Subtitles && subtitle)
 			{
+				FS_PRINT_SCREEN((("Subtitle Added")+(NewText.ToString())));
+
 				Subtitles->RemoveChild(subtitle);
 			}
 		},

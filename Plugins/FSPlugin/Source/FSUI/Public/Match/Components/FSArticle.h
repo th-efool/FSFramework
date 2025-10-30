@@ -29,13 +29,7 @@ public:
 	void ShowForDuration(const FText& NewTitle, const FText& BodyText, float VisibleTime, float FadeTime);
 	void ClearShow();
 private:
-	void TickShow(float deltaTime);
-	void ApplyOpacity(float InAlpha);
-
-	FTimerHandle ShowTimerHandle;
-
-	float Elapsed = 0.f;
-	float HoldDuration = 0.f;
-	float FadeDuration = 0.f;
+	UPROPERTY(meta = (BindWidgetAnim), Transient)
+	UWidgetAnimation* FadeInAnimation;
 
 };
