@@ -31,7 +31,8 @@ public class FSPlugin : ModuleRules
 			"Engine",
 			"InputCore",
 			"EnhancedInput",
-			"UMG", "FSCore" // ← required for UUserWidget
+			"UMG", "FSCore", "FSGameFramework",	"FSGameplay",
+			"FSUI" // ← required for UUserWidget
 		});
 
 		PrivateDependencyModuleNames.AddRange(
@@ -40,9 +41,7 @@ public class FSPlugin : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
-				"FSGameFramework",
-				"FSGameplay",
-				"FSUI"
+				
 				// ... add private dependencies that you statically link with here ...	
 			}
 		);

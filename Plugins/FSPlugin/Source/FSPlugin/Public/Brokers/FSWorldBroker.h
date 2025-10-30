@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Data/FSBrokerDataTypes.h"
+#include "Match/FSMatchGameFrameworkBroker.h"
+#include "Match/FSMatchUIBroker.h"
 #include "Subsystems/WorldSubsystem.h"
 #include "FSWorldBroker.generated.h"
 
@@ -21,13 +23,59 @@ class FSPLUGIN_API UFSWorldBroker : public UWorldSubsystem
 	UPROPERTY(BlueprintAssignable, Category = "FS|Match")
 	FPlayerLeftSignature   OnPlayerLeft;
 
+	// --- UI HUD Event Delegates ---
+	UPROPERTY(BlueprintAssignable, Category="FS|HUD")
+	FSanityChangedSignature OnSanityChanged;
+
+	UPROPERTY(BlueprintAssignable, Category="FS|HUD")
+	FHealthChangedSignature OnHealthChanged;
+
+	UPROPERTY(BlueprintAssignable, Category="FS|HUD")
+	FAnnouncementSignature OnAnnouncement;
+
+	UPROPERTY(BlueprintAssignable, Category="FS|HUD")
+	FSubtitleSignature OnSubtitle;
+
+	UPROPERTY(BlueprintAssignable, Category="FS|HUD")
+	FDiaryShowSignature OnDiaryShow;
+
+	UPROPERTY(BlueprintAssignable, Category="FS|HUD")
+	FDiaryHideSignature OnDiaryHide;
+
+	
 protected:
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 	virtual void Deinitialize() override;
+	inline UFSMatchUIBroker* GetUIBroker(UWorld* World)
+	{
+		return World ? World->GetSubsystem<UFSMatchUIBroker>() : nullptr;
+	}
+	inline UFSMatchGameFrameworkBroker* GetGameFrameworkBroker(UWorld* World)
+	{
+		return World ? World->GetSubsystem<UFSMatchGameFrameworkBroker>() : nullptr;
+	}
+
+protected:
+	UFUNCTION(BlueprintCallable)
+	void HandlePlayerJoined(const FPlayerJoinInfo& Info);
+	UFUNCTION(BlueprintCallable)
+	void HandlePlayerLeft(APlayerState* PS);
+	UFUNCTION()
+	void HandleSanityChanged(float Percent);
 
 	UFUNCTION()
-	void HandlePlayerJoined(const FPlayerJoinInfo& Info);
+	void HandleHealthChanged(float Percent);
+
 	UFUNCTION()
-	void HandlePlayerLeft(APlayerState* PS);
+	void HandleAnnouncement(const FText& Msg, float Time);
+
+	UFUNCTION()
+	void HandleSubtitle(const FText& Msg, float Time);
+
+	UFUNCTION()
+	void HandleDiaryShow(const FText& Date, const FText& Body);
+
+	UFUNCTION()
+	void HandleDiaryHide();
 
 };
