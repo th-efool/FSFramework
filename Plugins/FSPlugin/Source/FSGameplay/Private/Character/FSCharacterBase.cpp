@@ -3,6 +3,8 @@
 
 #include "Character/FSCharacterBase.h"
 
+#include "Systems/FSGameplayBroker.h"
+
 
 // Sets default values
 AFSCharacterBase::AFSCharacterBase()
@@ -17,6 +19,21 @@ void AFSCharacterBase::BeginPlay()
 	Super::BeginPlay();
 }
 
+void AFSCharacterBase::HandleItemAdded(EInventoryItem Item, int Count)
+{
+	InventoryPlayer.AddItemToInventory(Item, Count);
+}
+
+void AFSCharacterBase::HandleItemRemoved(EInventoryItem Item, int Count)
+{
+	InventoryPlayer.RemoveItemFromInventory(Item, Count);
+}
+
+void AFSCharacterBase::HandleGetInventory(FInventoryData& EmptyInventory)
+{
+	EmptyInventory = InventoryPlayer;
+}
+
 // Called every frame
 void AFSCharacterBase::Tick(float DeltaTime)
 {
@@ -27,4 +44,55 @@ void AFSCharacterBase::Tick(float DeltaTime)
 void AFSCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+}
+
+
+void AFSCharacterBase::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+
+	if (IsLocallyControlled())
+	{
+		InitializeLocalBindings();
+	}
+}
+
+void AFSCharacterBase::InitializeLocalBindings()
+{
+	if (UFSGameplayBroker* broker = GetWorld()->GetSubsystem<UFSGameplayBroker>())
+	{
+		broker->OnInventoryItemAdded.AddDynamic(this, &AFSCharacterBase::HandleItemAdded);
+		broker->OnInventoryItemRemoved.AddDynamic(this, &AFSCharacterBase::HandleItemRemoved);
+		broker->OnGetInventory.BindDynamic(this, &AFSCharacterBase::HandleGetInventory);
+	}
+}
+
+void AFSCharacterBase::UnPossessed()
+{
+	Super::UnPossessed();
+	UnbindInventoryDelegates();
+}
+
+void AFSCharacterBase::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	Super::EndPlay(EndPlayReason);
+	UnbindInventoryDelegates();
+}
+
+void AFSCharacterBase::UnbindInventoryDelegates()
+{
+	UWorld* World = GetWorld();
+	if (!World) return;
+
+	UFSGameplayBroker* Broker = World->GetSubsystem<UFSGameplayBroker>();
+	if (!Broker) return;
+
+	Broker->OnInventoryItemAdded.RemoveDynamic(this, &AFSCharacterBase::HandleItemAdded);
+	Broker->OnInventoryItemRemoved.RemoveDynamic(this, &AFSCharacterBase::HandleItemRemoved);
+
+	// For single-cast dynamic delegate:
+	if (Broker->OnGetInventory.IsBound())
+	{
+		Broker->OnGetInventory.Unbind();
+	}
 }

@@ -7,6 +7,7 @@
 #include "Match/FSMatchGameFrameworkBroker.h"
 #include "Match/FSMatchUIBroker.h"
 #include "Subsystems/WorldSubsystem.h"
+#include "Systems/FSGameplayBroker.h"
 #include "FSWorldBroker.generated.h"
 
 /**
@@ -23,6 +24,13 @@ class FSPLUGIN_API UFSWorldBroker : public UWorldSubsystem
 	UPROPERTY(BlueprintAssignable, Category = "FS|Match")
 	FPlayerLeftSignature   OnPlayerLeft;
 
+	UPROPERTY()
+	FInventoryItemAddedSignature OnInventoryItemAdded;
+	UPROPERTY()
+	FInventoryItemRemovedSignature OnInventoryItemRemoved;
+	UPROPERTY()
+	FGetInventory OnGetInventory;
+	
 	// --- UI HUD Event Delegates ---
 	UPROPERTY(BlueprintAssignable, Category="FS|HUD")
 	FSanityChangedSignature OnSanityChanged;
@@ -54,6 +62,10 @@ protected:
 	{
 		return World ? World->GetSubsystem<UFSMatchGameFrameworkBroker>() : nullptr;
 	}
+	inline UFSGameplayBroker* GetGameplayBroker(UWorld* World)
+	{
+		return World ? World->GetSubsystem<UFSGameplayBroker>() : nullptr;
+	}
 
 protected:
 	UFUNCTION(BlueprintCallable)
@@ -78,4 +90,10 @@ protected:
 	UFUNCTION()
 	void HandleDiaryHide();
 
+	UFUNCTION()
+	void HandleGetInventory(FInventoryData& EmptyInventory);
+	UFUNCTION()
+	void HandleInventoryItemAdded(EInventoryItem Item, int Amount);
+	UFUNCTION()
+	void HandleInventoryItemRemoved(EInventoryItem Item, int Amount);
 };

@@ -13,7 +13,9 @@ public class FSGameFramework : ModuleRules
 			"Engine",
 			"InputCore",
 			"EnhancedInput",
-			"UMG" // ← required for UUserWidget
+			"UMG", // ← required for UUserWidget
+			"FSCore"    // ✅ Required for FInventoryData, delegates, etc.
+
 		});
 
 		PrivateDependencyModuleNames.AddRange(

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Data/FSBrokerDataTypes.h"
 #include "GameFramework/Character.h"
 #include "FSCharacterBase.generated.h"
 
@@ -18,10 +19,26 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+public:
+	virtual void PossessedBy(AController* NewController) override;
+	UFUNCTION(BlueprintCallable, Category = "Inventory")
+	FInventoryData getInventory(){return InventoryPlayer;}
+private:
+	FInventoryData InventoryPlayer;
+	void InitializeLocalBindings();
+	virtual void UnPossessed() override;
+	virtual void EndPlay(EEndPlayReason::Type EndPlayReason) override;
+	void UnbindInventoryDelegates();
+
+	UFUNCTION()
+	void HandleItemAdded(EInventoryItem Item, int Count);
+	UFUNCTION()
+	void HandleItemRemoved(EInventoryItem Item, int Count);
+	UFUNCTION()
+	void HandleGetInventory(FInventoryData& EmptyInventory);
+
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

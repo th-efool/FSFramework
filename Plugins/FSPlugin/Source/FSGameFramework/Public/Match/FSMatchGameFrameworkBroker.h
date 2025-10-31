@@ -15,6 +15,8 @@ class FSGAMEFRAMEWORK_API UFSMatchGameFrameworkBroker : public UWorldSubsystem
 {
 	GENERATED_BODY()
 	public:
+
+	
 	UPROPERTY(BlueprintAssignable, Category = "FS|Match")
 	FPlayerJoinedSignature OnPlayerJoined;
 	
@@ -26,5 +28,18 @@ class FSGAMEFRAMEWORK_API UFSMatchGameFrameworkBroker : public UWorldSubsystem
 	UFUNCTION(BlueprintCallable, Category = "FS|Match")
 	void NotifyPlayerLeft(APlayerState* PS); //Instead Of Calling Broadcast through child class, call broadcast through this
 
+	UPROPERTY()
+	FSanityChangedSignature OnFSanityChanged;
+	UPROPERTY()
+	FHealthChangedSignature OnHealthChanged;
+	UPROPERTY()
+	FGetInventory GetInventory;
 
+	UPROPERTY()
+	FInventoryItemAddedSignature OnInventoryItemAdded;
+	UPROPERTY()
+	FInventoryItemRemovedSignature OnInventoryItemRemoved;
+	UPROPERTY()
+	FGetInventory OnGetInventory;
 };
+

@@ -1,14 +1,30 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Systems/FSEventManagerSubsystem.h"
-
+#include "Systems/FSGameplayBroker.h"
 #include "Kismet/GameplayStatics.h"
 #include "Systems/Interface/FSFlicker.h"
 
-void UFSEventManagerSubsystem::TriggerEvent(EFSEventEnum EventType, AActor* Instigator,
-                                            const FSCustomEventParams& CustomEventParams)
+void UFSGameplayBroker::RelayInventoryItemAdded(EInventoryItem Item, int Amount)
 {
+	OnInventoryItemAdded.Broadcast(Item,Amount);
+}
+
+void UFSGameplayBroker::RelayInventoryItemRemoved(EInventoryItem Item, int Amount)
+{
+	OnInventoryItemRemoved.Broadcast(Item,Amount);
+}
+
+void UFSGameplayBroker::RelayGetInventory(FInventoryData& Inventory)
+{
+	OnGetInventory.ExecuteIfBound(Inventory);
+}
+
+void UFSGameplayBroker::TriggerEvent(EFSEventEnum EventType, AActor* Instigator,
+                                     const FSCustomEventParams& CustomEventParams)
+{
+
+	
 	OnEventTriggered.Broadcast(EventType, Instigator);
 
 	// Handle in C++ if needed (game-specific routing)
@@ -58,21 +74,21 @@ void UFSEventManagerSubsystem::TriggerEvent(EFSEventEnum EventType, AActor* Inst
 	}
 }
 
-void UFSEventManagerSubsystem::ShowMessage(AActor* Instigator, const FText& Message, float Duration, FColor TextColor)
+void UFSGameplayBroker::ShowMessage(AActor* Instigator, const FText& Message, float Duration, FColor TextColor)
 {
 	FShowMessageParams Params(Message, Duration);
 	Params.TextColor = TextColor;
 	TriggerEvent(EFSEventEnum::ShowMessage, Instigator, Params);
 }
 
-void UFSEventManagerSubsystem::ShowSubtitle(AActor* Instigator, const FText& Subtitle, AActor* Speaker, float Duration)
+void UFSGameplayBroker::ShowSubtitle(AActor* Instigator, const FText& Subtitle, AActor* Speaker, float Duration)
 {
 	FShowSubtitleParams Params(Subtitle, Speaker);
 	Params.Duration = Duration;
 	TriggerEvent(EFSEventEnum::ShowSubtitle, Instigator, Params);
 }
 
-void UFSEventManagerSubsystem::ShowAnnouncement(AActor* Instigator, const FText& Title, const FText& Body,
+void UFSGameplayBroker::ShowAnnouncement(AActor* Instigator, const FText& Title, const FText& Body,
                                                 float DisplayTime, USoundBase* AnnouncementSound)
 {
 	FShowAnnouncementParams Params(Title, Body);
@@ -81,7 +97,7 @@ void UFSEventManagerSubsystem::ShowAnnouncement(AActor* Instigator, const FText&
 	TriggerEvent(EFSEventEnum::ShowAnnouncement, Instigator, Params);
 }
 
-void UFSEventManagerSubsystem::PlaySound(AActor* Instigator, USoundBase* Sound, FVector Location,
+void UFSGameplayBroker::PlaySound(AActor* Instigator, USoundBase* Sound, FVector Location,
                                          float VolumeMultiplier)
 {
 	FSoundPlayParams Params(Sound, Location);
@@ -89,7 +105,7 @@ void UFSEventManagerSubsystem::PlaySound(AActor* Instigator, USoundBase* Sound, 
 	TriggerEvent(EFSEventEnum::SoundPlay, Instigator, Params);
 }
 
-void UFSEventManagerSubsystem::TriggerLightFlicker(AActor* Instigator,
+void UFSGameplayBroker::TriggerLightFlicker(AActor* Instigator,
                                                    const TArray<TScriptInterface<IFSFlicker>>& FlickerActors,
                                                    float Duration, float IntensityScale)
 {
@@ -99,7 +115,7 @@ void UFSEventManagerSubsystem::TriggerLightFlicker(AActor* Instigator,
 	TriggerEvent(EFSEventEnum::LightFlicker, Instigator, Params);
 }
 
-void UFSEventManagerSubsystem::TeleportActor(AActor* Instigator, const FVector& TargetLocation)
+void UFSGameplayBroker::TeleportActor(AActor* Instigator, const FVector& TargetLocation)
 {
 	FTeleportParams Params(TargetLocation);
 	TriggerEvent(EFSEventEnum::Teleport, Instigator, Params);

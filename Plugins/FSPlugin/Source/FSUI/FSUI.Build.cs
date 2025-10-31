@@ -17,11 +17,12 @@ public class FSUI : ModuleRules
 		PrivateDependencyModuleNames.AddRange(
 			new[]
 			{
+				"FSCore",
 				"CoreUObject",
 				"Engine",
 				"Slate",
 				"SlateCore"
-				
+
 			}
 		);
 	}

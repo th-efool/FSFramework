@@ -19,6 +19,10 @@ class FSUI_API UFSMatchUIBroker : public UFSUIBrokerBase
 
 public:
 
+	UPROPERTY(BlueprintAssignable) FInventoryItemAddedSignature OnInventoryItemAdded;
+	UPROPERTY(BlueprintAssignable) FInventoryItemRemovedSignature OnInventoryItemRemoved;
+	UPROPERTY() FGetInventory OnGetInventory;
+	
 	UPROPERTY(BlueprintAssignable, Category="FS|UI") FSanityChangedSignature     OnUISanityChanged;
 	UPROPERTY(BlueprintAssignable, Category="FS|UI") FHealthChangedSignature     OnUIHealthChanged;
 
@@ -36,7 +40,7 @@ public:
 	FPlayerLeftSignature   OnUIPlayerLeft;
 
 
-	// -------- Blueprint Relay API --------
+	// -------- Blueprint Call/Relay API --------
 	UFUNCTION(BlueprintCallable, Category="FS|UI|Relay")
 	void RelaySanity(float newPercentage);
 

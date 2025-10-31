@@ -41,7 +41,7 @@ public class FSPlugin : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
-				
+				"FSCore"  // ✅ Required if you use FSCore delegates/enums/structs
 				// ... add private dependencies that you statically link with here ...	
 			}
 		);

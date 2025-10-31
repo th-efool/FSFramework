@@ -3,16 +3,35 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Data/FSBrokerDataTypes.h"
 #include "Enums/EventEnum.h"
 #include "Subsystems/GameInstanceSubsystem.h"
-#include "FSEventManagerSubsystem.generated.h"
+#include "FSGameplayBroker.generated.h"
 
 UCLASS()
-class FSGAMEPLAY_API UFSEventManagerSubsystem : public UWorldSubsystem
+class FSGAMEPLAY_API UFSGameplayBroker : public UWorldSubsystem
 {
 	GENERATED_BODY()
 
 public:
+
+	UPROPERTY()
+	FInventoryItemAddedSignature OnInventoryItemAdded;
+	UPROPERTY()
+	FInventoryItemRemovedSignature OnInventoryItemRemoved;
+	UPROPERTY()
+	FGetInventory OnGetInventory;
+
+	// Global UI-facing events — broadcast-only, persistent for the lifetime of the GameInstance
+	UPROPERTY()
+	FPlayerJoinedSignature OnPlayerJoined;
+	UPROPERTY()
+	FPlayerLeftSignature   OnPlayerLeft;
+
+	UPROPERTY() FSanityChangedSignature OnSanityChanged;
+	UPROPERTY() FHealthChangedSignature OnHealthChanged;
+
+
 	// Example: Trigger an event from your EEventType enum
 	UFUNCTION(BlueprintCallable, Category = "Events")
 	void TriggerEvent(EFSEventEnum EventType, AActor* Instigator, const FSCustomEventParams& CustomEventParams);
@@ -43,4 +62,13 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Events|Gameplay")
 	void TeleportActor(AActor* Instigator, const FVector& TargetLocation);
+
+
+	// -------- Blueprint Call/Relay API --------
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	void RelayInventoryItemAdded(EInventoryItem Item, int Amount);
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	void RelayInventoryItemRemoved(EInventoryItem Item, int Amount);
+	UFUNCTION(BlueprintCallable, Category="Inventory")
+	void RelayGetInventory(FInventoryData& Inventory);
 };
