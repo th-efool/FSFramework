@@ -6,6 +6,7 @@
 #include "Base/FSHUDWidgetBase.h"
 #include "Components/ProgressBar.h"
 #include "Match/Components/FSArticle.h"
+#include "Match/Components/FSInventory.h"
 #include "Match/Components/FSTeamStatusPanel.h"
 #include "Match/Components/FSTextWithBackground.h"
 #include "FSPlayScreenHUDWidget.generated.h"
@@ -25,18 +26,22 @@ class FSUI_API UFSPlayScreenHUDWidget : public UFSHUDWidgetBase
 	UPROPERTY(meta=(BindWidget))
 	UFSArticle* DiaryEntry;
 
-	
 	UPROPERTY(meta=(BindWidget))
 	UVerticalBox* Subtitles; 
+
+	UPROPERTY(meta=(BindWidget))
+	UFSInventory* Inventory;
+	
 	UPROPERTY(meta=(BindWidget))
 	UVerticalBox* Announcement;
 
+
+	
 	UPROPERTY(EditDefaultsOnly, Category="UI CLASSES")
 	TSubclassOf<UFSTextWithBackground> SubtitleClass;
 
 	UPROPERTY(EditDefaultsOnly, Category="UI CLASSES")
 	TSubclassOf<UFSTextWithBackground> AnnouncementClass;
-
 	
 	UPROPERTY(meta=(BindWidget))
 	UImage* CrossHair;

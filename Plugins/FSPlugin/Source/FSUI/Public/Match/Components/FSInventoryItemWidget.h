@@ -30,7 +30,6 @@ public:
 	UPROPERTY(meta = (BindWidget)) TObjectPtr<UButton> ConsumeButton = nullptr;
 
 public:
-	// 👇 Explicit param version
 	void SetupItem(
 		EInventoryItem InItemType,
 		UTexture2D* InItemIcon,
@@ -39,6 +38,11 @@ public:
 		bool bIsConsumable,
 		TSubclassOf<AActor> InActorClass
 	);
+
+	int32 GetQuantity() const;
+	void IncrementQuantity(int32 Amount);
+	void DecrementQuantity(int32 Amount);
+
 
 protected:
 	virtual void NativeConstruct() override;

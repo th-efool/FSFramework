@@ -9,113 +9,76 @@
 #include "Match/FSMatchUIBroker.h"
 
 #include "Engine/DataTable.h"
-
-// --- PopulateInventory: now minimal, delegates heavy lifting to CustomAddEntry
 void UFSInventory::PopulateInventory()
 {
 	if (!InventoryTable || !ItemWidgetClass || !VerticalBox_Items)
 		return;
 
-	FInventoryData UninitializedInventory;
+	FInventoryData Inventory;
 	if (auto* Broker = GetWorld()->GetSubsystem<UFSMatchUIBroker>())
-	{
-		Broker->OnGetInventory.ExecuteIfBound(UninitializedInventory);
-	}
+		Broker->OnGetInventory.ExecuteIfBound(Inventory);
 
-	if (UninitializedInventory.Entries.IsEmpty())
+	if (Inventory.Entries.IsEmpty())
 		return;
 
-	for (const FInventoryEntry& Entry : UninitializedInventory.Entries)
-	{
-		CustomAddEntry(Entry);
-	}
+	for (const FInventoryEntry& Entry : Inventory.Entries)
+		AddInventoryEntry(Entry);
 }
 
-// --- Adds items for a single FInventoryEntry: merges into existing widgets or creates new ones,
-//     splitting by MaxBatchSize from metadata.
-void UFSInventory::CustomAddEntry(const FInventoryEntry& Entry)
+// ------------------------------------------------------------
+// AddInventoryEntry — handles merging / batching / widget spawn
+// ------------------------------------------------------------
+void UFSInventory::AddInventoryEntry(const FInventoryEntry& Entry)
 {
 	if (!InventoryTable || !ItemWidgetClass || !VerticalBox_Items)
 		return;
 
 	static const FString Context(TEXT("InventoryLookup"));
-
-	// Map enum -> row name (explicit switch using your InventoryRowNames namespace)
-	const FName* RowNamePtr = nullptr;
-	switch (Entry.Item)
-	{
-	case EInventoryItem::Battery:         RowNamePtr = &InventoryRowNames::Battery; break;
-	case EInventoryItem::SanityPotion:    RowNamePtr = &InventoryRowNames::SanityPotion; break;
-	case EInventoryItem::HealthPotion:    RowNamePtr = &InventoryRowNames::HealthPotion; break;
-	case EInventoryItem::Oil:             RowNamePtr = &InventoryRowNames::Oil; break;
-	case EInventoryItem::KeyA:            RowNamePtr = &InventoryRowNames::KeyA; break;
-	case EInventoryItem::KeyB:            RowNamePtr = &InventoryRowNames::KeyB; break;
-	case EInventoryItem::KeyC:            RowNamePtr = &InventoryRowNames::KeyC; break;
-	case EInventoryItem::KeyD:            RowNamePtr = &InventoryRowNames::KeyD; break;
-	case EInventoryItem::KeyE:            RowNamePtr = &InventoryRowNames::KeyE; break;
-	case EInventoryItem::KeyF:            RowNamePtr = &InventoryRowNames::KeyF; break;
-	case EInventoryItem::KeyG:            RowNamePtr = &InventoryRowNames::KeyG; break;
-	case EInventoryItem::AmmoA:           RowNamePtr = &InventoryRowNames::AmmoA; break;
-	case EInventoryItem::AmmoB:           RowNamePtr = &InventoryRowNames::AmmoB; break;
-	case EInventoryItem::AmmoC:           RowNamePtr = &InventoryRowNames::AmmoC; break;
-	case EInventoryItem::AmmoD:           RowNamePtr = &InventoryRowNames::AmmoD; break;
-	case EInventoryItem::AmmoE:           RowNamePtr = &InventoryRowNames::AmmoE; break;
-	case EInventoryItem::ChargeA:         RowNamePtr = &InventoryRowNames::ChargeA; break;
-	case EInventoryItem::ChargeB:         RowNamePtr = &InventoryRowNames::ChargeB; break;
-	case EInventoryItem::ChargeC:         RowNamePtr = &InventoryRowNames::ChargeC; break;
-	case EInventoryItem::ChargeD:         RowNamePtr = &InventoryRowNames::ChargeD; break;
-	default:
-		return;
-	}
-
-	const FFSInventoryItemRow* MetaRow = InventoryTable->FindRow<FFSInventoryItemRow>(*RowNamePtr, Context);
-	if (!MetaRow)
+	const FName RowName = FInventoryData::GetRowName(Entry.Item);
+	if (RowName.IsNone())
 		return;
 
-	const int32 MaxBatch = FMath::Max(1, MetaRow->MaxBatchSize);
+	const FFSInventoryItemRow* Row = InventoryTable->FindRow<FFSInventoryItemRow>(RowName, Context);
+	if (!Row)
+		return;
+
+	const int32 MaxBatch = FMath::Max(1, Row->MaxBatchSize);
 	int32 Remaining = Entry.Count;
 
-	// First: fill existing widgets that have space
+	// Fill partially-filled stacks first
 	while (Remaining > 0)
 	{
-		UFSInventoryItemWidget* WidgetWithSpace = FindWidgetWithSpace(Entry.Item, MaxBatch);
-		if (!WidgetWithSpace)
-			break;
+		if (UFSInventoryItemWidget* Widget = FindWidgetWithSpace(Entry.Item, MaxBatch))
+		{
+			const int32 FreeSpace = MaxBatch - Widget->GetQuantity();
+			const int32 ToAdd = FMath::Min(FreeSpace, Remaining);
+			if (ToAdd <= 0)
+				break;
 
-		int32 Space = MaxBatch - WidgetWithSpace->GetQuantity();
-		int32 ToAdd = FMath::Min(Space, Remaining);
-		if (ToAdd > 0)
-		{
-			WidgetWithSpace->IncrementQuantity(ToAdd);
+			Widget->IncrementQuantity(ToAdd);
 			Remaining -= ToAdd;
+			continue;
 		}
-		else
-		{
-			// Defensive: avoid infinite loop if widget reports full despite FindWidgetWithSpace
-			break;
-		}
+		break; // none found
 	}
 
-	// Second: create new widgets (split into batches of MaxBatch)
+	// Create new stacks as needed
 	while (Remaining > 0)
 	{
-		int32 BatchSize = FMath::Min(Remaining, MaxBatch);
-		UFSInventoryItemWidget* NewWidget = CreateInventoryItemWidget(Entry.Item, BatchSize);
-		if (NewWidget && VerticalBox_Items)
+		const int32 BatchSize = FMath::Min(Remaining, MaxBatch);
+		if (UFSInventoryItemWidget* NewWidget = CreateInventoryItemWidget(*Row, Entry.Item, BatchSize))
 		{
 			VerticalBox_Items->AddChildToVerticalBox(NewWidget);
 			Remaining -= BatchSize;
 		}
-		else
-		{
-			// If creation fails, stop to avoid infinite loop
-			break;
-		}
+		else break; // creation failure
 	}
 }
 
-// --- Search vertical box for a widget of ItemType with quantity < MaxBatch
-UFSInventoryItemWidget* UFSInventory::FindWidgetWithSpace(EInventoryItem ItemType, int MaxBatch) const
+// ------------------------------------------------------------
+// Finds a widget with same type and remaining capacity
+// ------------------------------------------------------------
+UFSInventoryItemWidget* UFSInventory::FindWidgetWithSpace(EInventoryItem ItemType, int32 MaxBatch) const
 {
 	if (!VerticalBox_Items)
 		return nullptr;
@@ -123,80 +86,110 @@ UFSInventoryItemWidget* UFSInventory::FindWidgetWithSpace(EInventoryItem ItemTyp
 	const int32 Count = VerticalBox_Items->GetChildrenCount();
 	for (int32 i = 0; i < Count; ++i)
 	{
-		UWidget* Child = VerticalBox_Items->GetChildAt(i);
-		if (!Child) continue;
-
-		if (UFSInventoryItemWidget* ItemWidget = Cast<UFSInventoryItemWidget>(Child))
-		{
-			const int32 CurrentQuantity = FCString::Atoi(*ItemWidget->Quantity->GetText().ToString());
-
-			if (ItemWidget->ItemType == ItemType && CurrentQuantity < MaxBatch)
-			{
-				// Add to this stack instead of creating a new one
-				const int32 NewQuantity = FMath::Min(CurrentQuantity + Entry.Quantity, MaxBatch);
-				ItemWidget->Quantity->SetText(FText::AsNumber(NewQuantity));
-			}
-		}
-		
+		if (auto* Widget = Cast<UFSInventoryItemWidget>(VerticalBox_Items->GetChildAt(i)))
+			if (Widget->ItemType == ItemType && Widget->GetQuantity() < MaxBatch)
+				return Widget;
 	}
 	return nullptr;
 }
 
-// --- Create a widget and initialize with destructured params (uses meta row lookup internally)
-UFSInventoryItemWidget* UFSInventory::CreateInventoryItemWidget(EInventoryItem ItemType, int Amount)
+// ------------------------------------------------------------
+// Creates and initializes a widget from metadata row
+// ------------------------------------------------------------
+UFSInventoryItemWidget* UFSInventory::CreateInventoryItemWidget(const FFSInventoryItemRow& Row, EInventoryItem ItemType, int32 Quantity)
 {
-	if (!InventoryTable || !ItemWidgetClass)
+	if (!ItemWidgetClass)
 		return nullptr;
 
-	static const FString Context(TEXT("InventoryLookup"));
-
-	const FName* RowNamePtr = nullptr;
-	switch (ItemType)
-	{
-	case EInventoryItem::Battery:         RowNamePtr = &InventoryRowNames::Battery; break;
-	case EInventoryItem::SanityPotion:    RowNamePtr = &InventoryRowNames::SanityPotion; break;
-	case EInventoryItem::HealthPotion:    RowNamePtr = &InventoryRowNames::HealthPotion; break;
-	case EInventoryItem::Oil:             RowNamePtr = &InventoryRowNames::Oil; break;
-	case EInventoryItem::KeyA:            RowNamePtr = &InventoryRowNames::KeyA; break;
-	case EInventoryItem::KeyB:            RowNamePtr = &InventoryRowNames::KeyB; break;
-	case EInventoryItem::KeyC:            RowNamePtr = &InventoryRowNames::KeyC; break;
-	case EInventoryItem::KeyD:            RowNamePtr = &InventoryRowNames::KeyD; break;
-	case EInventoryItem::KeyE:            RowNamePtr = &InventoryRowNames::KeyE; break;
-	case EInventoryItem::KeyF:            RowNamePtr = &InventoryRowNames::KeyF; break;
-	case EInventoryItem::KeyG:            RowNamePtr = &InventoryRowNames::KeyG; break;
-	case EInventoryItem::AmmoA:           RowNamePtr = &InventoryRowNames::AmmoA; break;
-	case EInventoryItem::AmmoB:           RowNamePtr = &InventoryRowNames::AmmoB; break;
-	case EInventoryItem::AmmoC:           RowNamePtr = &InventoryRowNames::AmmoC; break;
-	case EInventoryItem::AmmoD:           RowNamePtr = &InventoryRowNames::AmmoD; break;
-	case EInventoryItem::AmmoE:           RowNamePtr = &InventoryRowNames::AmmoE; break;
-	case EInventoryItem::ChargeA:         RowNamePtr = &InventoryRowNames::ChargeA; break;
-	case EInventoryItem::ChargeB:         RowNamePtr = &InventoryRowNames::ChargeB; break;
-	case EInventoryItem::ChargeC:         RowNamePtr = &InventoryRowNames::ChargeC; break;
-	case EInventoryItem::ChargeD:         RowNamePtr = &InventoryRowNames::ChargeD; break;
-	default:
-		return nullptr;
-	}
-
-	const FFSInventoryItemRow* MetaRow = InventoryTable->FindRow<FFSInventoryItemRow>(*RowNamePtr, Context);
-	if (!MetaRow)
+	UFSInventoryItemWidget* Widget = CreateWidget<UFSInventoryItemWidget>(GetWorld(), ItemWidgetClass);
+	if (!Widget)
 		return nullptr;
 
-	UFSInventoryItemWidget* ItemWidget = CreateWidget<UFSInventoryItemWidget>(GetWorld(), ItemWidgetClass);
-	if (!ItemWidget)
-		return nullptr;
-
-	ItemWidget->SetupItem(
+	// Destructure from DataTable row directly
+	Widget->SetupItem(
 		ItemType,
-		MetaRow->ItemIcon.LoadSynchronous(),  // synchronous icon load for UI setup
-		MetaRow->Description,
-		Amount,
-		MetaRow->IsConsumeable,
-		MetaRow->ItemActorClass
+		Row.ItemIcon.LoadSynchronous(),
+		Row.Description,
+		Quantity,
+		Row.IsConsumeable,
+		Row.ItemActorClass
 	);
 
-	return ItemWidget;
+	return Widget;
 }
 
+void UFSInventory::HandleItemAdded(EInventoryItem ItemType, int Amount)
+{
+	if (!VerticalBox_Items || !InventoryTable || !ItemWidgetClass)
+		return;
+
+	const FName RowName = FInventoryData::GetRowName(ItemType);
+	if (RowName.IsNone())
+		return;
+
+	static const FString Context(TEXT("InventoryLookup"));
+	const FFSInventoryItemRow* Row = InventoryTable->FindRow<FFSInventoryItemRow>(RowName, Context);
+	if (!Row)
+		return;
+
+	const int32 MaxBatch = FMath::Max(1, Row->MaxBatchSize);
+	int32 Remaining = Amount;
+
+	// Fill existing stacks first
+	while (Remaining > 0)
+	{
+		UFSInventoryItemWidget* Stack = FindWidgetWithSpace(ItemType, MaxBatch);
+		if (!Stack)
+			break;
+
+		const int32 FreeSpace = MaxBatch - Stack->GetQuantity();
+		const int32 ToAdd = FMath::Min(FreeSpace, Remaining);
+		if (ToAdd <= 0)
+			break;
+
+		Stack->IncrementQuantity(ToAdd);
+		Remaining -= ToAdd;
+	}
+
+	// Create new stacks for leftover amount
+	while (Remaining > 0)
+	{
+		const int32 BatchSize = FMath::Min(Remaining, MaxBatch);
+		if (UFSInventoryItemWidget* NewWidget = CreateInventoryItemWidget(*Row, ItemType, BatchSize))
+		{
+			VerticalBox_Items->AddChildToVerticalBox(NewWidget);
+			Remaining -= BatchSize;
+		}
+		else break;
+	}
+}
+
+void UFSInventory::HandleItemRemoved(EInventoryItem ItemType, int Amount)
+{
+	if (!VerticalBox_Items)
+		return;
+
+	int32 Remaining = Amount;
+
+	// Iterate backwards to safely remove
+	for (int32 i = VerticalBox_Items->GetChildrenCount() - 1; i >= 0 && Remaining > 0; --i)
+	{
+		if (auto* Widget = Cast<UFSInventoryItemWidget>(VerticalBox_Items->GetChildAt(i)))
+		{
+			if (Widget->ItemType != ItemType)
+				continue;
+
+			const int32 Current = Widget->GetQuantity();
+			const int32 ToRemove = FMath::Min(Current, Remaining);
+
+			Widget->DecrementQuantity(ToRemove);
+			Remaining -= ToRemove;
+
+			if (Widget->GetQuantity() <= 0)
+				VerticalBox_Items->RemoveChildAt(i);
+		}
+	}
+}
 
 
 void UFSInventory::NativeConstruct()
@@ -228,51 +221,5 @@ void UFSInventory::NativeDestruct()
 	}
 
 	Super::NativeDestruct();
-}
-
-
-void UFSInventory::HandleItemAdded(EInventoryItem ItemType, int Amount)
-{
-	// Find if item widget already exists
-	if (!VerticalBox_Items)
-		return;
-
-	// Try to find an existing widget representing this item type
-	for (UWidget* Child : VerticalBox_Items->GetAllChildren())
-	{
-		if (auto* ItemWidget = Cast<UFSInventoryItemWidget>(Child))
-		{
-			if (ItemWidget->ItemType == ItemType)
-			{
-				ItemWidget->IncrementQuantity(Amount);
-				return;
-			}
-		}
-	}
-
-	// If not found, create a new one
-	AddNewItemWidget(ItemType, Amount);
-}
-
-void UFSInventory::HandleItemRemoved(EInventoryItem ItemType, int Amount)
-{
-	if (!VerticalBox_Items)
-		return;
-
-	for (int32 i = VerticalBox_Items->GetChildrenCount() - 1; i >= 0; --i)
-	{
-		if (auto* ItemWidget = Cast<UFSInventoryItemWidget>(VerticalBox_Items->GetChildAt(i)))
-		{
-			if (ItemWidget->ItemType == ItemType)
-			{
-				ItemWidget->DecrementQuantity(Amount);
-
-				if (ItemWidget->GetQuantity() <= 0)
-					VerticalBox_Items->RemoveChildAt(i);
-
-				return;
-			}
-		}
-	}
 }
 

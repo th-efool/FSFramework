@@ -32,6 +32,38 @@ void UFSInventoryItemWidget::SetupItem(
 		ConsumeButton->SetIsEnabled(bIsConsumable);
 }
 
+int32 UFSInventoryItemWidget::GetQuantity() const
+{
+	return QuantityCount;
+}
+
+void UFSInventoryItemWidget::IncrementQuantity(int32 Amount)
+{
+	if (Amount <= 0)
+		return;
+
+	QuantityCount += Amount;
+
+	if (Quantity)
+	{
+		Quantity->SetText(FText::AsNumber(QuantityCount));
+	}
+}
+
+void UFSInventoryItemWidget::DecrementQuantity(int32 Amount)
+{
+	if (Amount <= 0)
+		return;
+
+	QuantityCount = FMath::Max(QuantityCount - Amount, 0);
+
+	if (Quantity)
+	{
+		Quantity->SetText(FText::AsNumber(QuantityCount));
+	}
+}
+
+
 void UFSInventoryItemWidget::NativeConstruct()
 {
 	Super::NativeConstruct();

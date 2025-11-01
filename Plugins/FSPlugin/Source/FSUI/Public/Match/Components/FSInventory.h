@@ -6,34 +6,10 @@
 #include "Data/FSBrokerDataTypes.h"
 #include "Match/Components/FSInventoryItemWidget.h"
 #include "Base/FSComponentWidgetBase.h"
+#include "Components/ScrollBox.h"
+#include "Components/VerticalBox.h"
 #include "FSInventory.generated.h"
 
-namespace InventoryRowNames
-{
-	static const FName Battery      = TEXT("Battery");
-	static const FName SanityPotion = TEXT("SanityPotion");
-	static const FName HealthPotion = TEXT("HealthPotion");
-	static const FName Oil          = TEXT("Oil");
-
-	static const FName KeyA = TEXT("KeyA");
-	static const FName KeyB = TEXT("KeyB");
-	static const FName KeyC = TEXT("KeyC");
-	static const FName KeyD = TEXT("KeyD");
-	static const FName KeyE = TEXT("KeyE");
-	static const FName KeyF = TEXT("KeyF");
-	static const FName KeyG = TEXT("KeyG");
-
-	static const FName AmmoA = TEXT("AmmoA");
-	static const FName AmmoB = TEXT("AmmoB");
-	static const FName AmmoC = TEXT("AmmoC");
-	static const FName AmmoD = TEXT("AmmoD");
-	static const FName AmmoE = TEXT("AmmoE");
-
-	static const FName ChargeA = TEXT("ChargeA");
-	static const FName ChargeB = TEXT("ChargeB");
-	static const FName ChargeC = TEXT("ChargeC");
-	static const FName ChargeD = TEXT("ChargeD");
-}
 
 
 USTRUCT(BlueprintType)
@@ -74,7 +50,8 @@ class FSUI_API UFSInventory : public UFSComponentWidgetBase
 {
 	GENERATED_BODY()
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "FSInventory")
 	TSoftObjectPtr<UDataTable> InventoryTable;
 
 	UPROPERTY(meta = (BindWidget))
@@ -83,7 +60,7 @@ public:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UVerticalBox> VerticalBox_Items = nullptr;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inventory|UI")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "FSInventory")
 	TSubclassOf<UFSInventoryItemWidget> ItemWidgetClass;
 public:
 	void PopulateInventory();
@@ -100,10 +77,10 @@ protected:
 	void NativeDestruct();
 
 	// Shared helper that creates a widget from metadata.
-	UFSInventoryItemWidget* CreateInventoryItemWidget(EInventoryItem ItemType, int Amount);
+	UFSInventoryItemWidget* CreateInventoryItemWidget(const FFSInventoryItemRow& Row, EInventoryItem ItemType, int32 Quantity);
 
 	// Called per FInventoryEntry to split into batches and merge into existing widgets.
-	void CustomAddEntry(const FInventoryEntry& Entry);
+	void AddInventoryEntry(const FInventoryEntry& Entry);
 
 	// Find an existing item widget that has space to accept more of ItemType (returns nullptr if none).
 	UFSInventoryItemWidget* FindWidgetWithSpace(EInventoryItem ItemType, int MaxBatch) const;

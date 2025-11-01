@@ -59,6 +59,46 @@ struct FSCORE_API FInventoryData
 	uint16 GetItemCount(EInventoryItem Item) const;
 	
 	bool HasItem(EInventoryItem Item) const;
+
+	// --- Static lookup table for DataTable row names ---
+	static const TMap<EInventoryItem, FName>& GetInventoryRowNames()
+	{
+		static const TMap<EInventoryItem, FName> InventoryRowNames = {
+			{EInventoryItem::Battery,      TEXT("Battery")},
+			{EInventoryItem::SanityPotion, TEXT("SanityPotion")},
+			{EInventoryItem::HealthPotion, TEXT("HealthPotion")},
+			{EInventoryItem::Oil,          TEXT("Oil")},
+
+			{EInventoryItem::KeyA, TEXT("KeyA")},
+			{EInventoryItem::KeyB, TEXT("KeyB")},
+			{EInventoryItem::KeyC, TEXT("KeyC")},
+			{EInventoryItem::KeyD, TEXT("KeyD")},
+			{EInventoryItem::KeyE, TEXT("KeyE")},
+			{EInventoryItem::KeyF, TEXT("KeyF")},
+			{EInventoryItem::KeyG, TEXT("KeyG")},
+
+			{EInventoryItem::AmmoA, TEXT("AmmoA")},
+			{EInventoryItem::AmmoB, TEXT("AmmoB")},
+			{EInventoryItem::AmmoC, TEXT("AmmoC")},
+			{EInventoryItem::AmmoD, TEXT("AmmoD")},
+			{EInventoryItem::AmmoE, TEXT("AmmoE")},
+
+			{EInventoryItem::ChargeA, TEXT("ChargeA")},
+			{EInventoryItem::ChargeB, TEXT("ChargeB")},
+			{EInventoryItem::ChargeC, TEXT("ChargeC")},
+			{EInventoryItem::ChargeD, TEXT("ChargeD")},
+		};
+		return InventoryRowNames;
+	}
+
+	static FName GetRowName(EInventoryItem Item)
+	{
+		const auto& Map = GetInventoryRowNames();
+		if (const FName* Found = Map.Find(Item))
+			return *Found;
+
+		return NAME_None; // Safe fallback if enum isn’t mapped
+	}
 };
 
 
