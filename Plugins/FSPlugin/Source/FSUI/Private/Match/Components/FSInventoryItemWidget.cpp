@@ -8,6 +8,8 @@
 #include "Components/Button.h"
 #include "Components/TextBlock.h"
 #include "Components/Image.h"
+#include "Match/FSMatchUIBroker.h"
+#include "Utility/FSErrorHandler.h"
 
 void UFSInventoryItemWidget::SetupItem(
 	EInventoryItem InItemType,
@@ -30,6 +32,11 @@ void UFSInventoryItemWidget::SetupItem(
 
 	if (ConsumeButton)
 		ConsumeButton->SetIsEnabled(bIsConsumable);
+	if (DropButton)
+	{
+		DropAmountSpinBox->SetMinValue(1);
+		DropAmountSpinBox->SetMaxValue(InQuantity);
+	}
 }
 
 int32 UFSInventoryItemWidget::GetQuantity() const
@@ -43,6 +50,7 @@ void UFSInventoryItemWidget::IncrementQuantity(int32 Amount)
 		return;
 
 	QuantityCount += Amount;
+	DropAmountSpinBox->SetMaxValue(QuantityCount);
 
 	if (Quantity)
 	{
@@ -56,12 +64,13 @@ void UFSInventoryItemWidget::DecrementQuantity(int32 Amount)
 		return;
 
 	QuantityCount = FMath::Max(QuantityCount - Amount, 0);
-
+	DropAmountSpinBox->SetMaxValue(QuantityCount);
 	if (Quantity)
 	{
 		Quantity->SetText(FText::AsNumber(QuantityCount));
 	}
 }
+
 
 
 void UFSInventoryItemWidget::NativeConstruct()
@@ -76,7 +85,15 @@ void UFSInventoryItemWidget::NativeConstruct()
 
 void UFSInventoryItemWidget::OnDropClicked()
 {
-	// TODO: Implement drop logic (emit event)
+	auto world = GetWorld();
+	if (!world) return;
+	UFSMatchUIBroker* broker = world->GetSubsystem<UFSMatchUIBroker>();
+	if (!broker) return;
+	broker->OnUIItemDropped.Broadcast(ItemType,DropAmountSpinBox->GetValue());
+	FS_PRINT_SCREEN("UIBroker: ITEM WAS DROPPED");
+	FS_PRINT_SCREEN(FString::Printf(TEXT("Dropped Amount: %.0f"), DropAmountSpinBox->GetValue()));
+
+
 }
 
 void UFSInventoryItemWidget::OnConsumeClicked()
@@ -84,5 +101,11 @@ void UFSInventoryItemWidget::OnConsumeClicked()
 	if (!bConsumable)
 		return;
 
-	// TODO: Implement consume logic (emit event)
+	auto world = GetWorld();
+	if (!world) return;
+	UFSMatchUIBroker* broker = world->GetSubsystem<UFSMatchUIBroker>();
+	if (!broker) return;
+	broker->OnUIItemConsumed.Broadcast(ItemType);
+		
 }
+

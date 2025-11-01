@@ -39,3 +39,14 @@ void UFSMatchUIBroker::RelayDiaryHide()
 	if (!IsValid(this)) return;
 	OnUIDiaryHide.Broadcast();
 }
+
+void UFSMatchUIBroker::RelayDropButtonPressed(EInventoryItem Item, int Amount)
+{
+	OnUIItemDropped.Broadcast(Item,Amount);
+}
+
+void UFSMatchUIBroker::RelayConsumeButtonPressed(EInventoryItem Item)
+{
+	OnUIItemConsumed.Broadcast(Item);
+}
+

@@ -50,9 +50,17 @@ class FSPLUGIN_API UFSWorldBroker : public UWorldSubsystem
 	UPROPERTY(BlueprintAssignable, Category="FS|HUD")
 	FDiaryHideSignature OnDiaryHide;
 
+	UPROPERTY(BlueprintAssignable, Category="FS|HUD")
+	FOnInventoryItemConsumed OnConsumeItemButtonPressed;
+
+	UPROPERTY(BlueprintAssignable, Category="FS|HUD")
+	FOnInventoryItemDropped OnDropItemButtonPressed;
+
+
 	
 protected:
-	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
+	void BindToOtherSubsystems();
+	virtual void OnWorldBeginPlay(UWorld& InWorld) override;
 	virtual void Deinitialize() override;
 	inline UFSMatchUIBroker* GetUIBroker(UWorld* World)
 	{
@@ -96,4 +104,9 @@ protected:
 	void HandleInventoryItemAdded(EInventoryItem Item, int Amount);
 	UFUNCTION()
 	void HandleInventoryItemRemoved(EInventoryItem Item, int Amount);
+	UFUNCTION()
+	void HandleOnUIInventoryItemDropButtonPressed(EInventoryItem Item, int Amount);
+	UFUNCTION()
+	void HandleOnUIInventoryItemConsumeButtonPressed(EInventoryItem Item);
+
 };

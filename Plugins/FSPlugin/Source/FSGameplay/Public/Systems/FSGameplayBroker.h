@@ -31,7 +31,13 @@ public:
 	UPROPERTY() FSanityChangedSignature OnSanityChanged;
 	UPROPERTY() FHealthChangedSignature OnHealthChanged;
 
+	UPROPERTY(BlueprintAssignable, Category="FS|HUD")
+	FOnInventoryItemConsumed OnConsumeItemButtonPressed;
 
+	UPROPERTY(BlueprintAssignable, Category="FS|HUD")
+	FOnInventoryItemDropped OnDropItemButtonPressed;
+
+	
 	// Example: Trigger an event from your EEventType enum
 	UFUNCTION(BlueprintCallable, Category = "Events")
 	void TriggerEvent(EFSEventEnum EventType, AActor* Instigator, const FSCustomEventParams& CustomEventParams);

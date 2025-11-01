@@ -4,6 +4,7 @@
 #include "Character/FSCharacterBase.h"
 
 #include "Systems/FSGameplayBroker.h"
+#include "Utility/FSErrorHandler.h"
 
 
 // Sets default values
@@ -34,12 +35,29 @@ void AFSCharacterBase::HandleGetInventory(FInventoryData& EmptyInventory)
 	EmptyInventory = InventoryPlayer;
 }
 
+void AFSCharacterBase::DropItem_Implementation(EInventoryItem Item, int32 Count)
+{
+	UFSGameplayBroker* broker = GetWorld()->GetSubsystem<UFSGameplayBroker>();
+	if (!broker){return;}
+	broker->OnInventoryItemRemoved.Broadcast(Item, Count);
+}
+
+
+
+void AFSCharacterBase::ConsumeItem_Implementation(EInventoryItem Item)
+{
+	UFSGameplayBroker* broker = GetWorld()->GetSubsystem<UFSGameplayBroker>();
+	if (!broker){return;}
+	broker->OnInventoryItemRemoved.Broadcast(Item,1);
+
+}
+
+
 // Called every frame
 void AFSCharacterBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
-
 // Called to bind functionality to input
 void AFSCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -59,12 +77,14 @@ void AFSCharacterBase::PossessedBy(AController* NewController)
 
 void AFSCharacterBase::InitializeLocalBindings()
 {
-	if (UFSGameplayBroker* broker = GetWorld()->GetSubsystem<UFSGameplayBroker>())
-	{
+	UFSGameplayBroker* broker = GetWorld()->GetSubsystem<UFSGameplayBroker>();
+	if (!broker){return;}
+	
 		broker->OnInventoryItemAdded.AddDynamic(this, &AFSCharacterBase::HandleItemAdded);
 		broker->OnInventoryItemRemoved.AddDynamic(this, &AFSCharacterBase::HandleItemRemoved);
 		broker->OnGetInventory.BindDynamic(this, &AFSCharacterBase::HandleGetInventory);
-	}
+		broker->OnDropItemButtonPressed.AddDynamic(this,&AFSCharacterBase::DropItem);
+		broker->OnConsumeItemButtonPressed.AddDynamic(this,&AFSCharacterBase::ConsumeItem);
 }
 
 void AFSCharacterBase::UnPossessed()

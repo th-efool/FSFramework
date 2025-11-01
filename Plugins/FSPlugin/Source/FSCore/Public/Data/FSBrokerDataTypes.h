@@ -138,3 +138,15 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(
 
 // Called when the full inventory needs to be sent or updated.
 DECLARE_DYNAMIC_DELEGATE_OneParam(FGetInventory, FInventoryData&, Inventory);
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(
+	FOnInventoryItemDropped, 
+	EInventoryItem, ItemType,
+	int, QuantityDropped
+);
+
+// Called when this item widget’s Consume button is pressed
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(
+	FOnInventoryItemConsumed, 
+	EInventoryItem, ItemType
+);

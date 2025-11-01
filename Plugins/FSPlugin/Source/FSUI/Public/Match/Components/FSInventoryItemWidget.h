@@ -6,6 +6,8 @@
 #include "Base/FSComponentWidgetBase.h"
 #include "Blueprint/UserWidget.h"
 #include "Data/FSBrokerDataTypes.h"
+#include "Components/SpinBox.h"
+
 #include "FSInventoryItemWidget.generated.h"
 
 
@@ -25,6 +27,7 @@ public:
 	UPROPERTY(meta = (BindWidget)) TObjectPtr<UTextBlock> ItemName = nullptr;
 	UPROPERTY(meta = (BindWidget)) TObjectPtr<UTextBlock> Description = nullptr;
 	UPROPERTY(meta = (BindWidget)) TObjectPtr<UTextBlock> Quantity = nullptr;
+	UPROPERTY(meta = (BindWidget)) TObjectPtr<class USpinBox> DropAmountSpinBox = nullptr;
 
 	UPROPERTY(meta = (BindWidget)) TObjectPtr<UButton> DropButton = nullptr;
 	UPROPERTY(meta = (BindWidget)) TObjectPtr<UButton> ConsumeButton = nullptr;

@@ -16,6 +16,11 @@ class FSGAMEFRAMEWORK_API UFSMatchGameFrameworkBroker : public UWorldSubsystem
 	GENERATED_BODY()
 	public:
 
+	UPROPERTY(BlueprintAssignable, Category="FS|HUD")
+	FOnInventoryItemConsumed OnConsumeItemButtonPressed;
+
+	UPROPERTY(BlueprintAssignable, Category="FS|HUD")
+	FOnInventoryItemDropped OnDropItemButtonPressed;
 	
 	UPROPERTY(BlueprintAssignable, Category = "FS|Match")
 	FPlayerJoinedSignature OnPlayerJoined;

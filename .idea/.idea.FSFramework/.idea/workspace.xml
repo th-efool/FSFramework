@@ -16,9 +16,20 @@
   <component name="ChangeListManager">
     <list default="true" id="7d58273c-48f3-4d48-978b-aea2eb26d48d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Match/Components/UInventory.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Match/Components/UInventory.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/Components/FSInventory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/Components/FSInventory.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/Components/FSInventory.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/Components/FSInventory.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Config/DefaultFSPlugin.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Config/DefaultFSPlugin.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Match/Components/UInventoryEntry.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Match/Components/UInventoryEntry.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Match/MatchHUD.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Match/MatchHUD.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/Data/FSBrokerDataTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/Data/FSBrokerDataTypes.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Match/FSMatchGameFrameworkBroker.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Match/FSMatchGameFrameworkBroker.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Character/FSCharacterBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Private/Character/FSCharacterBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Character/FSCharacterBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Character/FSCharacterBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/FSGameplayBroker.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/Public/Systems/FSGameplayBroker.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/Private/Brokers/FSWorldBroker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/Private/Brokers/FSWorldBroker.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/Public/Brokers/FSWorldBroker.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/Public/Brokers/FSWorldBroker.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/Components/FSInventoryItemWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/Components/FSInventoryItemWidget.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/FSMatchUIBroker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/FSMatchUIBroker.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/Components/FSInventoryItemWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/Components/FSInventoryItemWidget.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/FSMatchUIBroker.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/FSMatchUIBroker.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -365,7 +376,7 @@
       <workItem from="1761930181583" duration="18098000" />
       <workItem from="1761991087696" duration="4184000" />
       <workItem from="1761995996236" duration="1498000" />
-      <workItem from="1761997705919" duration="897000" />
+      <workItem from="1761997705919" duration="7960000" />
     </task>
     <servers />
   </component>

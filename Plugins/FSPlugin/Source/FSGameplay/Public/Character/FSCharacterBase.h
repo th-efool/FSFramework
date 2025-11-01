@@ -38,8 +38,15 @@ private:
 	void HandleItemRemoved(EInventoryItem Item, int Count);
 	UFUNCTION()
 	void HandleGetInventory(FInventoryData& EmptyInventory);
+public:
+	UFUNCTION(BlueprintNativeEvent, Category = "Inventory")
+	void DropItem(EInventoryItem Item, int32 Count);
+
+	UFUNCTION(BlueprintNativeEvent, Category = "Inventory")
+	void ConsumeItem(EInventoryItem Item);
 
 
+	
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 };

@@ -32,6 +32,9 @@ public:
 	UPROPERTY(BlueprintAssignable, Category="FS|UI") FDiaryShowSignature         OnUIDiaryShow;
 	UPROPERTY(BlueprintAssignable, Category="FS|UI") FDiaryHideSignature         OnUIDiaryHide;
 
+	UPROPERTY(BlueprintAssignable) FOnInventoryItemDropped OnUIItemDropped;
+	UPROPERTY(BlueprintAssignable) FOnInventoryItemConsumed OnUIItemConsumed;
+	
 	public:
 	// Global UI-facing events — broadcast-only, persistent for the lifetime of the GameInstance
 	UPROPERTY(BlueprintAssignable, Category = "FS|UI")
@@ -58,5 +61,12 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="FS|UI|Relay")
 	void RelayDiaryHide();
+
+	UFUNCTION(BlueprintCallable, Category="FS|UI|Relay")
+	void RelayDropButtonPressed(EInventoryItem Item, int Amount);
+	
+	UFUNCTION(BlueprintCallable, Category="FS|UI|Relay")
+	void RelayConsumeButtonPressed(EInventoryItem Item);
+	
 };
 
