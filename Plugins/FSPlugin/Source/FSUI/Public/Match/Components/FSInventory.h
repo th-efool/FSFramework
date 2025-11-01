@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Data/FSBrokerDataTypes.h"
+#include "Match/Components/FSInventoryItemWidget.h"
 #include "Base/FSComponentWidgetBase.h"
 #include "FSInventory.generated.h"
 
@@ -34,6 +35,7 @@ namespace InventoryRowNames
 	static const FName ChargeD = TEXT("ChargeD");
 }
 
+
 USTRUCT(BlueprintType)
 struct FSUI_API FFSInventoryItemRow : public FTableRowBase
 {
@@ -55,6 +57,13 @@ struct FSUI_API FFSInventoryItemRow : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
 	int32 DefaultQuantity = 1;
 
+	/** Default quantity (for pickup or stack size) */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+	int32 MaxBatchSize = 1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
+	bool IsConsumeable=false;
+
 	/** Actor or item class reference (e.g., pickup, consumable actor, etc.) */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Inventory")
 	TSubclassOf<AActor> ItemActorClass;
@@ -68,6 +77,37 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TSoftObjectPtr<UDataTable> InventoryTable;
 
-	
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UScrollBox> ScrollBox_Inventory = nullptr;
 
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UVerticalBox> VerticalBox_Items = nullptr;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inventory|UI")
+	TSubclassOf<UFSInventoryItemWidget> ItemWidgetClass;
+public:
+	void PopulateInventory();
+
+private:
+	UFUNCTION()
+	void HandleItemAdded(EInventoryItem ItemType, int Amount);
+
+	UFUNCTION()
+	void HandleItemRemoved(EInventoryItem ItemType, int Amount);
+
+protected:
+	virtual void NativeConstruct() override;
+	void NativeDestruct();
+
+	// Shared helper that creates a widget from metadata.
+	UFSInventoryItemWidget* CreateInventoryItemWidget(EInventoryItem ItemType, int Amount);
+
+	// Called per FInventoryEntry to split into batches and merge into existing widgets.
+	void CustomAddEntry(const FInventoryEntry& Entry);
+
+	// Find an existing item widget that has space to accept more of ItemType (returns nullptr if none).
+	UFSInventoryItemWidget* FindWidgetWithSpace(EInventoryItem ItemType, int MaxBatch) const;
+
+
+	
 };
