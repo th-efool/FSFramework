@@ -51,8 +51,8 @@ class FSUI_API UFSInventory : public UFSComponentWidgetBase
 	GENERATED_BODY()
 public:
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "FSInventory")
-	TSoftObjectPtr<UDataTable> InventoryTable;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InventoryTable")
+	UDataTable*  InventoryTable;
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UScrollBox> ScrollBox_Inventory = nullptr;
@@ -60,7 +60,7 @@ public:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UVerticalBox> VerticalBox_Items = nullptr;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "FSInventory")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inventory")
 	TSubclassOf<UFSInventoryItemWidget> ItemWidgetClass;
 public:
 	void PopulateInventory();
