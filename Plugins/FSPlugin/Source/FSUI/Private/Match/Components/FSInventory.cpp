@@ -9,6 +9,8 @@
 #include "Match/FSMatchUIBroker.h"
 
 #include "Engine/DataTable.h"
+#include "Utility/FSErrorHandler.h"
+
 void UFSInventory::PopulateInventory()
 {
 	if (!InventoryTable || !ItemWidgetClass || !VerticalBox_Items)
@@ -96,6 +98,7 @@ UFSInventoryItemWidget* UFSInventory::FindWidgetWithSpace(EInventoryItem ItemTyp
 // ------------------------------------------------------------
 // Creates and initializes a widget from metadata row
 // ------------------------------------------------------------
+
 UFSInventoryItemWidget* UFSInventory::CreateInventoryItemWidget(const FFSInventoryItemRow& Row, EInventoryItem ItemType, int32 Quantity)
 {
 	if (!ItemWidgetClass)
@@ -118,6 +121,8 @@ UFSInventoryItemWidget* UFSInventory::CreateInventoryItemWidget(const FFSInvento
 	return Widget;
 }
 
+
+/*
 void UFSInventory::HandleItemAdded(EInventoryItem ItemType, int Amount)
 {
 	if (!VerticalBox_Items || !InventoryTable || !ItemWidgetClass)
@@ -163,6 +168,91 @@ void UFSInventory::HandleItemAdded(EInventoryItem ItemType, int Amount)
 		else break;
 	}
 }
+*/
+
+
+void UFSInventory::HandleItemAdded(EInventoryItem ItemType, int Amount)
+{
+	FS_PRINT_SCREEN(FString::Printf(TEXT("[InventoryUI] ▶ HandleItemAdded called | ItemType: %d | Amount: %d"), static_cast<int32>(ItemType), Amount));
+
+	if (!VerticalBox_Items || !InventoryTable || !ItemWidgetClass)
+	{
+		FS_PRINT_SCREEN(TEXT("[InventoryUI] ❌ Missing essential references — VerticalBox_Items, InventoryTable, or ItemWidgetClass invalid."));
+		return;
+	}
+
+	const FName RowName = FInventoryData::GetRowName(ItemType);
+	if (RowName.IsNone())
+	{
+		FS_PRINT_SCREEN(TEXT("[InventoryUI] ⚠ GetRowName() returned None — skipping item addition."));
+		return;
+	}
+
+	static const FString Context(TEXT("InventoryLookup"));
+	const FFSInventoryItemRow* Row = InventoryTable->FindRow<FFSInventoryItemRow>(RowName, Context);
+	if (!Row)
+	{
+		FS_PRINT_SCREEN(FString::Printf(TEXT("[InventoryUI] ❌ No DataTable row found for item: %s"), *RowName.ToString()));
+		return;
+	}
+
+	const int32 MaxBatch = FMath::Max(1, Row->MaxBatchSize);
+	int32 Remaining = Amount;
+
+	FS_PRINT_SCREEN(FString::Printf(TEXT("[InventoryUI] 📦 Item meta resolved | MaxBatch: %d | Starting Remaining: %d"), MaxBatch, Remaining));
+
+	// --- Fill existing stacks first
+	while (Remaining > 0)
+	{
+		UFSInventoryItemWidget* Stack = FindWidgetWithSpace(ItemType, MaxBatch);
+		if (!Stack)
+		{
+			FS_PRINT_SCREEN(TEXT("[InventoryUI] 🔍 No existing stack with space found — creating new batch."));
+			break;
+		}
+
+		const int32 FreeSpace = MaxBatch - Stack->GetQuantity();
+		const int32 ToAdd = FMath::Min(FreeSpace, Remaining);
+		if (ToAdd <= 0)
+		{
+			FS_PRINT_SCREEN(TEXT("[InventoryUI] ⚠ Stack found but no free space — breaking loop."));
+			break;
+		}
+
+		Stack->IncrementQuantity(ToAdd);
+		Remaining -= ToAdd;
+
+		FS_PRINT_SCREEN(FString::Printf(TEXT("[InventoryUI] ✅ Added %d items to existing stack | Remaining: %d"), ToAdd, Remaining));
+	}
+
+	// --- Create new stacks for leftover amount
+	while (Remaining > 0)
+	{
+		const int32 BatchSize = FMath::Min(Remaining, MaxBatch);
+		UFSInventoryItemWidget* NewWidget = CreateInventoryItemWidget(*Row, ItemType, BatchSize);
+
+		if (!NewWidget)
+		{
+			FS_PRINT_SCREEN(TEXT("[InventoryUI] ❌ Failed to create new item widget — aborting remainder creation."));
+			break;
+		}
+
+		VerticalBox_Items->AddChildToVerticalBox(NewWidget);
+		Remaining -= BatchSize;
+
+		FS_PRINT_SCREEN(FString::Printf(TEXT("[InventoryUI] 🆕 Created new stack | BatchSize: %d | Remaining after: %d"), BatchSize, Remaining));
+	}
+
+	if (Remaining > 0)
+	{
+		FS_PRINT_SCREEN(FString::Printf(TEXT("[InventoryUI] ⚠ Item addition incomplete — %d units unplaced (possible UI capacity limit)."), Remaining));
+	}
+	else
+	{
+		FS_PRINT_SCREEN(TEXT("[InventoryUI] ✅ HandleItemAdded completed successfully — all items placed."));
+	}
+}
+
 
 void UFSInventory::HandleItemRemoved(EInventoryItem ItemType, int Amount)
 {
@@ -208,7 +298,6 @@ void UFSInventory::NativeConstruct()
 	// Optionally populate initial inventory
 	PopulateInventory();
 }
-
 void UFSInventory::NativeDestruct()
 {
 	if (UWorld* World = GetWorld())

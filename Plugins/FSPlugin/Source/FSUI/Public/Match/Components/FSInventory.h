@@ -72,7 +72,7 @@ private:
 	UFUNCTION()
 	void HandleItemRemoved(EInventoryItem ItemType, int Amount);
 
-protected:
+public:
 	virtual void NativeConstruct() override;
 	void NativeDestruct();
 

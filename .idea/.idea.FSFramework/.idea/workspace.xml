@@ -16,13 +16,17 @@
   <component name="ChangeListManager">
     <list default="true" id="7d58273c-48f3-4d48-978b-aea2eb26d48d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/Gameplay/Interactables/InteractableItems/Inventory/KeyA.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/Gameplay/Interactables/InteractableItems/Inventory/KeyA.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/Gameplay/Player/FPSPlayerCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/Gameplay/Player/FPSPlayerCharacter.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Match/Components/UInventory.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Match/Components/UInventory.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/Data/FSBrokerDataTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/Data/FSBrokerDataTypes.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Match/Components/UInventoryEntry.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Match/Components/UInventoryEntry.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Match/MatchHUD.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Match/MatchHUD.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Match/PlayScreen/UPlayScreenHUDWidget.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Match/PlayScreen/UPlayScreenHUDWidget.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/Lvl_ThirdPerson/2/9R/YDR0RG21VVBDLC4AQ62C31.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/Lvl_ThirdPerson/2/9R/YDR0RG21VVBDLC4AQ62C31.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/Lvl_ThirdPerson/3/RS/IOTE35UKANQJ8NIOVAEKBD.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/Lvl_ThirdPerson/3/RS/IOTE35UKANQJ8NIOVAEKBD.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/__ExternalActors__/Lvl_ThirdPerson/4/BD/8H3EPX76QL59K87TJP49MS.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/Components/FSInventory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/Components/FSInventory.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/Components/FSInventoryItemWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Match/Components/FSInventoryItemWidget.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/Components/FSInventory.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/Components/FSInventory.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/Components/FSInventoryItemWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/Components/FSInventoryItemWidget.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/PlayScreen/FSPlayScreenHUDWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Match/PlayScreen/FSPlayScreenHUDWidget.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +41,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://C:/Program Files/Epic Games/UE_5.6/Engine/Source/Runtime/Core/Public/HAL/Platform.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Epic Games/UE_5.6/Engine/Source/Runtime/Engine/Classes/Engine/DataTable.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Epic Games/UE_5.6/Engine/Source/Runtime/Engine/Private/Character.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Epic Games/UE_5.6/Engine/Source/Runtime/UMG/Private/UserWidget.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Epic Games/UE_5.6/Engine/Source/ThirdParty/LibTiff/Source/tiffio.h" root0="SKIP_HIGHLIGHTING" />
@@ -366,7 +371,8 @@
       <workItem from="1761815704606" duration="6945000" />
       <workItem from="1761871726540" duration="10493000" />
       <workItem from="1761930181583" duration="18098000" />
-      <workItem from="1761991087696" duration="2823000" />
+      <workItem from="1761991087696" duration="4184000" />
+      <workItem from="1761995996236" duration="1498000" />
     </task>
     <servers />
   </component>
