@@ -55,7 +55,8 @@ class FSPLUGIN_API UFSWorldBroker : public UWorldSubsystem
 
 	UPROPERTY(BlueprintAssignable, Category="FS|HUD")
 	FOnInventoryItemDropped OnDropItemButtonPressed;
-
+	
+	UPROPERTY() FOnHasItem OnHasItem;
 
 	
 protected:
@@ -109,4 +110,6 @@ protected:
 	UFUNCTION()
 	void HandleOnUIInventoryItemConsumeButtonPressed(EInventoryItem Item);
 
+	UFUNCTION()
+	void HandleHasItem(EInventoryItem Item, bool& hasItem);
 };

@@ -38,6 +38,8 @@ private:
 	void HandleItemRemoved(EInventoryItem Item, int Count);
 	UFUNCTION()
 	void HandleGetInventory(FInventoryData& EmptyInventory);
+	UFUNCTION()
+	void HandleHasItem(EInventoryItem Item, bool& hasItem);
 public:
 	UFUNCTION(BlueprintNativeEvent, Category = "Inventory")
 	void DropItem(EInventoryItem Item, int32 Count);
@@ -45,6 +47,9 @@ public:
 	UFUNCTION(BlueprintNativeEvent, Category = "Inventory")
 	void ConsumeItem(EInventoryItem Item);
 
+	UFUNCTION(BlueprintCallable)
+	bool HasItem(EInventoryItem Item);
+	
 
 	
 	// Called to bind functionality to input

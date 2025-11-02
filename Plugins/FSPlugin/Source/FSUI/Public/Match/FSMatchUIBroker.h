@@ -67,6 +67,8 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category="FS|UI|Relay")
 	void RelayConsumeButtonPressed(EInventoryItem Item);
-	
+
+	UPROPERTY() FOnHasItem OnHasItem;
+
 };
 

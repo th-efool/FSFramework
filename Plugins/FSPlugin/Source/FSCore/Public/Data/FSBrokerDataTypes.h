@@ -8,6 +8,7 @@
 UENUM(BlueprintType)
 enum class  EInventoryItem : uint8
 {
+	None         UMETA(DisplayName = "None"),
 	Battery         UMETA(DisplayName = "Battery"),
 	SanityPotion    UMETA(DisplayName = "Sanity Potion"),
 	HealthPotion    UMETA(DisplayName = "Health Potion"),
@@ -149,4 +150,11 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(
 	FOnInventoryItemConsumed, 
 	EInventoryItem, ItemType
+);
+
+
+DECLARE_DYNAMIC_DELEGATE_TwoParams(
+	FOnHasItem,
+	EInventoryItem, ItemType,
+	bool&, bHasItem
 );

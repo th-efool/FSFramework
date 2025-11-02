@@ -13,13 +13,7 @@ enum class EFSEventEnum : uint8
 	// Early-stage atmospheric or ambient effects
 	LightFlicker UMETA(DisplayName = "Light Flicker"),
 	SoundPlay UMETA(DisplayName = "Play Sound"),
-
-	// UI or PostProcessing Psychological or visual disturbance events
 	Hallucination UMETA(DisplayName = "Hallucination"),
-	Blackout UMETA(DisplayName = "Blackout"),
-	ShowMessage UMETA(DisplayName = "Show Message"),
-	ShowSubtitle UMETA(DisplayName = "Show Subtitle"),
-	ShowAnnouncement UMETA(DisplayName = "Show Announcement"),
 
 	// Intense horror interactions
 	JumpScare UMETA(DisplayName = "Jump Scare"),
@@ -64,93 +58,6 @@ struct FSGAMEPLAY_API FTeleportParams : public FSCustomEventParams
 	FTeleportParams(const FVector& InTarget)
 		: FSCustomEventParams(EFSEventEnum::Teleport)
 		  , TargetLocation(InTarget)
-	{
-	}
-};
-
-USTRUCT(BlueprintType)
-struct FSGAMEPLAY_API FShowMessageParams : public FSCustomEventParams
-{
-	GENERATED_BODY()
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Event|Message")
-	FText MessageText;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Event|Message")
-	float Duration = 3.0f;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Event|Message")
-	FColor TextColor = FColor::White;
-
-	FShowMessageParams()
-	{
-	}
-
-	FShowMessageParams(const FText& InMsg, float InDuration = 3.f)
-		: FSCustomEventParams(EFSEventEnum::ShowMessage),
-		  MessageText(InMsg),
-		  Duration(InDuration)
-	{
-	}
-};
-
-// ============================================================
-// 💬 Subtitle Event
-// ============================================================
-USTRUCT(BlueprintType)
-struct FSGAMEPLAY_API FShowSubtitleParams : public FSCustomEventParams
-{
-	GENERATED_BODY()
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Event|Subtitle")
-	FText SubtitleText;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Event|Subtitle")
-	float Duration = 2.0f;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Event|Subtitle")
-	AActor* Speaker = nullptr;
-
-	FShowSubtitleParams()
-	{
-	}
-
-	FShowSubtitleParams(const FText& InSubtitle, AActor* InSpeaker = nullptr)
-		: FSCustomEventParams(EFSEventEnum::ShowSubtitle),
-		  SubtitleText(InSubtitle),
-		  Speaker(InSpeaker)
-	{
-	}
-};
-
-// ============================================================
-// 📢 Announcement Event
-// ============================================================
-USTRUCT(BlueprintType)
-struct FSGAMEPLAY_API FShowAnnouncementParams : public FSCustomEventParams
-{
-	GENERATED_BODY()
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Event|Announcement")
-	FText Title;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Event|Announcement")
-	FText Body;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Event|Announcement")
-	float DisplayTime = 5.0f;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Event|Announcement")
-	USoundBase* AnnouncementSound = nullptr;
-
-	FShowAnnouncementParams()
-	{
-	}
-
-	FShowAnnouncementParams(const FText& InTitle, const FText& InBody)
-		: FSCustomEventParams(EFSEventEnum::ShowAnnouncement),
-		  Title(InTitle),
-		  Body(InBody)
 	{
 	}
 };

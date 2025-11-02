@@ -32,7 +32,16 @@ void AFSCharacterBase::HandleItemRemoved(EInventoryItem Item, int Count)
 
 void AFSCharacterBase::HandleGetInventory(FInventoryData& EmptyInventory)
 {
-	EmptyInventory = InventoryPlayer;
+	EmptyInventory = getInventory();
+}
+
+void AFSCharacterBase::HandleHasItem(EInventoryItem Item, bool& hasItem)
+{
+	hasItem = HasItem(Item);
+}
+bool AFSCharacterBase::HasItem(EInventoryItem Item)
+{
+	return InventoryPlayer.HasItem(Item);
 }
 
 void AFSCharacterBase::DropItem_Implementation(EInventoryItem Item, int32 Count)
@@ -58,6 +67,10 @@ void AFSCharacterBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
+
+
+
+
 // Called to bind functionality to input
 void AFSCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -85,6 +98,7 @@ void AFSCharacterBase::InitializeLocalBindings()
 		broker->OnGetInventory.BindDynamic(this, &AFSCharacterBase::HandleGetInventory);
 		broker->OnDropItemButtonPressed.AddDynamic(this,&AFSCharacterBase::DropItem);
 		broker->OnConsumeItemButtonPressed.AddDynamic(this,&AFSCharacterBase::ConsumeItem);
+		broker->OnHasItem.BindDynamic(this, &AFSCharacterBase::HandleHasItem);
 }
 
 void AFSCharacterBase::UnPossessed()

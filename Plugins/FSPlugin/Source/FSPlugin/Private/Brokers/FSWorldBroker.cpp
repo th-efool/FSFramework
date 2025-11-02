@@ -11,35 +11,41 @@
 
 void UFSWorldBroker::BindToOtherSubsystems()
 {
+	// CAPTURING THE SOURCE
 	if (UFSMatchGameFrameworkBroker*FrameworkBroker =GetGameFrameworkBroker(GetWorld()))
 	{
 			FrameworkBroker->OnPlayerJoined.AddDynamic(this, &UFSWorldBroker::HandlePlayerJoined);
 			FrameworkBroker->OnPlayerLeft.AddDynamic(this, &UFSWorldBroker::HandlePlayerLeft);
-			FrameworkBroker->OnGetInventory.BindDynamic(this, &UFSWorldBroker::HandleGetInventory);
+	}
+	
+	if (UFSMatchUIBroker* MatchUIBroker = GetWorld()->GetSubsystem<UFSMatchUIBroker>())
+	{
+		// Consume delegate binding
+		MatchUIBroker->OnUIItemConsumed.AddDynamic(this, &UFSWorldBroker::HandleOnUIInventoryItemConsumeButtonPressed);
+		// Drop delegate binding
+		MatchUIBroker->OnUIItemDropped.AddDynamic(this, &UFSWorldBroker::HandleOnUIInventoryItemDropButtonPressed);
+	}
+	
+	if (UFSGameplayBroker* GameplayBroker =GetGameplayBroker(GetWorld()) )
+	{
+		GameplayBroker->OnInventoryItemAdded.AddDynamic(this, &UFSWorldBroker::HandleInventoryItemAdded);
+		GameplayBroker->OnInventoryItemRemoved.AddDynamic(this,&UFSWorldBroker::HandleInventoryItemRemoved);
+		GameplayBroker->OnHealthChanged.AddDynamic(this,&UFSWorldBroker::HandleHealthChanged);
+		GameplayBroker->OnSanityChanged.AddDynamic(this,&UFSWorldBroker::HandleSanityChanged);
+	}
+	// Query from gameplay systems
+	if (UFSMatchGameFrameworkBroker*FrameworkBroker =GetGameFrameworkBroker(GetWorld()))
+	{
+		FrameworkBroker->OnGetInventory.BindDynamic(this, &UFSWorldBroker::HandleGetInventory);
+		FrameworkBroker->OnHasItem.BindDynamic(this, &UFSWorldBroker::HandleHasItem);
 	}
 	
 	if (UFSMatchUIBroker* MatchUIBroker = GetWorld()->GetSubsystem<UFSMatchUIBroker>())
 	{
 		MatchUIBroker->OnGetInventory.BindDynamic(this, &UFSWorldBroker::HandleGetInventory);
-
-		// Consume delegate binding
-		MatchUIBroker->OnUIItemConsumed.AddDynamic(this, &UFSWorldBroker::HandleOnUIInventoryItemConsumeButtonPressed);
-
-		// Drop delegate binding
-		MatchUIBroker->OnUIItemDropped.AddDynamic(this, &UFSWorldBroker::HandleOnUIInventoryItemDropButtonPressed);
+		MatchUIBroker->OnHasItem.BindDynamic(this, &UFSWorldBroker::HandleHasItem);
 	}
 	
-
-	if (UFSGameplayBroker* GameplayBroker =GetGameplayBroker(GetWorld()) )
-	{
-		GameplayBroker->OnInventoryItemAdded.AddDynamic(this, &UFSWorldBroker::HandleInventoryItemAdded);
-		GameplayBroker->OnInventoryItemRemoved.AddDynamic(this,&UFSWorldBroker::HandleInventoryItemRemoved);
-		
-		GameplayBroker->OnHealthChanged.AddDynamic(this,&UFSWorldBroker::HandleHealthChanged);
-		GameplayBroker->OnSanityChanged.AddDynamic(this,&UFSWorldBroker::HandleSanityChanged);
-
-	}
-
 }
 
 void UFSWorldBroker::OnWorldBeginPlay(UWorld& InWorld)
@@ -115,6 +121,16 @@ void UFSWorldBroker::HandleGetInventory(FInventoryData& EmptyInventory)
 	if (UFSGameplayBroker* GameplayBroker =GetGameplayBroker(GetWorld()) )
 	{
 		GameplayBroker->OnGetInventory.ExecuteIfBound(EmptyInventory);
+
+	}
+
+}
+
+void UFSWorldBroker::HandleHasItem(EInventoryItem Item, bool& hasItem)
+{
+	if (UFSGameplayBroker* GameplayBroker =GetGameplayBroker(GetWorld()) )
+	{
+		GameplayBroker->OnHasItem.ExecuteIfBound(Item, hasItem);
 
 	}
 

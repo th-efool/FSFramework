@@ -51,8 +51,6 @@ void UFSPlayScreenHUDWidget::ShowAnnouncement(const FText& NewText, float time)
 		{
 			if (Announcement && message)
 			{
-				FS_PRINT_SCREEN((("Announcement Added")+(NewText.ToString())));
-
 				Announcement->RemoveChild(message);
 			}
 		},
@@ -86,8 +84,6 @@ void UFSPlayScreenHUDWidget::ShowSubtitle(const FText& NewText, float time)
 		{
 			if (Subtitles && subtitle)
 			{
-				FS_PRINT_SCREEN((("Subtitle Added")+(NewText.ToString())));
-
 				Subtitles->RemoveChild(subtitle);
 			}
 		},

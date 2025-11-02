@@ -90,9 +90,6 @@ void UFSInventoryItemWidget::OnDropClicked()
 	UFSMatchUIBroker* broker = world->GetSubsystem<UFSMatchUIBroker>();
 	if (!broker) return;
 	broker->OnUIItemDropped.Broadcast(ItemType,DropAmountSpinBox->GetValue());
-	FS_PRINT_SCREEN("UIBroker: ITEM WAS DROPPED");
-	FS_PRINT_SCREEN(FString::Printf(TEXT("Dropped Amount: %.0f"), DropAmountSpinBox->GetValue()));
-
 
 }
 

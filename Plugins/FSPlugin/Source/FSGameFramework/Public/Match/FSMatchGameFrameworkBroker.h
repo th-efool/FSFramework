@@ -46,5 +46,9 @@ class FSGAMEFRAMEWORK_API UFSMatchGameFrameworkBroker : public UWorldSubsystem
 	FInventoryItemRemovedSignature OnInventoryItemRemoved;
 	UPROPERTY()
 	FGetInventory OnGetInventory;
+
+	UPROPERTY()
+	FOnHasItem OnHasItem;
+
 };
 
