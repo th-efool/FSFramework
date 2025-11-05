@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="940" viewBox="0 0 1200 940">
   <defs>
     <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
       <polygon points="0 0, 10 3.5, 0 7" fill="#555" />
     </marker>
   </defs>
+  <!-- Background for dark/light modes -->
+  <rect x="0" y="0" width="1200" height="940" fill="#ffffff" />
 
   <!-- Title -->
   <text x="600" y="40" text-anchor="middle" fill="#0a0a0a" font-family="Segoe UI, Roboto, Arial" font-size="22" font-weight="700">FSFramework – Module Interactions (Detailed)</text>
@@ -29,26 +31,26 @@
   <text x="825" y="295" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">Per-world coordination</text>
 
   <!-- Layer boxes (Core / Gameplay / GameFramework / UI) -->
-  <rect x="70" y="360" width="240" height="220" rx="8" ry="8" fill="#fef7f0" stroke="#a35d00" stroke-width="2" />
+  <rect x="70" y="360" width="240" height="380" rx="8" ry="8" fill="#fef7f0" stroke="#a35d00" stroke-width="2" />
   <text x="190" y="390" text-anchor="middle" fill="#0a0a0a" font-family="Segoe UI, Roboto, Arial" font-size="16" font-weight="600">FSCore</text>
   <text x="190" y="410" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">Data types, assets, logging</text>
   <text x="190" y="440" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">FSBrokerDataTypes</text>
   <text x="190" y="462" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">FSErrorHandler (FS_Log_*)</text>
 
-  <rect x="340" y="360" width="240" height="220" rx="8" ry="8" fill="#f3fff3" stroke="#2b7a0b" stroke-width="2" />
+  <rect x="340" y="360" width="240" height="380" rx="8" ry="8" fill="#f3fff3" stroke="#2b7a0b" stroke-width="2" />
   <text x="460" y="390" text-anchor="middle" fill="#0a0a0a" font-family="Segoe UI, Roboto, Arial" font-size="16" font-weight="600">FSGameplay</text>
   <text x="460" y="410" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">World systems &amp; actors</text>
   <text x="460" y="440" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">UFSGameplayBroker (World)</text>
   <text x="460" y="462" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">UFSEventManager (World)</text>
   <text x="460" y="484" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">UFSGameDataSubsystem (GI)</text>
 
-  <rect x="610" y="360" width="240" height="220" rx="8" ry="8" fill="#fff6fb" stroke="#9c2f74" stroke-width="2" />
+  <rect x="610" y="360" width="240" height="380" rx="8" ry="8" fill="#fff6fb" stroke="#9c2f74" stroke-width="2" />
   <text x="730" y="390" text-anchor="middle" fill="#0a0a0a" font-family="Segoe UI, Roboto, Arial" font-size="16" font-weight="600">FSGameFramework</text>
   <text x="730" y="410" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">Modes, States, Controllers</text>
   <text x="730" y="440" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">Menu / Lobby / Match</text>
   <text x="730" y="462" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">Context Brokers</text>
 
-  <rect x="880" y="360" width="240" height="220" rx="8" ry="8" fill="#f5f7ff" stroke="#3344aa" stroke-width="2" />
+  <rect x="880" y="360" width="240" height="380" rx="8" ry="8" fill="#f5f7ff" stroke="#3344aa" stroke-width="2" />
   <text x="1000" y="390" text-anchor="middle" fill="#0a0a0a" font-family="Segoe UI, Roboto, Arial" font-size="16" font-weight="600">FSUI</text>
   <text x="1000" y="410" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">HUD, Widgets, Components</text>
   <text x="1000" y="440" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">UFSUIBrokerBase (World)</text>
@@ -63,39 +65,64 @@
 
   <!-- Arrows from Brokers to Layers -->
   <line x1="375" y1="310" x2="190" y2="360" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="6 6" />
-  <line x1="375" y1="310" x2="460" y2="360" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <line x1="825" y1="310" x2="460" y2="360" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
   <line x1="825" y1="310" x2="730" y2="360" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
   <line x1="825" y1="310" x2="1000" y2="360" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
 
-  <!-- Cross-layer interactions -->
-  <line x1="310" y1="470" x2="610" y2="470" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
-  <text x="460" y="455" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">Gameplay events → Framework</text>
+  <!-- Cross-layer interactions (staggered to avoid overlap) -->
+  <!-- Gameplay → Framework -->
+  <line x1="310" y1="520" x2="610" y2="520" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <text x="460" y="510" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">Gameplay events → Framework</text>
 
-  <line x1="730" y1="500" x2="1000" y2="500" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
-  <text x="865" y="485" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">State/data → UI brokers</text>
+  <!-- Framework → UI -->
+  <line x1="730" y1="540" x2="1000" y2="540" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <text x="865" y="530" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">State/data → UI brokers</text>
 
-  <line x1="1000" y1="530" x2="730" y2="530" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="6 6" />
-  <text x="865" y="515" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">UI input → Framework</text>
+  <!-- UI → Framework (reverse) -->
+  <line x1="1000" y1="555" x2="730" y2="555" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="6 6" />
+  <text x="865" y="570" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="13">UI input/commands</text>
 
-  <line x1="460" y1="520" x2="190" y2="520" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="6 6" />
-  <text x="325" y="505" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">Types/logging from Core</text>
+  <!-- Core ↔ All layers (staggered sets) -->
+  <!-- Core ↔ Gameplay -->
+  <line x1="190" y1="580" x2="460" y2="580" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <line x1="460" y1="595" x2="190" y2="595" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="6 6" />
+  <text x="325" y="575" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="13">FSGameplay depends on FSCore</text>
+  <!-- Core ↔ Framework -->
+  <line x1="190" y1="620" x2="730" y2="620" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <line x1="730" y1="635" x2="190" y2="635" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="6 6" />
+  <text x="460" y="615" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="13">FSGameFramework depends on FSCore</text>
+  <!-- Core ↔ UI -->
+  <line x1="190" y1="660" x2="1000" y2="660" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <line x1="1000" y1="675" x2="190" y2="675" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="6 6" />
+  <text x="595" y="655" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="13">FSUI depends on FSCore</text>
+  <text x="325" y="565" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="14">Types/logging from Core</text>
+
+  <!-- Gameplay ↔ Framework (reverse, separate height) -->
+  <line x1="730" y1="600" x2="460" y2="600" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="6 6" />
+  <text x="595" y="595" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="13">Framework orchestrates Gameplay</text>
+
+  <!-- Gameplay ↔ UI (bi-directional) at distinct height) -->
+  <line x1="460" y1="700" x2="1000" y2="700" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <line x1="1000" y1="715" x2="460" y2="715" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="6 6" />
+  <text x="730" y="695" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="13">Gameplay data to UI</text>
+  <text x="730" y="730" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="13">UI actions to Gameplay</text>
 
   <!-- Legend -->
-  <rect x="60" y="610" width="1080" height="80" rx="8" ry="8" fill="#f9fbff" stroke="#2a4b8d" stroke-width="2" />
-  <text x="80" y="635" fill="#222" font-family="Segoe UI, Roboto, Arial" font-size="14">Legend:</text>
-  <rect x="150" y="620" width="20" height="14" rx="4" ry="4" fill="#fef7f0" stroke="#a35d00" stroke-width="2" />
-  <text x="180" y="632" fill="#222" font-family="Segoe UI, Roboto, Arial" font-size="14">FSCore</text>
-  <rect x="260" y="620" width="20" height="14" rx="4" ry="4" fill="#f3fff3" stroke="#2b7a0b" stroke-width="2" />
-  <text x="290" y="632" fill="#222" font-family="Segoe UI, Roboto, Arial" font-size="14">FSGameplay</text>
-  <rect x="400" y="620" width="20" height="14" rx="4" ry="4" fill="#fff6fb" stroke="#9c2f74" stroke-width="2" />
-  <text x="430" y="632" fill="#222" font-family="Segoe UI, Roboto, Arial" font-size="14">FSGameFramework</text>
-  <rect x="560" y="620" width="20" height="14" rx="4" ry="4" fill="#f5f7ff" stroke="#3344aa" stroke-width="2" />
-  <text x="590" y="632" fill="#222" font-family="Segoe UI, Roboto, Arial" font-size="14">FSUI</text>
-  <rect x="690" y="620" width="20" height="14" rx="4" ry="4" fill="#f9f9f9" stroke="#444" stroke-width="2" />
-  <text x="720" y="632" fill="#222" font-family="Segoe UI, Roboto, Arial" font-size="14">FSPlugin / App</text>
-  <line x1="880" y1="628" x2="930" y2="628" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
-  <text x="940" y="632" fill="#222" font-family="Segoe UI, Roboto, Arial" font-size="14">Primary interactions</text>
-  <line x1="880" y1="652" x2="930" y2="652" stroke="#555" stroke-width="2" fill="none" stroke-dasharray="6 6" marker-end="url(#arrowhead)" />
-  <text x="940" y="656" fill="#222" font-family="Segoe UI, Roboto, Arial" font-size="14">Support/indirect interactions</text>
+  <rect x="60" y="840" width="1080" height="80" rx="8" ry="8" fill="#f9fbff" stroke="#2a4b8d" stroke-width="2" />
+  <text x="80" y="865" fill="#222" font-family="Segoe UI, Roboto, Arial" font-size="14">Legend:</text>
+  <rect x="150" y="850" width="20" height="14" rx="4" ry="4" fill="#fef7f0" stroke="#a35d00" stroke-width="2" />
+  <text x="180" y="862" fill="#222" font-family="Segoe UI, Roboto, Arial" font-size="14">FSCore</text>
+  <rect x="260" y="850" width="20" height="14" rx="4" ry="4" fill="#f3fff3" stroke="#2b7a0b" stroke-width="2" />
+  <text x="290" y="862" fill="#222" font-family="Segoe UI, Roboto, Arial" font-size="14">FSGameplay</text>
+  <rect x="400" y="850" width="20" height="14" rx="4" ry="4" fill="#fff6fb" stroke="#9c2f74" stroke-width="2" />
+  <text x="430" y="862" fill="#222" font-family="Segoe UI, Roboto, Arial" font-size="14">FSGameFramework</text>
+  <rect x="560" y="850" width="20" height="14" rx="4" ry="4" fill="#f5f7ff" stroke="#3344aa" stroke-width="2" />
+  <text x="590" y="862" fill="#222" font-family="Segoe UI, Roboto, Arial" font-size="14">FSUI</text>
+  <rect x="690" y="850" width="20" height="14" rx="4" ry="4" fill="#f9f9f9" stroke="#444" stroke-width="2" />
+  <text x="720" y="862" fill="#222" font-family="Segoe UI, Roboto, Arial" font-size="14">FSPlugin / App</text>
+  <line x1="880" y1="858" x2="930" y2="858" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <text x="940" y="862" fill="#222" font-family="Segoe UI, Roboto, Arial" font-size="14">Primary interactions</text>
+  <line x1="880" y1="882" x2="930" y2="882" stroke="#555" stroke-width="2" fill="none" stroke-dasharray="6 6" marker-end="url(#arrowhead)" />
+  <text x="940" y="886" fill="#222" font-family="Segoe UI, Roboto, Arial" font-size="14">Support/indirect interactions</text>
 </svg>
 

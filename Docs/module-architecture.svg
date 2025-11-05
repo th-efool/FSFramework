@@ -5,6 +5,8 @@
       <polygon points="0 0, 10 3.5, 0 7" fill="#555" />
     </marker>
   </defs>
+  <!-- Background for dark/light modes -->
+  <rect x="0" y="0" width="1200" height="720" fill="#ffffff" />
 
   <!-- Title -->
   <text x="600" y="50" text-anchor="middle" fill="#0a0a0a" font-family="Segoe UI, Roboto, Arial" font-size="22" font-weight="700">FSFramework – Core Triangle</text>
