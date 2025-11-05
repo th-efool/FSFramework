@@ -1,116 +1,52 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
   <defs>
-    <style type="text/css"><![CDATA[
-      .box { fill:#f9fbff; stroke:#2a4b8d; stroke-width:2; rx:8; ry:8; }
-      .core { fill:#fef7f0; stroke:#a35d00; }
-      .gameplay { fill:#f3fff3; stroke:#2b7a0b; }
-      .framework { fill:#fff6fb; stroke:#9c2f74; }
-      .ui { fill:#f5f7ff; stroke:#3344aa; }
-      .plugin { fill:#f9f9f9; stroke:#444; }
-      .title { font: 700 22px Segoe UI, Roboto, Arial; fill:#0a0a0a; }
-      .label { font: 600 16px Segoe UI, Roboto, Arial; fill:#0a0a0a; }
-      .small { font: 14px Segoe UI, Roboto, Arial; fill:#303030; }
-      .arrow { stroke:#555; stroke-width:2; marker-end:url(#arrowhead); fill:none; }
-      .dashed { stroke-dasharray:6 6; }
-      .legend { font: 14px Segoe UI, Roboto, Arial; fill:#222; }
-    ]]></style>
     <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
       <polygon points="0 0, 10 3.5, 0 7" fill="#555" />
     </marker>
   </defs>
 
   <!-- Title -->
-  <text x="600" y="40" text-anchor="middle" class="title">FSFramework – Module Interactions</text>
+  <text x="600" y="50" text-anchor="middle" fill="#0a0a0a" font-family="Segoe UI, Roboto, Arial" font-size="22" font-weight="700">FSFramework – Core Triangle</text>
 
-  <!-- App entry -->
-  <rect x="510" y="70" width="180" height="50" class="box plugin" />
-  <text x="600" y="100" text-anchor="middle" class="label">FSFramework (App)</text>
-  <text x="600" y="120" text-anchor="middle" class="small">Primary Game Module</text>
+  <!-- Triangle vertices: FSGameFramework (top), FSGameplay (bottom-left), FSUI (bottom-right) -->
+  <!-- Coordinates for triangle -->
+  <!-- Top vertex -->
+  <rect x="530" y="110" width="140" height="60" rx="8" ry="8" fill="#fff6fb" stroke="#9c2f74" stroke-width="2" />
+  <text x="600" y="145" text-anchor="middle" fill="#0a0a0a" font-family="Segoe UI, Roboto, Arial" font-size="16" font-weight="600">FSGameFramework</text>
+  <text x="600" y="165" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="12">Modes, States, Controllers</text>
 
-  <!-- FSPlugin (top orchestrator) -->
-  <rect x="430" y="140" width="340" height="70" class="box plugin" />
-  <text x="600" y="175" text-anchor="middle" class="label">FSPlugin</text>
-  <text x="600" y="195" text-anchor="middle" class="small">Cross-cutting orchestration</text>
+  <!-- Bottom-left vertex -->
+  <rect x="270" y="420" width="160" height="70" rx="8" ry="8" fill="#f3fff3" stroke="#2b7a0b" stroke-width="2" />
+  <text x="350" y="455" text-anchor="middle" fill="#0a0a0a" font-family="Segoe UI, Roboto, Arial" font-size="16" font-weight="600">FSGameplay</text>
+  <text x="350" y="475" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="12">Systems, Actors, Events</text>
 
-  <!-- Brokers row (GameInstance/World) -->
-  <rect x="200" y="240" width="350" height="70" class="box plugin" />
-  <text x="375" y="275" text-anchor="middle" class="label">UFSGameInstanceBroker</text>
-  <text x="375" y="295" text-anchor="middle" class="small">App-wide services/state</text>
+  <!-- Bottom-right vertex -->
+  <rect x="770" y="420" width="160" height="70" rx="8" ry="8" fill="#f5f7ff" stroke="#3344aa" stroke-width="2" />
+  <text x="850" y="455" text-anchor="middle" fill="#0a0a0a" font-family="Segoe UI, Roboto, Arial" font-size="16" font-weight="600">FSUI</text>
+  <text x="850" y="475" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="12">HUD, Widgets, Brokers</text>
 
-  <rect x="650" y="240" width="350" height="70" class="box plugin" />
-  <text x="825" y="275" text-anchor="middle" class="label">UFSWorldBroker</text>
-  <text x="825" y="295" text-anchor="middle" class="small">Per-world coordination</text>
+  <!-- Triangle edges -->
+  <line x1="600" y1="170" x2="350" y2="420" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <line x1="600" y1="170" x2="850" y2="420" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <line x1="350" y1="490" x2="850" y2="490" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  <!-- Reciprocal/dashed flows -->
+  <line x1="850" y1="490" x2="350" y2="490" stroke="#555" stroke-width="2" fill="none" stroke-dasharray="6 6" marker-end="url(#arrowhead)" />
+  <line x1="350" y1="420" x2="600" y2="170" stroke="#555" stroke-width="2" fill="none" stroke-dasharray="6 6" marker-end="url(#arrowhead)" />
+  <line x1="850" y1="420" x2="600" y2="170" stroke="#555" stroke-width="2" fill="none" stroke-dasharray="6 6" marker-end="url(#arrowhead)" />
 
-  <!-- Layer boxes (Core / Gameplay / GameFramework / UI) -->
-  <rect x="70" y="360" width="240" height="220" class="box core" />
-  <text x="190" y="390" text-anchor="middle" class="label">FSCore</text>
-  <text x="190" y="410" text-anchor="middle" class="small">Data types, assets, logging</text>
-  <text x="190" y="440" text-anchor="middle" class="small">FSBrokerDataTypes</text>
-  <text x="190" y="462" text-anchor="middle" class="small">FSErrorHandler (FS_Log_*)</text>
+  <!-- FSCore placed below the triangle -->
+  <rect x="510" y="560" width="180" height="70" rx="8" ry="8" fill="#fef7f0" stroke="#a35d00" stroke-width="2" />
+  <text x="600" y="595" text-anchor="middle" fill="#0a0a0a" font-family="Segoe UI, Roboto, Arial" font-size="16" font-weight="600">FSCore</text>
+  <text x="600" y="615" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="12">Data Types, Assets, Logging</text>
 
-  <rect x="340" y="360" width="240" height="220" class="box gameplay" />
-  <text x="460" y="390" text-anchor="middle" class="label">FSGameplay</text>
-  <text x="460" y="410" text-anchor="middle" class="small">World systems & actors</text>
-  <text x="460" y="440" text-anchor="middle" class="small">UFSGameplayBroker (World)</text>
-  <text x="460" y="462" text-anchor="middle" class="small">UFSEventManager (World)</text>
-  <text x="460" y="484" text-anchor="middle" class="small">UFSGameDataSubsystem (GI)</text>
+  <!-- Support annotations -->
+  <text x="600" y="210" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="13">Framework directs flow</text>
+  <text x="600" y="520" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="13">UI ↔ Gameplay synchronization</text>
+  <text x="600" y="650" text-anchor="middle" fill="#303030" font-family="Segoe UI, Roboto, Arial" font-size="13">Core types/logging used by all layers</text>
 
-  <rect x="610" y="360" width="240" height="220" class="box framework" />
-  <text x="730" y="390" text-anchor="middle" class="label">FSGameFramework</text>
-  <text x="730" y="410" text-anchor="middle" class="small">Modes, States, Controllers</text>
-  <text x="730" y="440" text-anchor="middle" class="small">Menu / Lobby / Match</text>
-  <text x="730" y="462" text-anchor="middle" class="small">Context Brokers</text>
-
-  <rect x="880" y="360" width="240" height="220" class="box ui" />
-  <text x="1000" y="390" text-anchor="middle" class="label">FSUI</text>
-  <text x="1000" y="410" text-anchor="middle" class="small">HUD, Widgets, Components</text>
-  <text x="1000" y="440" text-anchor="middle" class="small">UFSUIBrokerBase (World)</text>
-  <text x="1000" y="462" text-anchor="middle" class="small">Menu / Lobby / Match</text>
-
-  <!-- Arrows from App to FSPlugin -->
-  <line x1="600" y1="120" x2="600" y2="140" class="arrow" />
-
-  <!-- Arrows from FSPlugin to Brokers -->
-  <line x1="550" y1="210" x2="375" y2="240" class="arrow" />
-  <line x1="650" y1="210" x2="825" y2="240" class="arrow" />
-
-  <!-- Arrows from Brokers to Layers -->
-  <line x1="375" y1="310" x2="190" y2="360" class="arrow dashed" />
-  <line x1="375" y1="310" x2="460" y2="360" class="arrow" />
-  <line x1="825" y1="310" x2="730" y2="360" class="arrow" />
-  <line x1="825" y1="310" x2="1000" y2="360" class="arrow" />
-
-  <!-- Cross-layer interactions -->
-  <line x1="310" y1="470" x2="610" y2="470" class="arrow" />
-  <text x="460" y="455" text-anchor="middle" class="small">Gameplay events → Framework</text>
-
-  <line x1="730" y1="500" x2="1000" y2="500" class="arrow" />
-  <text x="865" y="485" text-anchor="middle" class="small">State/data → UI brokers</text>
-
-  <line x1="1000" y1="530" x2="730" y2="530" class="arrow dashed" />
-  <text x="865" y="515" text-anchor="middle" class="small">UI input → Framework</text>
-
-  <line x1="460" y1="520" x2="190" y2="520" class="arrow dashed" />
-  <text x="325" y="505" text-anchor="middle" class="small">Types/logging from Core</text>
-
-  <!-- Legend -->
-  <rect x="60" y="610" width="1080" height="80" class="box" />
-  <text x="80" y="635" class="legend">Legend:</text>
-  <rect x="150" y="620" width="20" height="14" class="box core" />
-  <text x="180" y="632" class="legend">FSCore</text>
-  <rect x="260" y="620" width="20" height="14" class="box gameplay" />
-  <text x="290" y="632" class="legend">FSGameplay</text>
-  <rect x="400" y="620" width="20" height="14" class="box framework" />
-  <text x="430" y="632" class="legend">FSGameFramework</text>
-  <rect x="560" y="620" width="20" height="14" class="box ui" />
-  <text x="590" y="632" class="legend">FSUI</text>
-  <rect x="690" y="620" width="20" height="14" class="box plugin" />
-  <text x="720" y="632" class="legend">FSPlugin / App</text>
-  <line x1="880" y1="628" x2="930" y2="628" class="arrow" />
-  <text x="940" y="632" class="legend">Primary interactions</text>
-  <line x1="880" y1="652" x2="930" y2="652" class="arrow dashed" />
-  <text x="940" y="656" class="legend">Support/indirect interactions</text>
+  <!-- Optional: light boundary triangle for visual grouping -->
+  <polygon points="600,180 340,430 860,430" fill="none" stroke="#ddd" stroke-width="2" />
 </svg>
 
 

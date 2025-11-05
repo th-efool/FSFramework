@@ -11,8 +11,21 @@ A modular Unreal Engine 5 plugin framework that separates Core, Gameplay, Game F
 
 ## Module Architecture
 
-### Diagram
-![FSFramework Module Interactions](Docs/module-architecture.svg)
+### Diagrams
+
+#### Triangle Overview
+High-level relationship between `FSGameFramework` (top), `FSGameplay` (bottom-left), and `FSUI` (bottom-right), with `FSCore` below.
+
+![FSFramework Triangle](./Docs/module-architecture.svg?raw=1)
+
+#### Detailed Interactions
+More granular module/broker layout and flows.
+
+![FSFramework Detailed](./Docs/module-architecture-detailed.svg?raw=1)
+
+If the images do not render in your viewer, open the SVGs directly:
+- [Docs/module-architecture.svg](./Docs/module-architecture.svg)
+- [Docs/module-architecture-detailed.svg](./Docs/module-architecture-detailed.svg)
 
 ### FSCore
 - Purpose: foundational types, error handling, and data assets
