@@ -32,7 +32,10 @@ public class FSPlugin : ModuleRules
 			"InputCore",
 			"EnhancedInput",
 			"UMG", "FSCore", "FSGameFramework",	"FSGameplay",
-			"FSUI" // ← required for UUserWidget
+			"FSUI", // ← required for UUserWidget
+			"OnlineSubsystem",
+			"OnlineSubsystemUtils",
+			"OnlineSubsystemEOS",
 		});
 
 		PrivateDependencyModuleNames.AddRange(

@@ -13,7 +13,10 @@ public class FSGameplay : ModuleRules
 			"Engine",
 			"InputCore",
 			"EnhancedInput",
-			"UMG", "FSCore" // ← required for UUserWidget
+			"UMG", "FSCore", // ← required for UUserWidget
+			"OnlineSubsystem",
+			"OnlineSubsystemUtils",
+			"OnlineSubsystemEOS",
 		});
 
 		PrivateDependencyModuleNames.AddRange(

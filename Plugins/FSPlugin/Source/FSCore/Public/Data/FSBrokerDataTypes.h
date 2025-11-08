@@ -158,3 +158,11 @@ DECLARE_DYNAMIC_DELEGATE_TwoParams(
 	EInventoryItem, ItemType,
 	bool&, bHasItem
 );
+
+// ===== Request Delegates (fire-and-forget commands) =====
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FRequestEOSLogin, const FString&, ID, const FString&, Token, const FString&, LoginType);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FRequestEOSDevAuth);
+
+// ===== Response Delegates (only for async logins) =====
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FLoginComplete, bool, bSuccess, const FString&, ErrorMessage);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FDevAuthComplete, bool, bSuccess, const FString&, ErrorMessage);

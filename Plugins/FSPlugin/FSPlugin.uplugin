@@ -10,10 +10,12 @@
   "DocsURL": "",
   "MarketplaceURL": "",
   "SupportURL": "",
-  "CanContainContent": true,
   "IsBetaVersion": false,
   "IsExperimentalVersion": false,
   "Installed": false,
+  "CanContainContent": true,
+  "CanContainConfig": true,
+
   "Modules": [
     {
       "Name": "FSPlugin",
@@ -42,9 +44,11 @@
     }
   ],
   "Plugins": [
-    {
-      "Name": "EnhancedInput",
-      "Enabled": true
-    }
+    { "Name": "EnhancedInput", "Enabled": true },
+    { "Name": "OnlineSubsystem", "Enabled": true },
+    { "Name": "OnlineSubsystemUtils", "Enabled": true },
+    { "Name": "OnlineSubsystemEOS", "Enabled": true }
   ]
+
+
 }

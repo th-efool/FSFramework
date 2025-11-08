@@ -14,8 +14,10 @@ public class FSGameFramework : ModuleRules
 			"InputCore",
 			"EnhancedInput",
 			"UMG", // ← required for UUserWidget
-			"FSCore"    // ✅ Required for FInventoryData, delegates, etc.
-
+			"FSCore",   // ✅ Required for FInventoryData, delegates, etc.
+			"OnlineSubsystem",
+			"OnlineSubsystemUtils",
+			"OnlineSubsystemEOS",
 		});
 
 		PrivateDependencyModuleNames.AddRange(
