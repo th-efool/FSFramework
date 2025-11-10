@@ -1,32 +1,25 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
-#include "Misc/MessageDialog.h"
-#include "Editor.h"
+
 #include "CoreMinimal.h"
+#include "Misc/MessageDialog.h"
 
+#if WITH_EDITOR
+#include "Editor.h"
+#endif
 
-// Define one log category per severity level
+//=============================================================================
+// Log categories
+//=============================================================================
 DECLARE_LOG_CATEGORY_EXTERN(FS_Log_Debug, Log, All);
-
 DECLARE_LOG_CATEGORY_EXTERN(FS_Log_Info, Log, All);
+DECLARE_LOG_CATEGORY_EXTERN(FS_Log_Warn, Warning, All);
+DECLARE_LOG_CATEGORY_EXTERN(FS_Log_Error, Error, All);
+DECLARE_LOG_CATEGORY_EXTERN(FS_Log_Fatal, Fatal, All);
 
-DECLARE_LOG_CATEGORY_EXTERN(FS_Log_Warn, Log, All);
-
-DECLARE_LOG_CATEGORY_EXTERN(FS_Log_Error, Log, All);
-
-DECLARE_LOG_CATEGORY_EXTERN(FS_Log_Fatal, Log, All);
-
-
-class ErrorHandler
-{
-public:
-	ErrorHandler();
-	~ErrorHandler();
-};
-
-
-enum class FLoggerLevel : uint8
+//=============================================================================
+// Severity
+//=============================================================================
+enum class EFSLogLevel : uint8
 {
 	Debug,
 	Info,
@@ -35,215 +28,155 @@ enum class FLoggerLevel : uint8
 	Fatal
 };
 
-class FLogger
+//=============================================================================
+// Static class
+//=============================================================================
+class FSCORE_API FSLogger final
 {
 public:
-	static FLogger& Get()
+	static inline bool bCrashOnFatal = true;
+	static inline float DefaultScreenDuration = 5.0f;
+
+	//-------------------------------------------------------------------------
+	// Primary public API — pure static, no macros needed
+	//-------------------------------------------------------------------------
+
+	template<typename T>
+	static T Check(const T& Value, EFSLogLevel Level)
 	{
-		static FLogger Instance;
-		return Instance;
+		return CheckInternal(Value, Level, TEXT("Validation failed"), __FILE__, __LINE__);
 	}
 
-	static inline bool bCrashOnFatal = true; // configurable switch
-
-	template <typename T>
-	static T Handle(
-		const T& value,
-		FLoggerLevel level,
-		const char* expr,
-		const char* file,
-		int line)
+	template<typename T>
+	static T Check(const T& Value, EFSLogLevel Level, const FString& Message)
 	{
-		if (IsInvalidValue(value))
-		{
-			LogWithLevel(level, FString::Printf(
-				             TEXT("[%s:%d] Invalid expression: %s"),
-				             ANSI_TO_TCHAR(FileNameFromPath(file)),
-				             line,
-				             ANSI_TO_TCHAR(expr)));
-		}
-		return value;
+		return CheckInternal(Value, Level, Message, __FILE__, __LINE__);
 	}
 
-	template <typename T>
-	T HandleOr(const T& value, const T& fallback, FLoggerLevel level,
-	           const char* expr, const char* file, int line)
+	template<typename T, typename FuncType>
+	static void ValidateIf(const T& Value, FuncType Func)
 	{
-		if (IsInvalidValue(value))
-		{
-			LogWithLevel(level, FString::Printf(
-				             TEXT("[%s:%d] Invalid expression: %s"),
-				             ANSI_TO_TCHAR(FileNameFromPath(file)),
-				             line,
-				             ANSI_TO_TCHAR(expr)));
-			return fallback;
-		}
-		return value;
+		ValidateInternal(Value, Func, __FILE__, __LINE__);
 	}
 
-	template <typename T>
-	static T HandleMsg(
-		const T& value,
-		FLoggerLevel level,
-		const FString& customMsg,
-		const char* file,
-		int line)
+	static void Log(EFSLogLevel Level, const FString& Message)
 	{
-		if (IsInvalidValue(value))
-		{
-			LogWithLevel(level, FString::Printf(
-				             TEXT("[%s:%d] %s"),
-				             ANSI_TO_TCHAR(FileNameFromPath(file)),
-				             line,
-				             *customMsg));
-		}
-		return value;
+		LogInternal(Level, Message, __FILE__, __LINE__);
 	}
 
-	static void PrintScreen(const FString& Text)
+	static void PrintScreen(const FString& Text, const FColor& Color = FColor::White, float Duration = DefaultScreenDuration)
 	{
 		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::White, Text);
-			UE_LOG(LogTemp, Display, TEXT("%s"), *Text);
-		}
+			GEngine->AddOnScreenDebugMessage(-1, Duration, Color, Text);
+
+		UE_LOG(FS_Log_Info, Display, TEXT("%s"), *Text);
 	}
 
-
-	static void ShowPopup(const FString& Message)
+	//-------------------------------------------------------------------------
+	// Overloads for simplicity
+	//-------------------------------------------------------------------------
+	template<typename... Args>
+	static void Info(const TCHAR* Fmt, Args&&... args)
 	{
-#if WITH_EDITOR
-		if (GIsEditor)
-		{
-			FText Title = FText::FromString(TEXT("FS Framework Ensure"));
-			FText Msg = FText::FromString(Message);
-			FMessageDialog::Open(EAppMsgType::Ok, Msg, Title);
+		LogFormatted(EFSLogLevel::Info, Fmt, Forward<Args>(args)...);
+	}
 
-			if (GEditor && GEditor->IsPlayingSessionInEditor())
-			{
-				GEditor->RequestEndPlayMap();
-			}
-		}
-#endif
+	template<typename... Args>
+	static void Warn(const TCHAR* Fmt, Args&&... args)
+	{
+		LogFormatted(EFSLogLevel::Warn, Fmt, Forward<Args>(args)...);
+	}
+
+	template<typename... Args>
+	static void Error(const TCHAR* Fmt, Args&&... args)
+	{
+		LogFormatted(EFSLogLevel::Error, Fmt, Forward<Args>(args)...);
+	}
+
+	template<typename... Args>
+	static void Debug(const TCHAR* Fmt, Args&&... args)
+	{
+		LogFormatted(EFSLogLevel::Debug, Fmt, Forward<Args>(args)...);
+	}
+
+	template<typename... Args>
+	static void Fatal(const TCHAR* Fmt, Args&&... args)
+	{
+		LogFormatted(EFSLogLevel::Fatal, Fmt, Forward<Args>(args)...);
 	}
 
 private:
-	static void LogWithLevel(FLoggerLevel level, const FString& msg)
+	//-------------------------------------------------------------------------
+	// Validation traits
+	//-------------------------------------------------------------------------
+	template<typename T> static bool IsInvalid(const T&) { return false; }
+	template<typename T> static bool IsInvalid(T* Ptr) { return Ptr == nullptr; }
+	static bool IsInvalid(std::nullptr_t) { return true; }
+	template<typename T> static bool IsInvalid(const TSharedPtr<T>& Ptr) { return !Ptr.IsValid(); }
+	template<typename T> static bool IsInvalid(const TWeakPtr<T>& Ptr) { return !Ptr.IsValid(); }
+	template<typename T> static bool IsInvalid(const TWeakObjectPtr<T>& Ptr) { return !Ptr.IsValid(); }
+	static bool IsInvalid(bool bVal) { return !bVal; }
+
+	//-------------------------------------------------------------------------
+	// Internals (all automatic source capture)
+	//-------------------------------------------------------------------------
+	template<typename T>
+	static T CheckInternal(const T& Value, EFSLogLevel Level, const FString& Msg, const char* File, int32 Line)
 	{
-		switch (level)
+		if (IsInvalid(Value))
+			LogMessage(Level, Msg, File, Line);
+		return Value;
+	}
+
+	template<typename T, typename FuncType>
+	static void ValidateInternal(const T& Value, FuncType Func, const char* File, int32 Line)
+	{
+		if (IsInvalid(Value))
+			LogMessage(EFSLogLevel::Warn, TEXT("Validation failed"), File, Line);
+		else
+			Func(Value);
+	}
+
+	static void LogInternal(EFSLogLevel Level, const FString& Msg, const char* File, int32 Line)
+	{
+		LogMessage(Level, Msg, File, Line);
+	}
+
+	static void LogMessage(EFSLogLevel Level, const FString& Msg, const char* File, int32 Line)
+	{
+		const FString Formatted = FString::Printf(
+			TEXT("[%s:%d] %s"),
+			ANSI_TO_TCHAR(ExtractFileName(File)), Line, *Msg);
+		LogWithLevel(Level, Formatted);
+	}
+
+	static void LogWithLevel(EFSLogLevel Level, const FString& Msg)
+	{
+		switch (Level)
 		{
-		case FLoggerLevel::Debug:
-			UE_LOG(FS_Log_Debug, Log, TEXT("%s"), *msg);
-			break;
-		case FLoggerLevel::Info:
-			UE_LOG(FS_Log_Info, Log, TEXT("%s"), *msg);
-			break;
-		case FLoggerLevel::Warn:
-			UE_LOG(FS_Log_Warn, Warning, TEXT("%s"), *msg);
-			break;
-		case FLoggerLevel::Error:
-			UE_LOG(FS_Log_Error, Error, TEXT("%s"), *msg);
-			break;
-		case FLoggerLevel::Fatal:
-			UE_LOG(FS_Log_Fatal, Fatal, TEXT("%s"), *msg);
+		case EFSLogLevel::Debug: UE_LOG(FS_Log_Debug, Log, TEXT("%s"), *Msg); break;
+		case EFSLogLevel::Info:  UE_LOG(FS_Log_Info, Log, TEXT("%s"), *Msg); break;
+		case EFSLogLevel::Warn:  UE_LOG(FS_Log_Warn, Warning, TEXT("%s"), *Msg); break;
+		case EFSLogLevel::Error: UE_LOG(FS_Log_Error, Error, TEXT("%s"), *Msg); break;
+		case EFSLogLevel::Fatal:
+			UE_LOG(FS_Log_Fatal, Fatal, TEXT("%s"), *Msg);
 			if (bCrashOnFatal)
-			{
-				checkf(false, TEXT("%s"), *msg);
-			}
+				checkf(false, TEXT("%s"), *Msg);
 			break;
 		}
 	}
 
-public:
-#if WITH_EDITOR
-	static void ShowEditorPopupAndStopPIE(const FString& Msg)
+	template<typename... Args>
+	static void LogFormatted(EFSLogLevel Level, const TCHAR* Fmt, Args&&... args)
 	{
-		FMessageDialog::Open(EAppMsgType::Ok, FText::FromString(Msg));
-	}
-#endif
-
-private:
-	// --- Generic fallback (assume valid) ---
-	template <typename T>
-	static bool IsInvalidValue(const T&) { return false; }
-
-	// --- Specialize for pointer types ---
-	template <typename T>
-	static bool IsInvalidValue(T* ptr) { return ptr == nullptr; }
-
-	// --- Specialize for bool ---
-	static bool IsInvalidValue(const bool& value) { return !value; }
-
-	static const char* FileNameFromPath(const char* path)
-	{
-		const char* file = strrchr(path, '/');
-		return file ? file + 1 : path;
+		FString Msg = FString::Printf(Fmt, Forward<Args>(args)...);
+		LogInternal(Level, Msg, __FILE__, __LINE__);
 	}
 
-
-	~FLogger() = default;
+	static const char* ExtractFileName(const char* Path)
+	{
+		const char* Slash = strrchr(Path, '/');
+		if (!Slash) Slash = strrchr(Path, '\\');
+		return Slash ? Slash + 1 : Path;
+	}
 };
-
-
-inline DEFINE_LOG_CATEGORY(FS_Log_Debug);
-inline DEFINE_LOG_CATEGORY(FS_Log_Info);
-inline DEFINE_LOG_CATEGORY(FS_Log_Warn);
-inline DEFINE_LOG_CATEGORY(FS_Log_Error);
-inline DEFINE_LOG_CATEGORY(FS_Log_Fatal);
-
-
-// Macros for automatic file/line/expression capture
-
-#if !UE_BUILD_SHIPPING
-#define FS_HANDLE(expr, level) FLogger::Get().Handle((expr), level, #expr, __FILE__, __LINE__)
-#define FS_HANDLE_OR(expr, fallback, level) FLogger::Get().Handle((expr),(fallback),level, #expr, __FILE__, __LINE__)
-#define FS_HANDLE(expr, level) FLogger::Get().Handle((expr), level, #expr, __FILE__, __LINE__)
-
-#define FS_DEBUG(x)  FLogger::Handle((x), FLoggerLevel::Debug, #x, __FILE__, __LINE__)
-#define FS_INFO(x)   FLogger::Handle((x), FLoggerLevel::Info,  #x, __FILE__, __LINE__)
-#define FS_WARN(x)   FLogger::Handle((x), FLoggerLevel::Warn,  #x, __FILE__, __LINE__)
-#define FS_ERROR(x)  FLogger::Handle((x), FLoggerLevel::Error, #x, __FILE__, __LINE__)
-#define FS_FATAL(x)  FLogger::Handle((x), FLoggerLevel::Fatal, #x, __FILE__, __LINE__)
-
-#define FS_HANDLE_IF(expr) if(FS_HANDLE(expr, FLoggerLevel::Warn))
-#define FS_HANDLE_MSG(x,level,msg) FLogger::HandleMsg((x), level, FString(msg), __FILE__, __LINE__)
-
-#define FS_DEBUG_MSG(x, msg)  FLogger::HandleMsg((x), FLoggerLevel::Debug, FString(msg), __FILE__, __LINE__)
-#define FS_INFO_MSG(x, msg)   FLogger::HandleMsg((x), FLoggerLevel::Info,  FString(msg), __FILE__, __LINE__)
-#define FS_WARN_MSG(x, msg)   FLogger::HandleMsg((x), FLoggerLevel::Warn,  FString(msg), __FILE__, __LINE__)
-#define FS_ERROR_MSG(x, msg)  FLogger::HandleMsg((x), FLoggerLevel::Error, FString(msg), __FILE__, __LINE__)
-#define FS_FATAL_MSG(x, msg)  FLogger::HandleMsg((x), FLoggerLevel::Fatal, FString(msg), __FILE__, __LINE__)
-
-#define FS_CHECK_PTR(ptr) \
-if (!ptr.IsValid()) { GIS_FATAL_MSG(false, FString::Printf(TEXT("TSharedPtr '%s' is invalid! File: %s Line: %d"), TEXT(#ptr), ANSI_TO_TCHAR(__FILE__), __LINE__)); }
-
-
-#define FS_PRINT_SCREEN(Text) FLogger::PrintScreen(Text);
-#define FS_SHOW_POPUP(message) FLogger::ShowPopup(message);
-
-
-#else
-#define FS_HANDLE(expr, level) (expr) // compiled away
-#define FS_HANDLE_OR(expr, fallback, level)(expr)
-#define FS_HANDLE(expr, level) (expr)
-
-#define FS_DEBUG(x) (x)
-#define FS_INFO(x) (x)
-#define FS_WARN(x) (x)
-#define FS_ERROR(x) (x)
-#define FS_FATAL(x) (x)
-
-#define FS_HANDLE_IF(expr) (expr)
-#define FS_HANDLE_MSG(x,level,msg)
-
-#define FS_DEBUG_MSG(x, msg)  (x)
-#define FS_INFO_MSG(x, msg)   (x)
-#define FS_WARN_MSG(x, msg)   (x)
-#define FS_ERROR_MSG(x, msg)  (x)
-#define FS_FATAL_MSG(x, msg)  (x)
-
-#define FS_CHECK_PTR(ptr) (x)
-
-#define FS_PRINT_SCREEN(Text) (;)
-#define FS_SHOW_POPUP(message)
-#endif
