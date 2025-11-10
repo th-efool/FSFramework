@@ -3,14 +3,11 @@
 #include "CoreMinimal.h"
 #include "Base/FSUIBrokerBase.h"
 #include "Data/FSBrokerDataTypes.h"
-#include "UFSMenuUIBroker.generated.h"
+#include "FSMenuUIBroker.generated.h"
 
-/**
- * Pure UI-side broker.
- * Emits EOS requests and exposes simple GetName/GetStatus queries.
- */
+
 UCLASS()
-class FSUI_API UUFSMenuUIBroker : public UFSUIBrokerBase
+class FSUI_API UFSMenuUIBroker : public UFSUIBrokerBase
 {
 	GENERATED_BODY()
 

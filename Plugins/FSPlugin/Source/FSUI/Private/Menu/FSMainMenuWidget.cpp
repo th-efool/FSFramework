@@ -2,16 +2,17 @@
 
 
 #include "Menu/FSMainMenuWidget.h"
-
-#include "Menu/UFSMenuUIBroker.h"
-#include "Kismet/GameplayStatics.h"
+#include "Menu/FSMenuUIBroker.h"
 #include "Utility/FSErrorHandler.h"
+#include "Components/Button.h"
+#include "Components/TextBlock.h"
+#include "Kismet/GameplayStatics.h"
 
 void UFSMainMenuWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	// ======== Bind Button Callbacks ========
+	// ======== Bind Buttons ========
 	if (PlaySoloButton)
 		PlaySoloButton->OnClicked.AddDynamic(this, &UFSMainMenuWidget::OnPlaySoloClicked);
 
@@ -27,93 +28,197 @@ void UFSMainMenuWidget::NativeConstruct()
 	if (LoginDevButton)
 		LoginDevButton->OnClicked.AddDynamic(this, &UFSMainMenuWidget::OnLoginDevClicked);
 
-	// ======== Initialize EOS state ========
-	UpdateUIState();
+	// ======== Bind Broker Callbacks ========
+	if (UWorld* World = GetWorld())
+	{
+		if (UFSMenuUIBroker* UIBroker = World->GetSubsystem<UFSMenuUIBroker>())
+		{
+			UIBroker->OnLoginComplete.AddDynamic(this, &UFSMainMenuWidget::HandleLoginResult);
+			UIBroker->OnDevAuthComplete.AddDynamic(this, &UFSMainMenuWidget::HandleDevAuthResult);
+		}
+	}
 
-	
+	// Initialize UI
+	UpdateUIState();
 }
 
 void UFSMainMenuWidget::UpdateUIState()
 {
-	if (!UsernameText) return;
-
 	bool bLogged = false;
 	FString PlayerName = TEXT("Guest");
 
+	FS_PRINT_SCREEN(TEXT("UpdateUIState() called"));
+
 	if (UWorld* World = GetWorld())
 	{
-		if (UUFSMenuUIBroker* UIBroker = World->GetSubsystem<UUFSMenuUIBroker>())
+		if (UFSMenuUIBroker* UIBroker = World->GetSubsystem<UFSMenuUIBroker>())
 		{
-			// Query current login state
 			UIBroker->GetLoginStatus(bLogged);
 			UIBroker->GetPlayerName(PlayerName);
+
+			FS_PRINT_SCREEN(*FString::Printf(
+				TEXT("UIBroker found → LoginStatus=%s | PlayerName=%s"),
+				bLogged ? TEXT("true") : TEXT("false"),
+				*PlayerName));
 		}
+		else
+		{
+			FS_PRINT_SCREEN(TEXT("⚠️ UFSMenuUIBroker subsystem not found"));
+		}
+	}
+	else
+	{
+		FS_PRINT_SCREEN(TEXT("❌ GetWorld() returned null"));
 	}
 
 	bIsLoggedIn = bLogged;
+	CachedPlayerName = PlayerName;
 
-	UsernameText->SetText(FText::FromString(PlayerName));
+	// === Username ===
+	if (UsernameText)
+	{
+		UsernameText->SetText(FText::FromString(CachedPlayerName));
+		FS_PRINT_SCREEN(*FString::Printf(TEXT("UsernameText updated → %s"), *CachedPlayerName));
+	}
+	else
+	{
+		FS_PRINT_SCREEN(TEXT("⚠️ UsernameText not bound"));
+	}
 
-	// Enable/disable buttons based on login state
+	// === Multiplayer ===
+	if (MultiplayerButton)
+	{
+		MultiplayerButton->SetIsEnabled(bIsLoggedIn);
+		FS_PRINT_SCREEN(*FString::Printf(TEXT("MultiplayerButton → %s"),
+			bIsLoggedIn ? TEXT("ENABLED") : TEXT("DISABLED")));
+	}
+	else
+	{
+		FS_PRINT_SCREEN(TEXT("⚠️ MultiplayerButton not bound"));
+	}
+
+	// === LoginWithEOS ===
 	if (LoginWithEOSButton)
+	{
+		LoginWithEOSButton->SetVisibility(bIsLoggedIn ? ESlateVisibility::Collapsed : ESlateVisibility::Visible);
 		LoginWithEOSButton->SetIsEnabled(!bIsLoggedIn);
 
+		FS_PRINT_SCREEN(*FString::Printf(TEXT("LoginWithEOSButton → %s / %s"),
+			bIsLoggedIn ? TEXT("HIDDEN") : TEXT("VISIBLE"),
+			bIsLoggedIn ? TEXT("DISABLED") : TEXT("ENABLED")));
+	}
+	else
+	{
+		FS_PRINT_SCREEN(TEXT("⚠️ LoginWithEOSButton not bound"));
+	}
+
+	// === LoginDev ===
 	if (LoginDevButton)
+	{
+		LoginDevButton->SetVisibility(bIsLoggedIn ? ESlateVisibility::Collapsed : ESlateVisibility::Visible);
 		LoginDevButton->SetIsEnabled(!bIsLoggedIn);
+
+		FS_PRINT_SCREEN(*FString::Printf(TEXT("LoginDevButton → %s / %s"),
+			bIsLoggedIn ? TEXT("HIDDEN") : TEXT("VISIBLE"),
+			bIsLoggedIn ? TEXT("DISABLED") : TEXT("ENABLED")));
+	}
+	else
+	{
+		FS_PRINT_SCREEN(TEXT("⚠️ LoginDevButton not bound"));
+	}
+
+	// === Summary ===
+	FS_PRINT_SCREEN(*FString::Printf(
+		TEXT("✅ UpdateUIState complete → LoggedIn=%s | Username=%s | Buttons=%s"),
+		bIsLoggedIn ? TEXT("true") : TEXT("false"),
+		*CachedPlayerName,
+		bIsLoggedIn ? TEXT("HIDDEN") : TEXT("VISIBLE")));
 }
+
+
+// =======================================================================
+// ==================== BUTTON CALLBACKS =================================
+// =======================================================================
 
 void UFSMainMenuWidget::OnPlaySoloClicked()
 {
-	FS_INFO(FString("OnPlaySoloClicked → Solo play triggered"));
-	// TODO: Implement solo session start logic
+	FS_INFO_MSG(nullptr, *FString::Printf(TEXT("OnPlaySoloClicked → Solo play triggered")));
+	// TODO: Start single-player session
 }
 
 void UFSMainMenuWidget::OnMultiplayerClicked()
 {
-	FS_INFO(FString("OnMultiplayerClicked → Multiplayer session triggered"));
-	// TODO: Implement multiplayer session logic
+	if (!bIsLoggedIn)
+	{
+		FS_ERROR_MSG( nullptr, *FString::Printf(TEXT("Multiplayer clicked but user not logged in — ignoring")));
+		return;
+	}
+
+	FS_INFO_MSG(nullptr, *FString::Printf(TEXT("OnMultiplayerClicked → Launching multiplayer for %s"), *CachedPlayerName));
+	// TODO: Open multiplayer lobby/session
 }
 
 void UFSMainMenuWidget::OnSettingsClicked()
 {
-	FS_INFO(FString("OnSettingsClicked → Opening settings"));
-	// TODO: Open settings UI
+	FS_INFO_MSG(nullptr, *FString::Printf(TEXT("OnSettingsClicked → Opening settings")));
+	// TODO: Open settings menu
 }
 
 void UFSMainMenuWidget::OnLoginWithEOSClicked()
 {
-	FS_INFO(FString("OnLoginWithEOSClicked → Triggering EOS login"));
+	FS_INFO_MSG(nullptr, *FString::Printf(TEXT("OnLoginWithEOSClicked → Requesting EOS login")));
 
 	if (UWorld* World = GetWorld())
 	{
-		if (UUFSMenuUIBroker* UIBroker = World->GetSubsystem<UUFSMenuUIBroker>())
+		if (UFSMenuUIBroker* UIBroker = World->GetSubsystem<UFSMenuUIBroker>())
 		{
-			const FString ID = TEXT("example_id");
-			const FString Token = TEXT("example_token");
-			const FString LoginType = TEXT("accountportal");
-			UIBroker->Login(ID, Token, LoginType);
+			UIBroker->Login(TEXT(""), TEXT(""), TEXT("accountportal"));
 		}
 	}
 }
 
 void UFSMainMenuWidget::OnLoginDevClicked()
 {
-	FS_INFO(FString("OnLoginDevClicked → Triggering DevAuth login"));
+	FS_INFO_MSG(nullptr, *FString::Printf(TEXT("OnLoginDevClicked → Requesting DevAuth login")));
 
 	if (UWorld* World = GetWorld())
 	{
-		if (UUFSMenuUIBroker* UIBroker = World->GetSubsystem<UUFSMenuUIBroker>())
+		if (UFSMenuUIBroker* UIBroker = World->GetSubsystem<UFSMenuUIBroker>())
 		{
 			UIBroker->DevAuth();
 		}
 	}
 }
 
-void UFSMainMenuWidget::OnEOSLoginStatusChanged(bool bLoggedIn)
-{
-	bIsLoggedIn = bLoggedIn;
-	UpdateUIState();
+// =======================================================================
+// ==================== LOGIN RESULT CALLBACKS ============================
+// =======================================================================
 
-	FS_INFO(*FString::Printf(TEXT("OnEOSLoginStatusChanged → LoggedIn=%s"), bLoggedIn ? TEXT("true") : TEXT("false")));
+void UFSMainMenuWidget::HandleLoginResult(bool bSuccess, const FString& Error)
+{
+	if (bSuccess)
+	{
+		FS_SHOW_POPUP(*FString::Printf(TEXT("HandleLoginResult → EOS Login succeeded")));
+	}
+	else
+	{
+		FS_SHOW_POPUP(*FString::Printf(TEXT("HandleLoginResult → EOS Login failed: %s"), *Error));
+	}
+
+	UpdateUIState();
 }
 
+void UFSMainMenuWidget::HandleDevAuthResult(bool bSuccess, const FString& Error)
+{
+	if (bSuccess)
+	{
+		FS_SHOW_POPUP(*FString::Printf(TEXT("HandleDevAuthResult → DevAuth Login succeeded")));
+	}
+	else
+	{
+		
+		FS_PRINT_SCREEN(*FString::Printf(TEXT("HandleDevAuthResult → DevAuth Login failed: %s"), *Error));
+	}
+
+	UpdateUIState();
+}

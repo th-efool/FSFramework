@@ -1,5 +1,5 @@
 #include "Brokers/FSGameInstanceBroker.h"
-#include "Menu/UFSMenuUIBroker.h"
+#include "Menu/FSMenuUIBroker.h"
 #include "Menu/FSMenuGameFrameworkBroker.h"
 #include "Engine/World.h"
 #include "TimerManager.h"
@@ -65,7 +65,7 @@ void UFSGameInstanceBroker::BindToUI(UWorld* World)
 	if (bBoundToUI)
 		return;
 
-	MenuUI = World->GetSubsystem<UUFSMenuUIBroker>();
+	MenuUI = World->GetSubsystem<UFSMenuUIBroker>();
 	if (!MenuUI)
 	{
 		FS_WARN(FString("BindToUI → No UUFSMenuUIBroker found"));
@@ -95,14 +95,14 @@ void UFSGameInstanceBroker::HandleLoginFinished(bool bSuccess, const FString& Er
 {
 	OnLoginComplete.Broadcast(bSuccess, Error);
 	if (MenuUI)
-		MenuUI->LoginResult(bSuccess, Error);
+	{MenuUI->LoginResult(bSuccess, Error);}
 }
 
 void UFSGameInstanceBroker::HandleDevAuthFinished(bool bSuccess, const FString& Error)
 {
 	OnDevAuthComplete.Broadcast(bSuccess, Error);
 	if (MenuUI)
-		MenuUI->DevAuthResult(bSuccess, Error);
+	{MenuUI->DevAuthResult(bSuccess, Error);}
 }
 
 // ======== Internal Relay Handlers ========

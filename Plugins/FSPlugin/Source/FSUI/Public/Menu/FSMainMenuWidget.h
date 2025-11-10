@@ -1,6 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -15,12 +12,9 @@ class FSUI_API UFSMainMenuWidget : public UFSHUDWidgetBase
 	GENERATED_BODY()
 
 public:
-
-	/** Called when widget is constructed */
 	virtual void NativeConstruct() override;
 
 protected:
-
 	/** --- UI Bindings --- */
 	UPROPERTY(meta = (BindWidget))
 	UButton* PlaySoloButton;
@@ -44,6 +38,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Login")
 	bool bIsLoggedIn = false;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Login")
+	FString CachedPlayerName = TEXT("Guest");
+
 	/** --- Button Callbacks --- */
 	UFUNCTION()
 	void OnPlaySoloClicked();
@@ -60,9 +57,13 @@ protected:
 	UFUNCTION()
 	void OnLoginDevClicked();
 
-	/** Refreshes button states and username display */
+	/** --- Broker Delegates --- */
+	UFUNCTION()
+	void HandleLoginResult(bool bSuccess, const FString& Error);
+
+	UFUNCTION()
+	void HandleDevAuthResult(bool bSuccess, const FString& Error);
+
+	/** Update the UI (buttons + name) */
 	void UpdateUIState();
-
-	void OnEOSLoginStatusChanged(bool bLoggedIn);
-
 };

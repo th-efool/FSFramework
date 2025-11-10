@@ -22,7 +22,6 @@ public class FSUI : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore"
-
 			}
 		);
 	}

@@ -13,7 +13,7 @@ void UFSMenuGameFrameworkBroker::Initialize(FSubsystemCollectionBase& Collection
 	GameInstanceRef = Cast<UEOS_GameInstance>(UGameplayStatics::GetGameInstance(GetWorld()));
 	if (!GameInstanceRef)
 	{
-		FS_ERROR(FString("Broker Init → No valid UEOS_GameInstance found"));
+		FS_SHOW_POPUP(FString("Broker Init → No valid UEOS_GameInstance found"));
 		return;
 	}
 
@@ -25,18 +25,18 @@ void UFSMenuGameFrameworkBroker::Initialize(FSubsystemCollectionBase& Collection
 	GameInstanceRef->LoginComplete.AddDynamic(this, &UFSMenuGameFrameworkBroker::HandleLoginComplete);
 	GameInstanceRef->DevAuthComplete.AddDynamic(this, &UFSMenuGameFrameworkBroker::HandleDevAuthComplete);
 
-	FS_INFO(FString("Broker successfully bound to EOS_GameInstance (one-way mode)"));
+	FS_PRINT_SCREEN(FString("Broker successfully bound to EOS_GameInstance (one-way mode)"));
 }
 
 void UFSMenuGameFrameworkBroker::HandleLoginComplete(bool bSuccess, const FString& ErrorMessage)
 {
 	if (bSuccess)
 	{
-		FS_INFO(FString("Broker → LoginComplete: Success"));
+		FS_PRINT_SCREEN(FString("Broker → LoginComplete: Success"));
 	}
 	else
 	{
-		FS_ERROR(*FString::Printf(TEXT("Broker → LoginComplete: Failed | %s"), *ErrorMessage));
+		FS_PRINT_SCREEN(*FString::Printf(TEXT("Broker → LoginComplete: Failed | %s"), *ErrorMessage));
 	}
 
 	LoginComplete.Broadcast(bSuccess, ErrorMessage);
@@ -46,11 +46,11 @@ void UFSMenuGameFrameworkBroker::HandleDevAuthComplete(bool bSuccess, const FStr
 {
 	if (bSuccess)
 	{
-		FS_INFO(FString("Broker → DevAuthComplete: Success"));
+		FS_PRINT_SCREEN(FString("Broker → DevAuthComplete: Success"));
 	}
 	else
 	{
-		FS_ERROR(*FString::Printf(TEXT("Broker → DevAuthComplete: Failed | %s"), *ErrorMessage));
+		FS_PRINT_SCREEN(*FString::Printf(TEXT("Broker → DevAuthComplete: Failed | %s"), *ErrorMessage));
 	}
 
 	DevAuthComplete.Broadcast(bSuccess, ErrorMessage);
@@ -85,3 +85,4 @@ FString UFSMenuGameFrameworkBroker::GetPlayerName()
 	FS_INFO(*FString::Printf(TEXT("GetPlayerName() → %s"), *PlayerName));
 	return PlayerName;
 }
+

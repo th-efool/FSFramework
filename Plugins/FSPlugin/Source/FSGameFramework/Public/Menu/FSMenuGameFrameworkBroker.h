@@ -41,10 +41,18 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "EOS | Direct")
 	FString GetPlayerName();
 
+	UFUNCTION(BlueprintCallable, Category = "EOS | Direct")
+	inline void EOSDevAuth()
+	{
+		RequestEOSDevAuth.Broadcast();
+	}
+	
+
 private:
 	UFUNCTION()
 	void HandleLoginComplete(bool bSuccess, const FString& ErrorMessage);
 
 	UFUNCTION()
 	void HandleDevAuthComplete(bool bSuccess, const FString& ErrorMessage);
+	
 };

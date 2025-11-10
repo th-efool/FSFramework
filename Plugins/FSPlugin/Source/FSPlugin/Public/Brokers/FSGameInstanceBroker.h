@@ -5,7 +5,7 @@
 #include "Data/FSBrokerDataTypes.h"
 #include "FSGameInstanceBroker.generated.h"
 
-class UUFSMenuUIBroker;
+class UFSMenuUIBroker;
 class UFSMenuGameFrameworkBroker;
 
 /**
@@ -34,7 +34,7 @@ public:
 
 protected:
 	UPROPERTY() TObjectPtr<UFSMenuGameFrameworkBroker> GameFramework = nullptr;
-	UPROPERTY() TObjectPtr<UUFSMenuUIBroker> MenuUI = nullptr;
+	UPROPERTY() TObjectPtr<UFSMenuUIBroker> MenuUI = nullptr;
 
 	bool bBoundToFramework = false;
 	bool bBoundToUI = false;
@@ -49,23 +49,23 @@ private:
 	void BindToUI(UWorld* World);
 
 	// ===== Handlers =====
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "EOS | Requests")
 	void HandleLoginFinished(bool bSuccess, const FString& Error);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "EOS | Requests")
 	void HandleDevAuthFinished(bool bSuccess, const FString& Error);
 
 	// ===== Routed Calls from UI Broker =====
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "EOS | Requests")
 	void LoginEOS(const FString& ID, const FString& Token, const FString& Type);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "EOS | Requests")
 	void LoginEOS_Dev();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "EOS | Requests")
 	void GetPlayerName(FString& OutName);
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable, Category = "EOS | Requests")
 	void GetLoginStatus(bool& bIsLoggedIn);
 
 private:

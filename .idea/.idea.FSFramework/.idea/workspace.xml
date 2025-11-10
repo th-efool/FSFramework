@@ -15,23 +15,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d58273c-48f3-4d48-978b-aea2eb26d48d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/FSGameInstanceBase.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/FSGameInstanceBase.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/FSMenuUIBroker.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSFramework/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FSFramework.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/FSFramework.uproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Config/DefaultFSPlugin.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Config/DefaultFSPlugin.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Config/DefaultEngine.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/Gameplay/Player/FPSPlayerCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/Gameplay/Player/FPSPlayerCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Match/MatchHUD.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Match/MatchHUD.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Menu/UMainMenuWidget.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Content/Main/UI/Menu/UMainMenuWidget.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/FSPlugin.uplugin" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/FSPlugin.uplugin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/Data/FSBrokerDataTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/Data/FSBrokerDataTypes.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/FSGameFramework.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/FSGameFramework.Build.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/Utility/FSErrorHandler.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/Utility/FSErrorHandler.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/EOS_GameInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/EOS_GameInstance.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Menu/FSMenuGameFrameworkBroker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Menu/FSMenuGameFrameworkBroker.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/EOS_GameInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/EOS_GameInstance.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Menu/FSMenuGameFrameworkBroker.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/Menu/FSMenuGameFrameworkBroker.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/FSGameplay.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameplay/FSGameplay.Build.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/FSPlugin.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/FSPlugin.Build.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/Private/Brokers/FSGameInstanceBroker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/Private/Brokers/FSGameInstanceBroker.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/Public/Brokers/FSGameInstanceBroker.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSPlugin/Public/Brokers/FSGameInstanceBroker.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/FSUI.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/FSUI.Build.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/FSMainMenuWidget.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/FSMainMenuWidget.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/UFSMenuUIBroker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/UFSMenuUIBroker.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/UFSMenuUIBroker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/FSMenuUIBroker.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/FSMainMenuWidget.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/FSMainMenuWidget.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/UFSMenuUIBroker.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/UFSMenuUIBroker.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/UFSMenuUIBroker.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/FSFramework/FSFramework.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/FSFramework/FSFramework.Build.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,6 +58,7 @@
     <setting file="file://C:/Program Files/Epic Games/UE_5.6/Engine/Source/Runtime/UMG/Private/UserWidget.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Epic Games/UE_5.6/Engine/Source/ThirdParty/LibTiff/Source/tiffio.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/UnrealEngine/UE_5.6/Engine/Source/Runtime/Engine/Private/GameplayStatics.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FSFramework.uproject" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Private/Data/FSGameDataAsset.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Private/Utility/FSErrorHandler.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/Data/FSBrokerDataTypes.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -60,6 +66,7 @@
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/Data/FSGameDataAsset.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/FSCore.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSCore/Public/Utility/FSErrorHandler.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/FSGameInstanceBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/FSGameModeBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/FSGameStateBase.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/FSPlayerStateBase.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -83,6 +90,7 @@
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Menu/FSMenuPlayerController.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Private/Menu/FSMenuPlayerState.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/FSGameFramework.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/FSGameInstanceBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/FSGameModeBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/FSGameStateBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSGameFramework/Public/FSPlayerStateBase.h" root0="FORCE_HIGHLIGHTING" />
@@ -162,7 +170,6 @@
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/FSHostJoinWidget.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/FSMainMenuWidget.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/FSMenuHUD.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Private/Menu/UFSMenuUIBroker.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Base/FSComponentWidgetBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Base/FSHUDWidgetBase.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Base/FSMenuWidgetBase.h" root0="FORCE_HIGHLIGHTING" />
@@ -193,7 +200,6 @@
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/FSHostJoinWidget.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/FSMainMenuWidget.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/FSMenuHUD.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Plugins/FSPlugin/Source/FSUI/Public/Menu/UFSMenuUIBroker.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -387,7 +393,10 @@
       <workItem from="1762045821446" duration="5004000" />
       <workItem from="1762061236083" duration="467000" />
       <workItem from="1762281742825" duration="5744000" />
-      <workItem from="1762586245634" duration="18496000" />
+      <workItem from="1762586245634" duration="20715000" />
+      <workItem from="1762633123574" duration="3051000" />
+      <workItem from="1762636708340" duration="8000" />
+      <workItem from="1762645450453" duration="6766000" />
     </task>
     <servers />
   </component>

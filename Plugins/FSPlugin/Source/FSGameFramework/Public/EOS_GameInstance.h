@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "FSGameInstanceBase.h"
 #include "Data/FSBrokerDataTypes.h"
 #include "Engine/GameInstance.h"
 #include "Interfaces/OnlineIdentityInterface.h"
@@ -11,7 +12,7 @@
 // ===========================================================
 
 UCLASS()
-class FSGAMEFRAMEWORK_API UEOS_GameInstance : public UGameInstance
+class FSGAMEFRAMEWORK_API UEOS_GameInstance : public UFSGameInstanceBase
 {
 	GENERATED_BODY()
 

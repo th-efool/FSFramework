@@ -13,8 +13,7 @@ public class FSFramework : ModuleRules
 			"Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput",
 			"OnlineSubsystem",
 			"OnlineSubsystemUtils",
-			"OnlineSubsystemEOS",
-			"OnlineSubsystemEOSPlus"
+			"OnlineSubsystemEOS"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });

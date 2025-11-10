@@ -72,8 +72,7 @@ void UEOS_GameInstance::LoginWithEOS_DevAuth()
 
 void UEOS_GameInstance::GetLoginStatus(bool& bIsLoggedIn)
 {
-	bIsLoggedIn = false;
-
+	
 	IOnlineSubsystem* SubsystemRef = Online::GetSubsystem(GetWorld());
 	if (!SubsystemRef)
 	{
@@ -133,7 +132,7 @@ void UEOS_GameInstance::LoginWithEOS_OnReturn(int32 LocalUserNum, bool bWasSucce
 	{
 		FS_ERROR(*FString::Printf(TEXT("LoginWithEOS_OnReturn() → Login failed: %s"), *Error));
 	}
-
+	LoginComplete.Broadcast(bWasSuccess,Error);
 	IOnlineSubsystem* SubsystemRef = Online::GetSubsystem(GetWorld());
 	if (!SubsystemRef) return;
 
