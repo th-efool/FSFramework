@@ -2,6 +2,12 @@
 
 A modular Unreal Engine 5 plugin framework that separates Core, Gameplay, Game Framework, UI, and cross-cutting brokers into clean, reusable modules. The goal is fast prototyping and scalable game architecture with clear seams between systems.
 
+![Engine](https://img.shields.io/badge/engine-Unreal%20Engine%205-0E1128.svg)
+![Type](https://img.shields.io/badge/type-plugin%20framework-blue.svg)
+![Architecture](https://img.shields.io/badge/architecture-modular%20broker--pattern-blueviolet.svg)
+![Language](https://img.shields.io/badge/language-C%2B%2B%20%7C%20Blueprints-blue.svg)
+![Status](https://img.shields.io/badge/status-active%20development-yellow.svg)
+
 ## Highlights
 - **Modular Plugins**: `FSCore`, `FSGameplay`, `FSGameFramework`, `FSUI`, `FSPlugin`
 - **Broker Pattern**: World/GameInstance subsystems that centralize cross-system coordination
