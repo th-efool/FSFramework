@@ -152,10 +152,3 @@ Typical flow:
 2. Prefer small, focused PRs per module
 3. Follow Unreal coding conventions; keep interfaces thin and responsibilities clear
 4. Add minimal but meaningful comments for non-obvious rationale; avoid needless noise
-
-## License
-TBD (add a license file if you plan to accept external contributions).
-
----
-
-If you have specific features in mind, open an issue describing the context (Menu/Lobby/Match), the broker(s) involved, and the desired data flow. This helps keep extensions aligned with the framework’s architecture.
